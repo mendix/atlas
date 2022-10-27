@@ -5,7 +5,7 @@ import { execSync } from "child_process";
 import { existsSync } from "fs";
 import { readdir } from "fs/promises";
 
-const repoRoot = join(__dirname, "../../../../");
+const repoRoot = join(__dirname, "../../../");
 
 main().catch(e => {
     console.error(e);
@@ -44,10 +44,10 @@ async function main(): Promise<void> {
         await copyStylesAndAssets(mode === "start", outputDir);
     }
 
-    await buildAndCopyWidgets(mode, ["feedback-native", "language-selector-web"], outputDir);
+    // await buildAndCopyWidgets(mode, ["feedback-native", "language-selector-web"], outputDir);
 }
 
-async function buildAndCopyWidgets(command = "build", widgets: string[] = [], destination?: string) {
+export async function buildAndCopyWidgets(command = "build", widgets: string[] = [], destination?: string) {
     let cwd = process.cwd();
     if (cwd.endsWith("atlas-core")) {
         cwd = join(cwd, "../../../");
@@ -92,7 +92,7 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                     name: "web-themesource-core",
                     command: `copy-and-watch ${watchArg} "${join(
                         repoRoot,
-                        "packages/theming/atlas",
+                        "packages/atlas",
                         "src/themesource/atlas_core/web/**/*"
                     )}" "${join(destination, "themesource/atlas_core/web")}"`
                 },
@@ -100,7 +100,7 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                     name: "public-themesource-core",
                     command: `copy-and-watch ${watchArg} "${join(
                         repoRoot,
-                        "packages/theming/atlas",
+                        "packages/atlas",
                         "src/themesource/atlas_core/public/**/*"
                     )}" "${join(destination, "themesource/atlas_core/public")}"`
                 },

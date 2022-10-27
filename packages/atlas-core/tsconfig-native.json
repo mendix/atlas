@@ -1,6 +1,6 @@
 {
-    "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base",
-    "include": ["../../theming/atlas/src/themesource/atlas_core/native/**/*.ts"],
+    "extends": "../../tsconfig.base",
+    "include": ["../atlas/src/themesource/atlas_core/native/**/*.ts"],
     "compilerOptions": {
         "target": "ES2019",
         "lib": ["ES2017"],

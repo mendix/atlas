@@ -5,7 +5,7 @@ import { execSync } from "child_process";
 import { existsSync } from "fs";
 import { readdir } from "fs/promises";
 
-const repoRoot = join(__dirname, "../../../../");
+const repoRoot = join(__dirname, "../../../");
 
 main().catch(e => {
     console.error(e);
@@ -44,14 +44,14 @@ async function main(): Promise<void> {
         await copyStylesAndAssets(mode === "start", outputDir);
     }
 
-    await buildAndCopyWidgets(
-        mode,
-        ["badge-web", "maps-web", "progress-bar-web", "progress-circle-web", "timeline-web"],
-        outputDir
-    );
+    // await buildAndCopyWidgets(
+    //     mode,
+    //     ["badge-web", "maps-web", "progress-bar-web", "progress-circle-web", "timeline-web"],
+    //     outputDir
+    // );
 }
 
-async function buildAndCopyWidgets(command = "build", widgets: string[] = [], destination?: string) {
+export async function buildAndCopyWidgets(command = "build", widgets: string[] = [], destination?: string) {
     let cwd = process.cwd();
     if (cwd.endsWith("atlas-web-content")) {
         cwd = join(cwd, "../../../");
@@ -97,7 +97,7 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                     name: "web-themesource-content",
                     command: `copy-and-watch ${watchArg} "${join(
                         repoRoot,
-                        "packages/theming/atlas",
+                        "packages/atlas",
                         "src/themesource/atlas_web_content/web/**/*"
                     )}" "${join(destination, "themesource/atlas_web_content/web")}"`
                 },
@@ -105,7 +105,7 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                     name: "public-themesource-content",
                     command: `copy-and-watch ${watchArg} "${join(
                         repoRoot,
-                        "packages/theming/atlas",
+                        "packages/atlas",
                         "src/themesource/atlas_web_content/public/**/*"
                     )}" "${join(destination, "themesource/atlas_web_content/public")}"`
                 }

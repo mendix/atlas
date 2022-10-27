@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "module": "esnext",
+        "target": "es6",
+        "lib": ["esnext", "dom"],
+        "moduleResolution": "node",
+        "declaration": false,
+        "noLib": false,
+        "watch": false,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "strict": true,
+        "strictFunctionTypes": false,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "jsx": "react",
+        "jsxFactory": "createElement",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "useUnknownInCatchVariables": false,
+        "exactOptionalPropertyTypes": false
+    }
+}

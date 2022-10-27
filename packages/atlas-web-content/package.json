@@ -6,7 +6,7 @@
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mendix/widgets-resources.git"
+    "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
     "minimumMXVersion": "9.6.11.42323",
@@ -21,11 +21,5 @@
     "release:module": "ts-node ./scripts/build.ts release",
     "release:marketplace": "node ../../../scripts/release/marketplaceRelease.js"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@mendix/pluggable-widgets-tools": ">=8.9.2",
-    "copy-and-watch": "^0.1.5",
-    "concurrently": "^6.0.0",
-    "ts-node": "^9.0.0"
-  }
+  "dependencies": {}
 }

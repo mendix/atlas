@@ -2,7 +2,7 @@ import concurrently from "concurrently";
 import { join } from "path";
 import { rm, mkdir } from "shelljs";
 
-const repoRoot = join(__dirname, "../../../../");
+const repoRoot = join(__dirname, "../../../");
 
 main().catch(e => {
     console.error(e);
@@ -31,7 +31,7 @@ async function copyStyles(destination: string): Promise<void> {
                     name: "native-themesource-atlas-content-native",
                     command: `copy-and-watch "${join(
                         repoRoot,
-                        "packages/theming/atlas/dist/themesource/atlas_nativemobile_content/**/*"
+                        "packages/atlas/dist/themesource/atlas_nativemobile_content/**/*"
                     )}" "${join(destination, "themesource/atlas_nativemobile_content")}"`
                 }
             ],

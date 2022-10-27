@@ -1,5 +1,5 @@
 {
-    "extends": "../../tools/pluggable-widgets-tools/configs/tsconfig.base",
+    "extends": "../../tsconfig.base",
     "include": ["./src/theme/native/**/*.ts", "./src/themesource/atlas_core/native/**/*.ts", "./src/themesource/atlas_nativemobile_content/native/**/*.ts"],
     "compilerOptions": {
         "target": "ES2019",
