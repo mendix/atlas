@@ -61,7 +61,7 @@ async function updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder)
     await execShellCommand(`echo ${version} > themesource/${moduleInfo.moduleFolderNameInModeler}/.version`, tmpFolder);
     const gitOutput = await execShellCommand(`cd ${tmpFolder} && git status`);
     if (!/nothing to commit/i.test(gitOutput)) {
-        await execShellCommand("git add . && git commit -m 'Updated Atlas native styling' && git push", tmpFolder);
+        // await execShellCommand("git add . && git commit -m 'Updated Atlas native styling' && git push", tmpFolder);
     } else {
         console.warn(`Nothing to commit from repo ${tmpFolder}`);
     }

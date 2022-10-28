@@ -104,7 +104,7 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
     if (/nothing to commit/i.test(gitOutput)) {
         console.warn(`Nothing to commit from repo ${testProject}`);
     } else {
-        await execShellCommand("git add . && git commit -m 'Updated widgets and styling' && git push", testProject);
+        // await execShellCommand("git add . && git commit -m 'Updated widgets and styling' && git push", testProject);
     }
 }
 
