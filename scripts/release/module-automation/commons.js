@@ -74,7 +74,7 @@ async function createModuleMpkInDocker(sourceDir, moduleName, mendixVersion, exc
         await execShellCommand(
             `docker build -f ${join(
                 process.cwd(),
-                "packages/tools/pluggable-widgets-tools/scripts/mxbuild.Dockerfile"
+                "scripts/mxbuild.Dockerfile"
             )} ` +
                 `--build-arg MENDIX_VERSION=${mendixVersion} ` +
                 `-t mxbuild:${mendixVersion} ${process.cwd()}`

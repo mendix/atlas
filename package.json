@@ -6,7 +6,9 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "license": "Apache-2.0",
-  "scripts": {},
+  "scripts": {
+    "create-gh-release": "node ./scripts/release/create-gh-release.js"
+  },
   "devDependencies": {
     "@types/concurrently": "^6.4.0",
     "@types/react-native": "0.62.2",
