@@ -72,10 +72,7 @@ async function createModuleMpkInDocker(sourceDir, moduleName, mendixVersion, exc
     if (!existingImages) {
         console.log(`Creating new mxbuild docker image...`);
         await execShellCommand(
-            `docker build -f ${join(
-                process.cwd(),
-                "scripts/mxbuild.Dockerfile"
-            )} ` +
+            `docker build -f ${join(process.cwd(), "scripts/mxbuild.Dockerfile")} ` +
                 `--build-arg MENDIX_VERSION=${mendixVersion} ` +
                 `-t mxbuild:${mendixVersion} ${process.cwd()}`
         );
@@ -128,7 +125,7 @@ async function writeToModuleChangelogs(changelogs, { nameWithSpace, changelogPat
     const oldChangelogs = content.match(regex.changelogsIncludingUnreleased)?.[0].trim();
     const newContent = content.replace(
         oldChangelogs,
-        `## [Unreleased]\n\n## [${version}] ${nameWithSpace} - ${date}\n${changelogs}`
+        `## [Unreleased]\n\n## [${version}] ${nameWithSpace} - ${date}\n\n${changelogs}`
     );
     await writeFile(changelogPath, newContent);
 }

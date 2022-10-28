@@ -9,7 +9,7 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "9.6.11.42323",
+    "minimumMXVersion": "9.12.6.53474",
     "marketplaceId": 117183
   },
   "testProject": {
@@ -19,7 +19,7 @@
   "scripts": {
     "build:module": "ts-node ./scripts/build.ts build",
     "release:module": "ts-node ./scripts/build.ts release",
-    "release:marketplace": "node ../../../scripts/release/marketplaceRelease.js"
+    "release:marketplace": "node ../../scripts/release/marketplaceRelease.js"
   },
   "dependencies": {}
 }

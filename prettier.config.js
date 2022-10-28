@@ -1,4 +1,17 @@
-const base = require("./packages/tools/pluggable-widgets-tools/configs/prettier.base.json");
+const base = {
+    trailingComma: "none",
+    useTabs: false,
+    tabWidth: 4,
+    semi: true,
+    singleQuote: false,
+    printWidth: 120,
+    bracketSpacing: true,
+    bracketSameLine: false,
+    arrowParens: "avoid",
+    proseWrap: "always",
+    xmlSelfClosingSpace: true,
+    xmlWhitespaceSensitivity: "ignore"
+};
 
 module.exports = {
     ...base,

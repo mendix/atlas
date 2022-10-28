@@ -7,15 +7,21 @@
   },
   "license": "Apache-2.0",
   "scripts": {
+    "prepare": "npx husky install",
+    "format": "pretty-quick --staged --config \"./prettier.config.js\" --pattern \"**/{src,script,typings,test,**}/**/*.{js,jsx,ts,tsx,scss,html,xml,md,json}\"",
     "create-gh-release": "node ./scripts/release/create-gh-release.js"
   },
   "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@prettier/plugin-xml": "^1.2.0",
     "@types/concurrently": "^6.4.0",
     "@types/react-native": "0.62.2",
     "@types/shelljs": "^0.8.11",
     "chokidar": "^3.5.2",
     "concurrently": "^6.0.0",
     "copy-and-watch": "^0.1.5",
+    "pretty-quick": "^3.1.0",
     "react-native": "0.64.2",
     "react-native-device-info": "8.0.1",
     "sass": "^1.43.4",
@@ -25,7 +31,6 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-lerna-scopes",
       "@commitlint/config-conventional"
     ]
   },

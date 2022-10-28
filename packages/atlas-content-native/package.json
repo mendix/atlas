@@ -18,6 +18,6 @@
   },
   "scripts": {
     "release": "ts-node ./scripts/build.ts release",
-    "release:marketplace": "node ../../../scripts/release/marketplaceRelease.js"
+    "release:marketplace": "node ../../scripts/release/marketplaceRelease.js"
   }
 }
