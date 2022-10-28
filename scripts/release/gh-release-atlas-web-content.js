@@ -35,7 +35,7 @@ async function cpToDir(file, dir) {
 
 module.exports = async function createAtlasWebContentModule() {
     console.log("Creating the Atlas Web content module.");
-    execSync("npm run release:module", { stdio: "inherit", cwd: moduleFolder });
+    execSync("npm run release", { stdio: "inherit", cwd: moduleFolder });
     const tmp = join(repoRootPath, "tmp");
     const testProject = join(tmp, moduleFolderNameInRepo);
 

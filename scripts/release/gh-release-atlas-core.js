@@ -27,7 +27,7 @@ async function cpToDir(file, dir) {
 
 module.exports = async function createAtlasCoreModule() {
     console.log("Creating the Atlas Core module.");
-    execSync("npm run release:module", { stdio: "inherit", cwd: moduleFolder });
+    execSync("npm run release", { stdio: "inherit", cwd: moduleFolder });
     const tmp = join(repoRootPath, "tmp");
     const testProject = join(tmp, moduleFolderNameInRepo);
     await mkdir(testProject, { recursive: true });

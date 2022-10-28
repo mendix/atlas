@@ -7,3 +7,4 @@ packages/tools/pluggable-widgets-tools/tests/projects
 .idea
 .husky
 .vscode
+package-lock.json

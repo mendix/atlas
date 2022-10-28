@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build:module": "ts-node ./scripts/build.ts build",
-    "release:module": "ts-node ./scripts/build.ts release",
+    "release": "ts-node ./scripts/build.ts release",
     "release:marketplace": "node ../../scripts/release/marketplaceRelease.js"
   },
   "dependencies": {}
