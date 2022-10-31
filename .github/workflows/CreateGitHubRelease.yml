@@ -28,6 +28,8 @@ jobs:
       - name: Create release for ${{ github.event.inputs.package }}
         run: npm run create-gh-release -- ${{ github.event.inputs.package }}
         env:
+          MX_USERNAME: ${{ secrets.MX_USERNAME }}
+          MX_APIKEY: ${{ secrets.MX_APIKEY }}
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
           GH_EMAIL: ${{ secrets.GH_EMAIL }}
           GH_NAME: ${{ secrets.GH_NAME }}
