@@ -1,0 +1,54 @@
+name: Create Release For Atlas Theme Folder
+
+# description: publish the latest Atlas theme files so that other teams (e.g. templates) can rely on this downstream
+# for e.g. automation. theme files are not distributed as part of Atlas_Core or other styling module. When Atlas 2
+# upgraded to Atlas 3, a migration doc included a link to a .zip file with theme files.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - packages/atlas/src/theme/**/*
+      - "!**/*.md"
+
+jobs:
+  build:
+    name: Create Release For Atlas Theme Folder
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "RELEASE_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # v3.5.0
+        with:
+          node-version-file: ".nvmrc"
+      - name: "Installing dependencies"
+        run: npm ci
+      - name: "Compile theme native TS to JS in dist"
+        run: |
+          cd packages/atlas
+          npm run release-ts
+      - name: "Copy theme web folder to dist"
+        run: cp -R packages/atlas/src/theme/web/ packages/atlas/dist/theme/web
+      - name: "Create ZIP"
+        uses: montudor/action-zip@0852c26906e00f8a315c704958823928d8018b28 # v1.0.0
+        with:
+          args: zip -q -r atlasui-theme-files.zip .
+        working-directory: packages/atlas/dist/theme/
+      - name: "Release Atlas Theme Files"
+        uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0 # v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "atlasui-theme-files-${{ env.RELEASE_DATE }}"
+          prerelease: false
+          title: "Atlas UI - Theme Folder Files ${{ env.RELEASE_DATE }}"
+          files: |
+            packages/atlas/dist/theme/**/*
+            packages/atlas/dist/theme/atlasui-theme-files.zip

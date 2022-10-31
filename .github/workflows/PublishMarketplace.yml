@@ -1,8 +1,11 @@
 name: "Publishes a package to marketplace"
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "atlas-core-v*"
+      - "atlas-content-native-v*"
+      - "atlas-web-content-v*"
 
 jobs:
   publish-new-version:
