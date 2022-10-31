@@ -47,6 +47,4 @@ jobs:
           automatic_release_tag: "atlasui-theme-files-${{ env.RELEASE_DATE }}"
           prerelease: false
           title: "Atlas UI - Theme Folder Files ${{ env.RELEASE_DATE }}"
-          files: |
-            packages/atlas/dist/theme/**/*
-            packages/atlas/dist/theme/atlasui-theme-files.zip
+          files: packages/atlas/dist/theme/**/*
