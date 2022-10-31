@@ -1,0 +1,40 @@
+name: "Publishes a package to marketplace"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-new-version:
+    name: "Publish a new package version from GitHub release"
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.ref_name }}
+
+    steps:
+      - name: Check release tag
+        run: |
+          match=$(node -p "(/^[a-z0-9-]+-v\d+\.\d+\.\d+$/m).exec('$TAG') ? 1 : -1")
+          if [ $match -eq -1 ];
+          then
+            echo "::error::Invalid tag format."
+            exit 1
+          fi
+      - name: "Set PACKAGE env var"
+        run: echo "PACKAGE=${TAG%-v*}" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 1
+      - name: Setup node
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # v3.5.0
+        with:
+          node-version-file: ".nvmrc"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run publish script
+        run: cd packages/$PACKAGE && npm run release:marketplace
+        env:
+          CPAPI_USERNAME: ${{ secrets.CPAPI_USERNAME }}
+          CPAPI_PASS_PROD: ${{ secrets.CPAPI_PASS_PROD }}
+          OPENID_URL: ${{ secrets.OPENID_URL }}

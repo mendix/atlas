@@ -1,0 +1,39 @@
+name: Build packages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  harden-security:
+    name: Check SHA in GH Actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+      - uses: zgosalvez/github-actions-ensure-sha-pinned-actions@6ca5574367befbc9efdb2fa25978084159c5902d # v1.3.0
+
+  build:
+    name: Run release task
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: [atlas, atlas-content-native, atlas-core, atlas-web-content]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # v3.5.0
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: cd packages/${{ matrix.package }} && npm run release
