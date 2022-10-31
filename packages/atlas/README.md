@@ -113,7 +113,7 @@ Users are also able to exclude styles from the `Atlas_Core` module in this folde
 
 ### Prerequisite
 
-Run `npm install` in the root of this repository (`mendix/widgets-resources`) to install the dependencies.
+Run `npm install` in the root of this repository (`mendix/atlas`) to install the dependencies.
 
 ### Production
 
