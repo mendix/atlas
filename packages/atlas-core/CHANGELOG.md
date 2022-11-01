@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   Update Language Selector and other widgets
+
 ## [3.8.0] Atlas Core - 2022-10-28
 
 ### Changed
