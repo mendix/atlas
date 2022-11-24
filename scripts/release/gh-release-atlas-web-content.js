@@ -21,7 +21,8 @@ const widgetsToUpdate = {
     Maps: 108261,
     ProgressBar: 48910,
     ProgressCircle: 47783,
-    Timeline: 115852
+    Timeline: 115852,
+    HTMLElement: 204843
 };
 
 const repoRootPath = join(__dirname, "../../");
