@@ -6,11 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+-   We added HTMLElement widget.
+
 ## [3.1.2] Atlas Web Content - 2022-11-1
 
 ### Changed
 
--   We updated all widgets
+-   We updated all widgets.
 
 ## [3.1.1] Atlas Web Content - 2022-4-1
 
