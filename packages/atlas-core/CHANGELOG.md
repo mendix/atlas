@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.8.3] Atlas Core - 2023-1-4
+
 ### Changed
 
 -   We fixed an issue with styling conflicts.
