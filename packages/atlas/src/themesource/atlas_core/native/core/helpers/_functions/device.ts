@@ -21,6 +21,7 @@ const isiPhoneModelWithNotch = (): boolean => {
             case "iPhone14,5": // iPhone 13
             case "iPhone14,2": // iPhone 13 Pro
             case "iPhone14,3": // iPhone 13 Pro Max
+            case "iPhone14,7": // iPhone 14
             case "iPhone14,8": // iPhone 14 Plus
             case "iPhone15,2": // iPhone 14 Pro
             case "iPhone15,3": // iPhone 14 Pro Max
