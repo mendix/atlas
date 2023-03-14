@@ -1,7 +1,7 @@
 {
   "name": "atlas-web-content",
   "moduleName": "Atlas Web Content",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "license": "Apache-2.0",
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "9.12.6.53474",
+    "minimumMXVersion": "9.18.4.62522",
     "marketplaceId": 117183
   },
   "testProject": {

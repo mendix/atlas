@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   Minimal required version of Studio Pro is v9.18.4 and above.
+
 ## [3.8.3] Atlas Core - 2023-1-4
 
 ### Changed
