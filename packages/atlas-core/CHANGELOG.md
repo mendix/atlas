@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.9.1] Atlas Core - 2023-4-26
+
+### Changed
+
+-   Remove duplicated Open Sans font
+
 ## [3.9.0] Atlas Core - 2023-3-15
 
 ### Changed
