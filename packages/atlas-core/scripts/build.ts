@@ -1,11 +1,12 @@
 import concurrently from "concurrently";
-import { join } from "path";
-import { cp, rm, mkdir } from "shelljs";
+import { join, resolve } from "path";
+import { cp, rm, mkdir, echo } from "shelljs";
 import { execSync } from "child_process";
 import { existsSync } from "fs";
 import { readdir } from "fs/promises";
 
 const repoRoot = join(__dirname, "../../../");
+const packageFile = require(resolve("package.json"));
 
 main().catch(e => {
     console.error(e);
@@ -86,6 +87,9 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
     const watchArg = watchMode ? "--watch" : "";
 
     try {
+        const versionFile = join(destination, "themesource", "atlas_core", ".version");
+        echo("version:");
+        echo(packageFile.version).to(versionFile);
         await concurrently(
             [
                 {
