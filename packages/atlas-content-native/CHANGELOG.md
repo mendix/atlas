@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.1.0] Atlas NativeMobile Content - 2023-3-23
+
 ### Changed
 
 -   Minimal required version of Studio Pro is v9.18.4 and above.
