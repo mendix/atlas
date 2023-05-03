@@ -112,7 +112,7 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                     name: "native-design-properties-and-manifest",
                     command: `copy-and-watch ${watchArg} "${join(
                         repoRoot,
-                        "packages/theming/atlas",
+                        "packages/atlas",
                         "src/themesource/atlas_core/native/**/*.json"
                     )}" "${join(destination, "themesource/atlas_core/native")}"`
                 }
