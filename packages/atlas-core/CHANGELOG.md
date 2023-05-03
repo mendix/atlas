@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.9.2] Atlas Core - 2023-5-3
+
 ### Fixed
 
 -   We fixed an issue with missing design properties for native.
