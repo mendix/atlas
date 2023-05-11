@@ -30,6 +30,8 @@ module.exports = async function createAtlasCoreModule() {
     execSync("npm run release", { stdio: "inherit", cwd: moduleFolder });
     const tmp = join(repoRootPath, "tmp");
     const testProject = join(tmp, moduleFolderNameInRepo);
+
+    await execShellCommand(`chmod -R a+rw ${tmp}`);
     await mkdir(testProject, { recursive: true });
 
     const moduleInfo = {
