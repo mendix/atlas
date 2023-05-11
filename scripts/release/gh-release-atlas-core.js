@@ -32,7 +32,6 @@ module.exports = async function createAtlasCoreModule() {
     const testProject = join(tmp, moduleFolderNameInRepo);
 
     await mkdir(testProject, { recursive: true });
-    await execShellCommand(`chmod -R a+rw ${tmp}`);
 
     const moduleInfo = {
         ...(await getPackageInfo(moduleFolder)),
@@ -61,6 +60,7 @@ module.exports = async function createAtlasCoreModule() {
         isDraft: true
     });
 
+    await execShellCommand(`chmod -R a+rw ${tmp}`);
     await execShellCommand(`rm -rf ${tmp}`);
 
     console.log("Done.");
