@@ -10,6 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   Remove duplicated Open Sans font
 
+### Breaking changes
+
+-   Minimum required version of Studio Pro is set to v9.24.0.
+
+### Added
+
+-   New styling content: icon collections. Starting from this version Atlas Core include two icon collections: lined and filled.
+
 ## [3.9.2] Atlas Core - 2023-5-3
 
 ### Fixed
