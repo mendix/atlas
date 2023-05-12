@@ -49,7 +49,14 @@ module.exports = async function createAtlasCoreModule() {
     await commitAndCreatePullRequest(moduleInfo);
     await updateTestProject(moduleInfo, testProject, tmp);
 
+    console.log(`Step: create mpk`);
     const mpkOutput = await createMPK(testProject, moduleInfo, regex.excludeFiles);
+    console.log(`File stats before changing owner:`);
+    execSync("find ./tmp/atlas-core -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
+
+    console.log(`File stats after changing owner:`);
+    execSync("sudo chown -R runner:docker .", { stdio: "inherit" });
+    execSync("find ./tmp/atlas-core -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
 
     await createGithubReleaseFrom({
         title: `${moduleInfo.nameWithSpace} - Marketplace Release v${moduleInfo.version}`,
@@ -79,10 +86,6 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
 
     console.log(`Updating project from ${moduleInfo.testProjectUrl}..`);
     await cloneRepo(moduleInfo.testProjectUrl, testProject);
-    console.log(`Set user and group on current file tree...`);
-    execSync("sudo chown -R runner:docker .", { stdio: "inherit" });
-    execSync("ls -la ./tmp/atlas-core", { stdio: "inherit" });
-    execSync("find ./tmp/atlas-core/deployment -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
 
     console.log("Copying styling files and assets..");
 
