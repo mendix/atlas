@@ -59,10 +59,6 @@ module.exports = async function createAtlasCoreModule() {
         isDraft: true
     });
 
-    execSync("whoami", { stdio: "inherit" });
-    execSync("find . -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
-    execSync("find . -type d -print0 | xargs -0 ls -lad", { stdio: "inherit" });
-
     await execShellCommand(`rm -rf ${tmp}`);
 
     console.log("Done.");
@@ -78,6 +74,8 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
 
     console.log(`Updating project from ${moduleInfo.testProjectUrl}..`);
     await cloneRepo(moduleInfo.testProjectUrl, testProject);
+    console.log(`Set user and group on current file tree...`);
+    execSync("sudo chown -R runner:docker .", { stdio: "inherit" });
 
     console.log("Copying styling files and assets..");
 
