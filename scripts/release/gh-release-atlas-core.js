@@ -59,6 +59,10 @@ module.exports = async function createAtlasCoreModule() {
         isDraft: true
     });
 
+    execSync("whoami", { stdio: "inherit" });
+    execSync("find . -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
+    execSync("find . -type d -print0 | xargs -0 ls -lad", { stdio: "inherit" });
+
     await execShellCommand(`rm -rf ${tmp}`);
 
     console.log("Done.");
