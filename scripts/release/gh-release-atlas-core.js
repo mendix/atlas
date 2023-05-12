@@ -59,6 +59,11 @@ module.exports = async function createAtlasCoreModule() {
         isDraft: true
     });
 
+    console.log("Change owner and group right before rm...");
+    execSync("sudo chown -R runner:docker .", { stdio: "inherit" });
+    execSync("ls -la ./tmp/atlas-core", { stdio: "inherit" });
+    execSync("find ./tmp/atlas-core/deployment -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
+
     await execShellCommand(`rm -rf ${tmp}`);
 
     console.log("Done.");
@@ -76,6 +81,8 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
     await cloneRepo(moduleInfo.testProjectUrl, testProject);
     console.log(`Set user and group on current file tree...`);
     execSync("sudo chown -R runner:docker .", { stdio: "inherit" });
+    execSync("ls -la ./tmp/atlas-core", { stdio: "inherit" });
+    execSync("find ./tmp/atlas-core/deployment -type f -print0 | xargs -0 ls -la", { stdio: "inherit" });
 
     console.log("Copying styling files and assets..");
 
