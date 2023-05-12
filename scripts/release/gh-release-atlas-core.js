@@ -50,6 +50,8 @@ module.exports = async function createAtlasCoreModule() {
     await updateTestProject(moduleInfo, testProject, tmp);
 
     const mpkOutput = await createMPK(testProject, moduleInfo, regex.excludeFiles);
+    console.log(`Change owner and group after module export...`);
+    execSync(`sudo chown -R runner:docker ${tmp}`, { stdio: "inherit" });
 
     await createGithubReleaseFrom({
         title: `${moduleInfo.nameWithSpace} - Marketplace Release v${moduleInfo.version}`,
