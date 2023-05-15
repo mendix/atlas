@@ -1,4 +1,5 @@
 const { join } = require("path");
+const { execSync } = require("node:child_process");
 const { copyFile, rm } = require("fs/promises");
 const {
     execShellCommand,
@@ -31,6 +32,8 @@ module.exports = async function createAtlasNativeContentModule() {
     await commitAndCreatePullRequest(moduleInfo);
     await updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder);
     const mpkOutput = await createMPK(tmpFolder, moduleInfo, regex.excludeFiles);
+    console.log(`Change owner and group after module export...`);
+    execSync(`sudo chown -R runner:docker ${tmpFolder}`, { stdio: "inherit" });
     await createGithubRelease(moduleInfo, moduleChangelogs, mpkOutput);
     await execShellCommand(`rm -rf ${tmpFolder}`);
     console.log("Done.");
