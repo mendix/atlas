@@ -139,6 +139,11 @@
     @include glyphicon();
 }
 
+@import "core/icons/mxicon";
+@if not $exclude-mxicon {
+    @include mxicon();
+}
+
 @import "core/widgets/group-box";
 @if not $exclude-group-box {
     @include group-box();
