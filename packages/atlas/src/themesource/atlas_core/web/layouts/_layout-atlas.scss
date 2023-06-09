@@ -9,7 +9,7 @@
         .toggle-btn > img,
         .toggle-btn {
             & > .glyphicon,
-            & > .mx-icon,
+            & > .mx-icon-lined,
             & > .mx-icon-filled {
                 margin: 0;
             }
@@ -44,7 +44,7 @@
                 padding: $spacing-medium;
 
                 .glyphicon,
-                .mx-icon,
+                .mx-icon-lined,
                 .mx-icon-filled {
                     margin-right: $spacing-small;
                 }

@@ -29,7 +29,7 @@
                         }
 
                         .glyphicon,
-                        .mx-icon,
+                        .mx-icon-lined,
                         .mx-icon-filled {
                             font-size: $navtopbar-glyph-size;
                         }
@@ -95,7 +95,6 @@
                         }
 
                         .glyphicon,
-                        .mx-icon,
                         .mx-icon-lined,
                         .mx-icon-filled {
                             font-size: $navsidebar-glyph-size;
@@ -155,7 +154,7 @@
                 flex-direction: column;
                 justify-content: center;
                 .glyphicon,
-                .mx-icon,
+                .mx-icon-lined,
                 .mx-icon-filled {
                     margin: 0 0 5px 0;
                 }
@@ -174,7 +173,7 @@
 
     .hide-icons.mx-navigationtree {
         .glyphicon,
-        .mx-icon,
+        .mx-icon-lined,
         .mx-icon-filled {
             display: none;
         }

@@ -40,7 +40,7 @@
                     }
 
                     .glyphicon,
-                    .mx-icon,
+                    .mx-icon-lined,
                     .mx-icon-filled {
                         top: -1px;
                         margin-right: 0.5em;
@@ -140,7 +140,7 @@
                         font-size: $navtopbar-font-size;
 
                         .glyphicon,
-                        .mx-icon,
+                        .mx-icon-lined,
                         .mx-icon-filled {
                             font-size: $navtopbar-glyph-size;
                         }
@@ -190,7 +190,7 @@
                         font-size: $navsidebar-font-size;
 
                         .glyphicon,
-                        .mx-icon,
+                        .mx-icon-lined,
                         .mx-icon-filled {
                             font-size: $navsidebar-glyph-size;
                         }

@@ -23,7 +23,7 @@
                     line-height: normal;
                     font-size: $font-size-small;
                     .glyphicon,
-                    .mx-icon,
+                    .mx-icon-lined,
                     .mx-icon-filled {
                         display: block;
                         margin: 0 0 $spacing-small/2 0;
@@ -41,7 +41,7 @@
 
     .hide-icons.mx-menubar {
         .glyphicon,
-        .mx-icon,
+        .mx-icon-lined,
         .mx-icon-filled {
             display: none;
         }
