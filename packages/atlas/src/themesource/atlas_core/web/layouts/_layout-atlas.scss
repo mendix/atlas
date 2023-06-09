@@ -7,8 +7,12 @@
     .layout-atlas {
         // Toggle button
         .toggle-btn > img,
-        .toggle-btn > .glyphicon {
-            margin: 0;
+        .toggle-btn {
+            & > .glyphicon,
+            & > .mx-icon,
+            & > .mx-icon-filled {
+                margin: 0;
+            }
         }
         .toggle-btn > .mx-icon-lined {
             font-family: "Atlas_Core$Atlas";
@@ -39,7 +43,9 @@
             .mx-navigationtree .navbar-inner > ul > li > a {
                 padding: $spacing-medium;
 
-                .glyphicon {
+                .glyphicon,
+                .mx-icon,
+                .mx-icon-filled {
                     margin-right: $spacing-small;
                 }
             }
