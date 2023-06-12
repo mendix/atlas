@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
--   lined and filled icon style
+-   Lined and filled icon style
 
 ## [3.10.0] Atlas Core - 2023-5-12
 
