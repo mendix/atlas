@@ -6,8 +6,8 @@
 @mixin layout-atlas() {
     .layout-atlas {
         // Toggle button
-        .toggle-btn > img,
         .toggle-btn {
+            & > img,
             & > .glyphicon,
             & > .mx-icon-lined,
             & > .mx-icon-filled {
