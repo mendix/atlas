@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   Removal of some direct child selector styles
+
+### Fixed
+
+-   Lined and filled icon style
+
 ## [3.10.0] Atlas Core - 2023-5-12
 
 ### Changed
