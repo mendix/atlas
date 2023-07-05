@@ -1,10 +1,8 @@
 const { execSync, exec } = require("child_process");
-const findFreePort = require("find-free-port");
 const { readFile } = require("fs").promises;
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const { join } = require("path");
-const { cat, cp, ls, mkdir, rm } = require("shelljs");
-const nodeIp = require("ip");
+const { cp, ls, mkdir, rm } = require("shelljs");
 const { pipeline } = require("stream");
 const { promisify } = require("util");
 const { createWriteStream } = require("fs");
@@ -17,11 +15,7 @@ main().catch(e => {
 
 async function main() {
     const mendixVersion = await getMendixVersion();
-    const ip = nodeIp.address();
 
-    if (!ip) {
-        throw new Error("Could not determine local ip address!");
-    }
     try {
         execSync("docker info");
     } catch (e) {
@@ -81,54 +75,24 @@ async function main() {
 
     // Build testProject via mxbuild
     const projectFile = ls("tests/testProject/*.mpr").toString();
-    execSync(
-        `docker run -t -v ${process.cwd()}:/source ` +
-            `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
-            `-o /tmp/automation.mda /source/${projectFile}"`,
-        { stdio: "inherit" }
-    );
-    console.log("Bundle created and all the widgets are updated");
-
+    if (!process.argv.includes("--no-exec-mxbuild")) {
+        execSync(
+            `docker run -t -v ${process.cwd()}:/source ` +
+                `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
+                `-o /tmp/automation.mda /source/${projectFile}"`,
+            { stdio: "inherit" }
+        );
+        console.log("Bundle created and all the widgets are updated");
+    }
     // Spin up the runtime and run testProject
-    const freePort = await findFreePort(3000);
     const runtimeContainerId = execSync(
-        `docker run -td -v ${process.cwd()}:/source -v ${__dirname}:/shared:ro -w /source -p ${freePort}:8080 ` +
+        `docker run -td -v ${process.cwd()}:/source -v ${__dirname}:/shared:ro -w /source -p 8080:8080 ` +
             `-e MENDIX_VERSION=${mendixVersion} --entrypoint /bin/bash ` +
             `--rm mxruntime:${mendixVersion} /shared/runtime.sh`
     )
         .toString()
         .trim();
-
-    let attempts = 60;
-    for (; attempts > 0; --attempts) {
-        try {
-            const response = await fetch(`http://${ip}:${freePort}`);
-            if (response.ok) {
-                attempts = 0;
-            }
-        } catch (e) {
-            console.log(`Could not reach http://${ip}:${freePort}, trying again...`);
-        }
-        await new Promise(resolve => setTimeout(resolve, 3000));
-    }
-
-    try {
-        if (attempts === 0) {
-            throw new Error("Runtime didn't start in time, exiting now...");
-        }
-        const REPO_ROOT = execSync(`git rev-parse --show-toplevel`).toString().trim();
-
-        // Execute Playwright
-        execSync(`URL=http://${ip}:${freePort} npx playwright test --project=chromium`, { stdio: "inherit" });
-    } catch (e) {
-        try {
-            execSync(`docker logs ${runtimeContainerId}`, { stdio: "inherit" });
-        } catch (_) {}
-        console.log(cat("results/runtime.log").toString());
-        throw e;
-    } finally {
-        execSync(`docker rm -f ${runtimeContainerId}`);
-    }
+    console.log("Runtime started with success.");
 }
 
 async function getMendixVersion() {

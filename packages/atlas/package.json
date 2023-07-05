@@ -22,7 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "@playwright/test": "^1.35.1",
-    "find-free-port": "^2.0.0",
     "ip": "^1.1.8",
     "node-fetch": "^3.3.1"
   }

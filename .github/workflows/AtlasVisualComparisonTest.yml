@@ -1,0 +1,33 @@
+name: Visual Comparison Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  playwright:
+    name: '🧪Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
+      ports:
+          - 8080:8080
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium]
+        shardIndex: [1, 2, 3]
+        shardTotal: [3]
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm i
+      - name: Run Atlas test project
+        working-directory: ./packages/atlas
+        run: npm run e2e
+      - name: Run your tests
+        working-directory: ./packages/atlas
+        run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
