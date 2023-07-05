@@ -1,7 +1,7 @@
 const { execSync, exec } = require("child_process");
 const findFreePort = require("find-free-port");
 const { readFile } = require("fs").promises;
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const { join } = require("path");
 const { cat, cp, ls, mkdir, rm } = require("shelljs");
 const nodeIp = require("ip");
@@ -55,7 +55,6 @@ async function main() {
         cp("-rf", `dist/${widgetVersion}/*.mpk`, "tests/testProject/widgets/");
     }
 
-
     // Create reusable mxbuild image
 
     const existingImages = execSync(`docker image ls -q mxbuild:${mendixVersion}`).toString().trim();
@@ -63,8 +62,8 @@ async function main() {
         console.log(`Creating new mxbuild docker image...`);
         execSync(
             `docker build -f ${join(__dirname, "mxbuild.Dockerfile")} ` +
-            `--build-arg MENDIX_VERSION=${mendixVersion} ` +
-            `-t mxbuild:${mendixVersion} ${__dirname}`,
+                `--build-arg MENDIX_VERSION=${mendixVersion} ` +
+                `-t mxbuild:${mendixVersion} ${__dirname}`,
             { stdio: "inherit" }
         );
     }
@@ -74,8 +73,8 @@ async function main() {
         console.log(`Creating new runtime docker image...`);
         execSync(
             `docker build -f ${join(__dirname, "runtime.Dockerfile")} ` +
-            `--build-arg MENDIX_VERSION=${mendixVersion} ` +
-            `-t mxruntime:${mendixVersion} ${__dirname}`,
+                `--build-arg MENDIX_VERSION=${mendixVersion} ` +
+                `-t mxruntime:${mendixVersion} ${__dirname}`,
             { stdio: "inherit" }
         );
     }
@@ -84,8 +83,8 @@ async function main() {
     const projectFile = ls("tests/testProject/*.mpr").toString();
     execSync(
         `docker run -t -v ${process.cwd()}:/source ` +
-        `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
-        `-o /tmp/automation.mda /source/${projectFile}"`,
+            `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
+            `-o /tmp/automation.mda /source/${projectFile}"`,
         { stdio: "inherit" }
     );
     console.log("Bundle created and all the widgets are updated");
@@ -94,8 +93,8 @@ async function main() {
     const freePort = await findFreePort(3000);
     const runtimeContainerId = execSync(
         `docker run -td -v ${process.cwd()}:/source -v ${__dirname}:/shared:ro -w /source -p ${freePort}:8080 ` +
-        `-e MENDIX_VERSION=${mendixVersion} --entrypoint /bin/bash ` +
-        `--rm mxruntime:${mendixVersion} /shared/runtime.sh`
+            `-e MENDIX_VERSION=${mendixVersion} --entrypoint /bin/bash ` +
+            `--rm mxruntime:${mendixVersion} /shared/runtime.sh`
     )
         .toString()
         .trim();
@@ -121,8 +120,9 @@ async function main() {
 
         // Install and execute Playwright
         execSync(
+            "npm install" &&
                 "npm run build" &&
-                "npx playwright install --with-deps" &&
+                "npx playwright@1.35 install --with-deps" &&
                 `URL=http://${ip}:${freePort} npx playwright test`,
             { stdio: "inherit" }
         );
