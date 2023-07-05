@@ -118,14 +118,8 @@ async function main() {
         }
         const REPO_ROOT = execSync(`git rev-parse --show-toplevel`).toString().trim();
 
-        // Install and execute Playwright
-        execSync(
-            "npm install" &&
-                "npm run build" &&
-                "npx playwright@1.35 install --with-deps" &&
-                `URL=http://${ip}:${freePort} npx playwright test`,
-            { stdio: "inherit" }
-        );
+        // Execute Playwright
+        execSync(`URL=http://${ip}:${freePort} npx playwright test`, { stdio: "inherit" });
     } catch (e) {
         try {
             execSync(`docker logs ${runtimeContainerId}`, { stdio: "inherit" });

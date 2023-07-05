@@ -12,11 +12,11 @@ jobs:
     - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
     - uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
       with:
-        node-version: 16
+        node-version: 18
     - name: Install dependencies
       run: npm i
     - name: Run Playwright tests
-      run: cd packages/atlas && npm i && CI=true npm run e2e
+      run: cd packages/atlas && npm i && npm run build && npx playwright@1.35.1 install --with-deps && CI=true npm run e2e
     - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
       if: always()
       with:
