@@ -119,7 +119,7 @@ async function main() {
         const REPO_ROOT = execSync(`git rev-parse --show-toplevel`).toString().trim();
 
         // Execute Playwright
-        execSync(`URL=http://${ip}:${freePort} npx playwright test`, { stdio: "inherit" });
+        execSync(`URL=http://${ip}:${freePort} npx playwright test --project=chromium`, { stdio: "inherit" });
     } catch (e) {
         try {
             execSync(`docker logs ${runtimeContainerId}`, { stdio: "inherit" });
