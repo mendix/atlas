@@ -1,6 +1,7 @@
 name: "Publishes a package to marketplace"
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "atlas-core-v*"
