@@ -9,6 +9,8 @@
   "scripts": {
     "build": "node ./scripts/build.js",
     "start": "node ./scripts/build.js start",
+    "e2e": "node ./scripts/e2e.playwright.js -- --no-widget-update",
+    "e2edev": "npx playwright test --ui",
     "release": "node ./scripts/build.js release",
     "release-ts": "tsc"
   },
@@ -17,5 +19,10 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "author": "Mendix",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@playwright/test": "^1.35.1",
+    "node-fetch": "^3.3.1",
+    "shelljs": "^0.8.5"
+  }
 }
