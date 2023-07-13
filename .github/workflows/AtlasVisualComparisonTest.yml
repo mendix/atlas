@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 jobs:
   playwright:
-    name: '🧪Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}'
+    name: '🧪 Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}'
     runs-on: ubuntu-latest
     defaults:
       run:
