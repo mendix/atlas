@@ -47,7 +47,7 @@ module.exports = async function createAtlasCoreModule() {
         );
     }
     await commitAndCreatePullRequest(moduleInfo);
-    await updateTestProject(moduleInfo, testProject, tmp);
+    // await updateTestProject(moduleInfo, testProject, tmp);
 
     const mpkOutput = await createMPK(testProject, moduleInfo, regex.excludeFiles);
     console.log(`Change owner and group after module export...`);

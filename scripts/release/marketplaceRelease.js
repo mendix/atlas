@@ -56,6 +56,7 @@ async function getGithubAssetUrl() {
     const url = `https://api.github.com/repos/mendix/atlas/releases/tags/${process.env.TAG}`
     const request = await fetch("GET", url)
     const release = (await request) ?? {};
+    console.info("#RELEASE DATA", release)
 
     if (!release) {
         throw new Error(`Could not find release with tag ${process.env.TAG} on GitHub`);
@@ -63,6 +64,7 @@ async function getGithubAssetUrl() {
 
     const assets = release.assets ?? []
     const downloadUrl = assets.find(asset => asset.name.endsWith(".mpk"))?.browser_download_url;
+    console.info("#DOWNLOAD_URL", downloadUrl)
     if (!downloadUrl) {
         throw new Error(`Could not retrieve MPK url from GitHub release with tag ${process.env.TAG}`);
     }
