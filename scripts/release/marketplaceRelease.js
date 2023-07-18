@@ -53,19 +53,25 @@ async function uploadModuleToAppStore(pkgName, marketplaceId, version, minimumMX
 
 async function getGithubAssetUrl() {
     console.log("Retrieving informations from Github Tag");
-    const request = await fetch("GET", "https://api.github.com/repos/mendix/atlas/releases?per_page=10");
-    const data = (await request) ?? [];
-    const releaseId = data.find(info => info.tag_name === process.env.TAG)?.id;
-    if (!releaseId) {
-        throw new Error(`Could not find release with tag ${process.env.TAG} on GitHub`);
+    const errorMessage = `Could not find release with tag ${process.env.TAG} on GitHub`;
+
+    try {
+        const url = `https://api.github.com/repos/mendix/atlas/releases/tags/${process.env.TAG}`;
+        const request = await fetch("GET", url);
+        const release = (await request) ?? {};
+
+        if (!release) {
+            throw new Error(errorMessage);
+        }
+        const assets = release.assets ?? [];
+        const downloadUrl = assets.find(asset => asset.name.endsWith(".mpk"))?.browser_download_url;
+        if (!downloadUrl) {
+            throw new Error(`Could not retrieve MPK url from GitHub release with tag ${process.env.TAG}`);
+        }
+        return downloadUrl;
+    } catch (error) {
+        throw new Error(errorMessage);
     }
-    const assetsRequest = await fetch("GET", `https://api.github.com/repos/mendix/atlas/releases/${releaseId}/assets`);
-    const assetsData = (await assetsRequest) ?? [];
-    const downloadUrl = assetsData.find(asset => asset.name.endsWith(".mpk"))?.browser_download_url;
-    if (!downloadUrl) {
-        throw new Error(`Could not retrieve MPK url from GitHub release with tag ${process.env.TAG}`);
-    }
-    return downloadUrl;
 }
 
 async function createDraft(marketplaceId, version, minimumMXVersion) {
