@@ -107,12 +107,13 @@ async function fetchContributor(method, path, body) {
     const pass = process.env.CPAPI_PASS_PROD;
     const credentials = `${user}:${pass}`;
 
-    const response = fetch(method, `${config.contributorUrl}/${path}`, body, {
+    const response = await fetch(method, `${config.contributorUrl}/${path}`, body, {
         OpenID: config.openIdUrl,
         Authorization: `Basic ${Buffer.from(credentials).toString("base64")}`
     });
-    console.log(response.body);
-    return respons;
+    const text = await response.text();
+    console.log(text);
+    return response;
 }
 
 async function fetch(method, url, body, additionalHeaders) {
