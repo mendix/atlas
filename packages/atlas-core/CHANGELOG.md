@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.11.2] Atlas Core - 2023-7-19
+
 ### Fixed
 
 -   We fixed an issue with top bar menu goes under sticky position
