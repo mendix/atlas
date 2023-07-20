@@ -107,13 +107,10 @@ async function fetchContributor(method, path, body) {
     const pass = process.env.CPAPI_PASS_PROD;
     const credentials = `${user}:${pass}`;
 
-    const response = await fetch(method, `${config.contributorUrl}/${path}`, body, {
+    return fetch(method, `${config.contributorUrl}/${path}`, body, {
         OpenID: config.openIdUrl,
         Authorization: `Basic ${Buffer.from(credentials).toString("base64")}`
     });
-    const text = await response.text();
-    console.log(text);
-    return response;
 }
 
 async function fetch(method, url, body, additionalHeaders) {
@@ -136,17 +133,16 @@ async function fetch(method, url, body, additionalHeaders) {
         throw new Error(`An error occurred while retrieving data from ${url}. Technical error: ${error.message}`);
     }
     console.log(`Response status Code ${response.status}`);
-    if (response.status === 409) {
+    if (response.ok) {
+        return response.json();
+    } else if (response.status === 409) {
         throw new Error(
             `Fetching Failed (Code ${response.status}). Possible solution: Check & delete drafts in Mendix Marketplace.`
         );
     } else if (response.status === 503) {
         throw new Error(`Fetching Failed. "${url}" is unreachable (Code ${response.status}).`);
-    } else if (response.status !== 200 && response.status !== 201) {
-        throw new Error(`Fetching Failed (Code ${response.status}). ${response.statusText}`);
-    } else if (response.ok) {
-        return response.json();
     } else {
+        console.log(await response.text());
         throw new Error(`Fetching Failed (Code ${response.status}). ${response.statusText}`);
     }
 }
