@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue on getting github assets from tag on marketplace release script
+
 ## [3.11.1] Atlas Core - 2023-6-28
 
 ### Fixed
