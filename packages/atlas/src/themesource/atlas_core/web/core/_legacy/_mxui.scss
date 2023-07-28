@@ -2274,10 +2274,12 @@ Main class hierarchy:
     }
     html,
     body,
-    #content {
+    #content,
+    #root {
         height: 100%;
     }
-    #content > .mx-page {
+    #content > .mx-page,
+    #root > .mx-page {
         width: 100%;
         min-height: 100%;
     }
