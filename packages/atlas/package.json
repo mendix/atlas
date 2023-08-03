@@ -12,7 +12,8 @@
     "e2e": "node ./scripts/e2e.playwright.js -- --no-widget-update",
     "e2edev": "npx playwright test --ui",
     "release": "node ./scripts/build.js release",
-    "release-ts": "tsc"
+    "release-ts": "tsc",
+    "update-screenshots": "npm run e2e && docker run -t --rm --ipc=host --network=host -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.35.1-jammy bash -c 'npx playwright test'"
   },
   "repository": {
     "type": "git",

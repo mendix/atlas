@@ -55,7 +55,7 @@ Mendix Atlas UI is the foundation of making beautiful apps with Mendix. For more
         │       ├── core
         │       │   ├── _legacy
         │       │   │   ├── bootstrap
-        │       │   │   │   └── *.scss 
+        │       │   │   │   └── *.scss
         │       │   │   └── _mxui.scss
         │       │   ├── base
         │       │   │   ├── mixins
@@ -74,22 +74,22 @@ Mendix Atlas UI is the foundation of making beautiful apps with Mendix. For more
         │       ├── _variables.scss
         │       ├── design-properties.json
         │       └── main.scss
-        │ 
+        │
         ├── atlas_nativemobile_content
         │   └── native
-        │       ├── buildingblocks 
+        │       ├── buildingblocks
         │       │   └── *.ts
-        │       ├── pagetemplates 
-        │       │   └── *.ts 
-        │       └── main.ts 
+        │       ├── pagetemplates
+        │       │   └── *.ts
+        │       └── main.ts
         │
         └── atlas_web_content
             └── web
-                ├── buildingblocks 
+                ├── buildingblocks
                 │   └── *.scss
-                ├── pagetemplates 
-                │   └── *.scss 
-                └── main.scss 
+                ├── pagetemplates
+                │   └── *.scss
+                └── main.scss
 ```
 
 ## Overview
@@ -102,7 +102,7 @@ Extra platform-specific styles can be found in the other 2 modules. These 2 modu
 Building blocks are created with Widgets. For example cards or headers are building blocks. A building block could be an image, a title, and a button, assembled together into one UI block.
 Page Templates are created with Building Blocks and Widgets. Page Templates are an example of how a page could look.
 
-In a Mendix project the styles from these modules can be found in the `themesource` folder. 
+In a Mendix project the styles from these modules can be found in the `themesource` folder.
 
 ### `theme` directory
 
@@ -113,11 +113,11 @@ Users are also able to exclude styles from the `Atlas_Core` module in this folde
 
 ### Prerequisite
 
-Run `npm install` in the root of this repository (`mendix/atlas`) to install the dependencies.
+Run `npm install` in the root of this repository to install the dependencies.
 
 ### Production
 
-Run `npm run build` in this folder (`widget-resources/packages/theming/atlas`) to build and output assets to `dist/theme` &  `dist/themesource`.
+Run `npm run build` in this folder (`atlas/packages/theming/atlas`) to build and output assets to `dist/theme` & `dist/themesource`.
 
 ### Development
 
@@ -126,3 +126,18 @@ Configure the environment variable `ATLAS_MX_PROJECT_PATH` with an absolute path
 -   Run `npm run start` to build with watch mode active, re-building assets when you make changes and copy those changes to the configured Mendix project's `theme`, `themesource` and `deployment` directory.
 -   Run `npm run build` to run one time build the assets and copy those changes to the configured Mendix project's `theme`, `themesource` and `deployment` directory.
 -   Run `npm run release` to create one time production ready assets which will be placed at `dist` directory.
+
+## Visual Testing
+
+### Prerequisite
+
+Run `npm install` in the atlas package of this repository (`packages/atlas`) to install the dependencies.
+
+### Local
+
+-   Execute the test project using Studio Pro. Use `githubUrl` from `package.json` as address to the test project repository.
+-   Run `npm run e2edev` in this folder (`packages/atlas`) to execute Playwright UI. Use this mode to explore and debug the test execution.
+
+### Updating screenshots
+
+-   Run `npm run update-screenshots` to run the test project and update the screenshots for visual testing.
