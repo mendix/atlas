@@ -34,6 +34,6 @@ jobs:
       - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         if: failure()
         with:
-          name: playwright-report-${{ matrix.shard }}_${{ matrix.shardTotal }}
+          name: playwright-report-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
           path: ${{ github.workspace }}/packages/atlas/test-results
           retention-days: 30

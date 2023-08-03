@@ -13,7 +13,7 @@
     "e2edev": "npx playwright test --ui",
     "release": "node ./scripts/build.js release",
     "release-ts": "tsc",
-    "update-screenshots": "npm run e2e && docker run -t --rm --ipc=host --network=host -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.35.1-jammy bash -c 'npx playwright test'"
+    "update-screenshots": "npm run e2e && docker run -t --rm --ipc=host --network=host -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.36.2-jammy bash -c 'npx playwright test --project=chromium --update-snapshots'"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "author": "Mendix",
   "license": "MIT",
   "dependencies": {
-    "@playwright/test": "^1.35.1",
+    "@playwright/test": "^1.36.2",
     "node-fetch": "^3.3.1",
     "shelljs": "^0.8.5"
   }
