@@ -35,5 +35,5 @@ jobs:
         if: failure()
         with:
           name: playwright-report-${{ matrix.shard }}_${{ matrix.shardTotal }}
-          path: playwright-report
+          path: ${{ github.workspace }}/packages/atlas/test-results
           retention-days: 30
