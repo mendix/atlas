@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## Added
+
+-   We added focus state styling to PopupLayout close button.
+
 ## [3.11.2] Atlas Core - 2023-7-21
 
 ### Fixed
