@@ -82,6 +82,9 @@ async function createDraft(marketplaceId, version, minimumMXVersion) {
             GithubRepo: {
                 UseReadmeForDoc: false,
                 ArtifactURL: await getGithubAssetUrl()
+            },
+            Categories: {
+                Name: "User Interface"
             }
         };
 
