@@ -215,13 +215,13 @@
 }
 
 @import "core/widgets/scroll-container-react";
-@if not $exclude-scroll-container {
-    @include scroll-container-react();
-}
-
 @import "core/widgets/scroll-container-dojo";
-@if not $exclude-scroll-container-dojo {
-    @include scroll-container-dojo();
+@if not $exclude-scroll-container {
+    @if $use-modern-client {
+        @include scroll-container-react();
+    } @else {
+        @include scroll-container-dojo();
+    }
 }
 
 @import "core/widgets/tab-container";
