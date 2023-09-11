@@ -84,7 +84,9 @@ async function createDraft(marketplaceId, version, minimumMXVersion) {
                 ArtifactURL: await getGithubAssetUrl()
             },
             Categories: {
-                Name: "User Interface"
+                Name: {
+                    value: "User Interface"
+                }
             }
         };
 
