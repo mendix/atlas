@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We update template pages to support modern client.
+
 ## [3.12.1] Atlas Core - 2023-10-16
 
 ### Fixed
