@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We removed "$use-modern-client" variable from the "theme/web/exclusion-variables.scss" file. It is no longer needed to change this variable manually when using Mendix 10.7.0 and above.
+
 ## [3.13.1] Atlas Core - 2024-1-17
 
 ### Fixed
