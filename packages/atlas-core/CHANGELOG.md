@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We updated the design properties
+
 ## [3.12.2] Atlas Core - 2023-12-7
 
 ### Changed
