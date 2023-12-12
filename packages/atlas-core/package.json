@@ -9,7 +9,7 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "10.6.0",
+    "minimumMXVersion": "9.24.0.2965",
     "marketplaceId": 117187
   },
   "testProject": {
