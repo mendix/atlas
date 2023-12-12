@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
--   We updated the design properties
+-   We updated the design properties.
+-   We updated the feedback widget in the Atlas layouts to the one included in the [Mendix Feedback Module](https://marketplace.mendix.com/link/component/205506). To ensure that it works properly, please download or update the Feedback Module directly from Marketplace.
 
 ## [3.12.2] Atlas Core - 2023-12-7
 
