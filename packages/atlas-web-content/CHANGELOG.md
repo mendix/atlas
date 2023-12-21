@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking changes
+
+-   Minimum required version of Studio Pro is set to v10.6.0.
+
 ## [3.4.1] Atlas Web Content - 2023-12-7
 
 ### Changed
