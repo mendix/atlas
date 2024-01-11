@@ -58,6 +58,7 @@ async function getPackageInfo(path) {
             url: repository?.url,
             testProjectUrl: testProject?.githubUrl,
             testProjectBranchName: testProject?.branchName,
+            testProjectMxVersion: testProject?.mxVersion,
             changelogPath: `${path}/CHANGELOG.md`
         };
     } catch (error) {
@@ -221,7 +222,7 @@ async function createMPK(tmpFolder, moduleInfo, excludeFilesRegExp) {
     await createModuleMpkInDocker(
         tmpFolder,
         moduleInfo.moduleNameInModeler,
-        moduleInfo.minimumMXVersion,
+        moduleInfo.testProjectMxVersion,
         excludeFilesRegExp
     );
     return (await getFiles(tmpFolder, [`.mpk`]))[0];
