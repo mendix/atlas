@@ -1,15 +1,15 @@
 {
   "name": "atlas-core",
   "moduleName": "Atlas Core",
-  "version": "3.13.0",
+  "version": "3.13.1",
   "license": "Apache-2.0",
-  "copyright": "© Mendix Technology BV 2022. All rights reserved.",
+  "copyright": "© Mendix Technology BV 2024. All rights reserved.",
   "repository": {
     "type": "git",
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "10.6.0.23934",
+    "minimumMXVersion": "10.5.0.21627",
     "marketplaceId": 117187
   },
   "testProject": {
