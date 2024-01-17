@@ -83,7 +83,7 @@ async function createModuleMpkInDocker(sourceDir, moduleName, mendixVersion, exc
     const projectFile = basename((await getFiles(sourceDir, [`.mpr`]))[0]);
     await execShellCommand(
         `docker run -t -v ${sourceDir}:/source ` +
-            `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && dotnet /tmp/mxbuild/modeler/mx.dll create-module-package ${
+            `--rm mxbuild:${mendixVersion} bash -c "dotnet /tmp/mxbuild/modeler/mx.dll create-module-package ${
                 excludeFilesRegExp ? `--exclude-files='${excludeFilesRegExp}'` : ""
             } /source/${projectFile} ${moduleName}"`
     );
