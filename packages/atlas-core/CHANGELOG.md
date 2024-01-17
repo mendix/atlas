@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.13.1] Atlas Core - 2024-1-17
+
 ### Fixed
 
 -   We fixed missing widgets in the module.
