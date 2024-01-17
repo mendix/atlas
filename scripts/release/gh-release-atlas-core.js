@@ -75,7 +75,7 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
     const tmpFolderStyles = join(testProject, `themesource/${moduleInfo.moduleFolderNameInModeler}`);
 
     console.log(`Updating project from ${moduleInfo.testProjectUrl}..`);
-    await cloneRepo(moduleInfo.testProjectUrl, testProject);
+    await cloneRepo(moduleInfo.testProjectUrl, testProject, moduleInfo.testProjectBranchName);
 
     console.log("Copying styling files and assets..");
 

@@ -49,7 +49,7 @@ async function updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder)
     const tmpFolderNativeStyles = join(tmpFolder, `themesource/${moduleInfo.moduleFolderNameInModeler}`);
 
     console.log("Updating NativeComponentsTestProject..");
-    await cloneRepo(moduleInfo.testProjectUrl, tmpFolder);
+    await cloneRepo(moduleInfo.testProjectUrl, testProject, moduleInfo.testProjectBranchName);
 
     console.log("Copying Native styling files..");
     await Promise.all([
