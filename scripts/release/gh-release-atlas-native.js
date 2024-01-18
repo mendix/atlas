@@ -49,7 +49,7 @@ async function updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder)
     const tmpFolderNativeStyles = join(tmpFolder, `themesource/${moduleInfo.moduleFolderNameInModeler}`);
 
     console.log("Updating NativeComponentsTestProject..");
-    await cloneRepo(moduleInfo.testProjectUrl, tmpFolder);
+    await cloneRepo(moduleInfo.testProjectUrl, testProject, moduleInfo.testProjectBranchName);
 
     console.log("Copying Native styling files..");
     await Promise.all([
@@ -62,10 +62,4 @@ async function updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder)
     const version = moduleInfo.version;
 
     await execShellCommand(`echo ${version} > themesource/${moduleInfo.moduleFolderNameInModeler}/.version`, tmpFolder);
-    const gitOutput = await execShellCommand(`cd ${tmpFolder} && git status`);
-    if (!/nothing to commit/i.test(gitOutput)) {
-        await execShellCommand("git add . && git commit -m 'Updated Atlas native styling' && git push", tmpFolder);
-    } else {
-        console.warn(`Nothing to commit from repo ${tmpFolder}`);
-    }
 }
