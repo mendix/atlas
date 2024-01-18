@@ -75,7 +75,7 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
     const tmpFolderStyles = join(testProject, `themesource/${moduleInfo.moduleFolderNameInModeler}`);
 
     console.log(`Updating project from ${moduleInfo.testProjectUrl}..`);
-    await cloneRepo(moduleInfo.testProjectUrl, testProject);
+    await cloneRepo(moduleInfo.testProjectUrl, testProject, moduleInfo.testProjectBranchName);
 
     console.log("Copying styling files and assets..");
 
@@ -94,12 +94,6 @@ async function updateTestProject(moduleInfo, testProject, tmp) {
         `echo ${moduleInfo.version} > themesource/${moduleInfo.moduleFolderNameInModeler}/.version`,
         testProject
     );
-    const gitOutput = await execShellCommand(`cd ${testProject} && git status`);
-    if (/nothing to commit/i.test(gitOutput)) {
-        console.warn(`Nothing to commit from repo ${testProject}`);
-    } else {
-        await execShellCommand("git add . && git commit -m 'Updated widgets and styling' && git push", testProject);
-    }
 }
 
 async function updateWidgetMpks(tmp, testProject) {
