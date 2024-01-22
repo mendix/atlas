@@ -101,8 +101,10 @@
 }
 
 @import "core/widgets/check-box";
+@import "core/helpers/three-state-checkbox";
 @if not $exclude-check-box {
     @include check-box();
+    @include three-state-checkbox();
 }
 
 @import "core/widgets/grid";

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## Added
+
+-   We added three state checkbox styling to atlas-core.
+
 ## [3.13.1] Atlas Core - 2024-1-17
 
 ### Fixed
