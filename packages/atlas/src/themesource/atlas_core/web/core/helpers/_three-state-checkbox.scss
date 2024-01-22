@@ -1,0 +1,35 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+@mixin three-state-checkbox() {
+    /* ==========================================================================
+       Three state check box
+
+       Default Mendix three state check box widget
+========================================================================== */
+
+    input[type="checkbox"].three-state-checkbox {
+        &:indeterminate:after {
+            // Checkmark
+            width: 8px;
+            height: 4px;
+            margin: 5px 4px;
+            transform: rotate(0deg);
+            pointer-events: none;
+            border: 0 solid #ffffff;
+            border-bottom-width: 2px;
+            transition: border 0s;
+        }
+        &:indeterminate:before {
+            border-color: $form-input-border-focus-color;
+            background-color: $form-input-border-focus-color;
+        }
+        &:indeterminate:after {
+            content: "";
+        }
+    }
+}
