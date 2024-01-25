@@ -151,9 +151,20 @@ async function getUnreleasedChangelogs({ version, changelogPath }) {
 // Update changelogs and create PR in widget-resources
 async function commitAndCreatePullRequest(moduleInfo) {
     const changelogBranchName = `${moduleInfo.nameWithDash}-release-${moduleInfo.version}`;
-    await execShellCommand(
-        `git checkout -b ${changelogBranchName} && git add . && git commit -m "chore(${moduleInfo.nameWithDash}): update changelogs" && git push --set-upstream origin ${changelogBranchName}`
-    );
+
+    console.log(`Checking out '${changelogBranchName}'.`);
+    await execShellCommand(`git checkout -b ${changelogBranchName}`);
+
+    console.log("Adding files to commit.");
+    await execShellCommand(`git add .`);
+
+    console.log("Committing");
+    await execShellCommand(`git commit -m "chore(${moduleInfo.nameWithDash}): update changelogs"`);
+
+    console.log("Pushing to origin");
+    await execShellCommand(`git push --set-upstream origin ${changelogBranchName}`);
+
+    console.log("Creating PR for changelog");
     await execShellCommand(
         `gh pr create --title "${moduleInfo.nameWithSpace}: Updating changelogs" --body "This is an automated PR." --base main --head ${changelogBranchName}`
     );
