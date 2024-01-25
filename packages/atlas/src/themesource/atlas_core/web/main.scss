@@ -1,6 +1,7 @@
 // Default variables
-@import "exclusion-variables";
+@import "exclusion-variables-defaults";
 @import "../../../theme/web/exclusion-variables";
+@import "generated-exclusion-variables";
 @import "variables";
 @import "variables-css-mappings";
 @import "../../../theme/web/custom-variables";
