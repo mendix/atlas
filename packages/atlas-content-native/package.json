@@ -14,7 +14,7 @@
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/native-mobile-resources",
-    "branchName": "lts/9.24",
+    "branchName": "lts/mx/9.24",
     "mxVersion": "9.24.14.24569"
   },
   "scripts": {
