@@ -415,6 +415,13 @@ export interface VariablesFloatingActionButton {
         borderColor: string;
         backgroundColor: string;
     };
+    buttonContainer: {
+        heigh: number;
+        width: number;
+        borderRadius: number;
+        justifyContent: string;
+        alignItems: string;
+    };
     buttonIcon: {
         size: number;
         color: string;
