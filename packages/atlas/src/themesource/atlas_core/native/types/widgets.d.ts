@@ -271,6 +271,7 @@ export interface FloatingActionButtonType {
     button?: ButtonStyleType & {
         rippleColor?: string;
     };
+    buttonContainer: ButtonStyleType;
     buttonIcon?: ButtonIconType;
     secondaryButton?: ButtonStyleType;
     secondaryButtonIcon?: ButtonIconType;
