@@ -488,6 +488,13 @@ export const floatingActionButton: VariablesFloatingActionButton = {
         borderColor: brand.primary,
         backgroundColor: brand.primary
     },
+    buttonContainer: {
+        width: 50,
+        heigh: 50,
+        borderRadius: 25,
+        justifyContent: "center",
+        alignItems: "center"
+    },
     buttonIcon: {
         size: font.sizeLarge,
         color: contrast.lowest

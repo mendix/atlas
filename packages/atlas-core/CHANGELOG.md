@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We have fixed an issue where icons within Floating Action Buttons were not properly centered.
+
 ## [3.14.0] Atlas Core - 2024-1-25
 
 ### Changed
