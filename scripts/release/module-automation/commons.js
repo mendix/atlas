@@ -269,7 +269,7 @@ function zip(src, fileName) {
 }
 
 function unzip(src, dest) {
-    return execShellCommand(`unzip "${src}" -d "${dest}"`);
+    return execShellCommand(`unzip -qq "${src}" -d "${dest}"`);
 }
 
 // Unzip the module, copy the widget and update package.xml
