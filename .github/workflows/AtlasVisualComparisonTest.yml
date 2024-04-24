@@ -25,7 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: |
+          sudo rm /etc/apt/sources.list.d/microsoft-prod.list 
+          npx playwright install --with-deps chromium
       - name: Run Atlas test project
         run: npm run e2e
       - name: Run visual comparison tests
