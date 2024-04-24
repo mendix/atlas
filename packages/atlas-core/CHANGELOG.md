@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
--   We fixed dataview footer's buttons not displaying properly if dojo widget is being put inside.
+-   We fixed dataview footer buttons not displaying properly if dojo widget is being put inside.
 
 ## [3.14.1] Atlas Core - 2024-4-4
 
