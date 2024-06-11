@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.6.0] Atlas Web Content - 2024-6-11
+
 ### Changed
 
 -   We update the login page to support modern client, Validation Message widget is no longer being used to display login error in favor of using entity LoginContext.
