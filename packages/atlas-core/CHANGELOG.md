@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.14.3] Atlas Core - 2024-7-31
+
 ### Fixed
 
 -   We fixed topbar submenu font size to be smaller than menu itself.
