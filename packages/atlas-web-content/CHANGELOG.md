@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We update Pageheader_WithSearch building block to use combobox instead of Dropdown to support modern client.
+
 ## [3.6.0] Atlas Web Content - 2024-6-11
 
 ### Changed
