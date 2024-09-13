@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.14.4] Atlas Core - 2024-9-12
+
 ### Fixed
 
 -   We fixed sidebar menu when using app with react mode.
