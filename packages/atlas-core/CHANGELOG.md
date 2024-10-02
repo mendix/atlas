@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where text in the tab container was cut off at the bottom when Accessibility Display and Text settings were set to the maximum value.
+
 ## [3.14.4] Atlas Core - 2024-9-12
 
 ### Fixed
