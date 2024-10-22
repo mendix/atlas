@@ -119,6 +119,14 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
                         "packages/atlas",
                         "src/themesource/atlas_core/native/**/*.json"
                     )}" "${join(destination, "themesource/atlas_core/native")}"`
+                },
+                {
+                    name: "i18n-locales",
+                    command: `copy-and-watch ${watchArg} "${join(
+                        repoRoot,
+                        "packages/atlas",
+                        "src/themesource/atlas_core/locales/**/*.json"
+                    )}" "${join(destination, "themesource/atlas_core/locales")}"`
                 }
             ],
             {
