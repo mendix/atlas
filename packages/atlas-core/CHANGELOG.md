@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue with "Hide on tablet" and "Hide on phone" design properties not working correctly on some devices.
+
 ## [3.14.5] Atlas Core - 2024-10-2
 
 ### Fixed
