@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.12.5] Atlas Core - 2024-11-1
+
 ### Added
 
 -   We added the styling of popup menu widget to atlas.
