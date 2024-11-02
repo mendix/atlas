@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
--   We fixed an issue with "Hide on tablet" and "Hide on phone" design properties not working correctly on some devices.
+-   We fixed an issue with **hide on tablet** and **hide on phone** design properties not working correctly on some devices.
 
 ### Added
 
