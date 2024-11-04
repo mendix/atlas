@@ -216,7 +216,7 @@ async function githubAuthentication(moduleInfo) {
             ""
         )}`
     );
-    await execShellCommand(`echo "${process.env.GH_PAT}" | gh auth login --with-token`);
+    // await execShellCommand(`echo "${process.env.GH_PAT}" | gh auth login --with-token`);
 }
 
 async function cloneRepo(githubUrl, localFolder, githubBranch) {
