@@ -55,7 +55,7 @@ async function main() {
     if (!existingImages) {
         console.log(`Creating new mxbuild docker image...`);
         execSync(
-            `docker build --platform=linux/amd64 -f ${join(__dirname, "mxbuild.Dockerfile")} ` +
+            `docker build -f ${join(__dirname, "mxbuild.Dockerfile")} ` +
                 `--build-arg MENDIX_VERSION=${mendixVersion} ` +
                 `-t mxbuild:${mendixVersion} ${__dirname}`,
             { stdio: "inherit" }
@@ -66,7 +66,7 @@ async function main() {
     if (!existingRuntimeImages) {
         console.log(`Creating new runtime docker image...`);
         execSync(
-            `docker build --platform=linux/amd64 -f ${join(__dirname, "runtime.Dockerfile")} ` +
+            `docker build -f ${join(__dirname, "runtime.Dockerfile")} ` +
                 `--build-arg MENDIX_VERSION=${mendixVersion} ` +
                 `-t mxruntime:${mendixVersion} ${__dirname}`,
             { stdio: "inherit" }
