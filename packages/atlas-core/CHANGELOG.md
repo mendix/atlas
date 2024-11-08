@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We update atlas-core minimum version to SP 10.12.6.
+
+## [3.15.0] Atlas Core - 2024-11-4
+
 ### Fixed
 
 -   We fixed an issue with **hide on tablet** and **hide on phone** design properties not working correctly on some devices.
