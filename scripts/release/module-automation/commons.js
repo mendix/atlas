@@ -81,12 +81,21 @@ async function createModuleMpkInDocker(sourceDir, moduleName, mendixVersion, exc
 
     // Build testProject via mxbuild
     const projectFile = basename((await getFiles(sourceDir, [`.mpr`]))[0]);
-    await execShellCommand(
-        `docker run -t -v ${sourceDir}:/source ` +
-            `--rm mxbuild:${mendixVersion} bash -c "dotnet /tmp/mxbuild/modeler/mx.dll create-module-package ${
-                excludeFilesRegExp ? `--exclude-files='${excludeFilesRegExp}'` : ""
-            } /source/${projectFile} ${moduleName}"`
-    );
+
+    const args = [
+        // update widgets
+        "mx",
+        "update-widgets",
+        "--loose-version-check",
+        `/source/${projectFile}`,
+        "&&",
+        "/tmp/mxbuild/modeler/mx create-module-package",
+        excludeFilesRegExp ? `--exclude-files='${excludeFilesRegExp}'` : "",
+        `/source/${projectFile}`,
+        moduleName
+    ].join(" ");
+
+    await execShellCommand(`docker run -v ${sourceDir}:/source --rm mxbuild:${mendixVersion} bash -c "${args}"`);
     console.log(`Module ${moduleName} created successfully.`);
 }
 
