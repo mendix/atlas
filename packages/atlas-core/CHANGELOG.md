@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where focus would show up when opening delete confirmation dialog.
+
 ### Changed
 
 -   We update atlas-core minimum version to SP 10.12.6.
