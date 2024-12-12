@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where Atlas_Topbar layout showing incorrect padding in topbar menu.
+
 ## [3.16.1] Atlas Core - 2024-12-9
 
 ### Fixed
