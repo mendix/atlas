@@ -202,7 +202,7 @@
         pointer-events: auto;
     }
 
-    .mx-scrollcontainer-center {
+    .region-content {
         .mx-layoutgrid,
         .mx-layoutgrid-fluid {
             @include layout-spacing($type: padding, $direction: all, $device: responsive);
