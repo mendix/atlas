@@ -13,6 +13,10 @@
     ========================================================================== */
 
     .mx-dataview {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+
         /* Dataview-content gives problems for nexted layout grid containers */
         > .mx-dataview-content > .mx-container-nested {
             > .row {
@@ -28,7 +32,14 @@
         }
     }
 
+    .mx-dataview-content {
+        flex-grow: 1;
+    }
+
     .mx-dataview-controls {
+        position: sticky;
+        bottom: 0;
+
         margin-top: $spacing-medium;
         padding: $spacing-medium 0 0;
         border-top: 1px solid $dataview-controls-border-color;
