@@ -7,7 +7,7 @@ on:
 jobs:
   playwright:
     name: '🧪 Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         working-directory: ./packages/atlas
