@@ -188,8 +188,16 @@
         overflow-x: clip;
     }
 
-    .mx-scrollcontainer-wrapper:not(.mx-scrollcontainer-nested) {
-        -webkit-overflow-scrolling: touch;
+    .mx-scrollcontainer-wrapper {
+        height: 100%;
+
+        &:not(.mx-scrollcontainer-nested) {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        & > .mx-placeholder {
+            height: 100%;
+        }
     }
 
     // for push aside and slide over the main part should be non-interactive if sidebar is open
@@ -202,7 +210,7 @@
         pointer-events: auto;
     }
 
-    .region-content {
+    .mx-scrollcontainer-center {
         .mx-layoutgrid,
         .mx-layoutgrid-fluid {
             @include layout-spacing($type: padding, $direction: all, $device: responsive);
@@ -210,6 +218,13 @@
             .mx-layoutgrid,
             .mx-layoutgrid-fluid {
                 padding: 0;
+            }
+        }
+
+        .region-topbar {
+            .mx-layoutgrid,
+            .mx-layoutgrid-fluid {
+                padding: 0 $gutter-size;
             }
         }
     }
