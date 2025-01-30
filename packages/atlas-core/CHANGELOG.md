@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.16.3] Atlas Core - 2025-1-30
+
 ### Fixed
 
 -   We fixed an issue where data view incorrectly render on modern client.
