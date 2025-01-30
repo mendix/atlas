@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   We fixed an issue where data view incorrectly render on modern client.
 
+### Changed
+
+-   We changed the import order of custom variable to make it work with CSS variables. Thanks @askii2 for contribution.
+
 ## [3.16.2] Atlas Core - 2024-12-12
 
 ### Fixed
