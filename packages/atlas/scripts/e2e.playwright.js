@@ -14,7 +14,6 @@ main().catch(e => {
 });
 
 async function main() {
-    const mendixVersion = await getMendixVersion();
 
     try {
         execSync("docker info");
@@ -24,6 +23,7 @@ async function main() {
 
     const packageConf = JSON.parse(await readFile("package.json"));
     const widgetVersion = packageConf?.version;
+    const mendixVersion = packageConf?.testProject?.mxVersion;
 
     // Downloading test project
     if (process.argv.includes("--update-test-project") || ls(`tests/testProject/*.mpr`).length === 0) {
