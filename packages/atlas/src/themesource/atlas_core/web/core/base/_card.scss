@@ -4,29 +4,18 @@
 // Customizing core files will make updating Atlas much more difficult in the future.
 // To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
 //
-
-@import "../helpers/slider-color-variant";
-
-@mixin slider() {
+@mixin card() {
     /* ==========================================================================
-       Slider
-
-       Default Mendix slider widget.
+        Cards
     ========================================================================== */
-
-    .widget-slider {
-        margin-bottom: 16px;
-        padding: 5px 10px;
-        width: 100%;
-
-        .rc-slider-handle {
-            border-color: var(--brand-default);
-        }
-
-        .rc-slider.rc-slider-with-marks {
-            padding-bottom: 25px;
-        }
-
-        @include slider-color-variant(var(--brand-primary));
+    .card {
+        border: var(--border-default);
+        border-radius: var(--border-card-default, var(--border-radius-default));
+        background-color: var(--bg-color-secondary);
+        overflow: hidden;
+        position: relative;
+        padding: var(--spacing-large);
+        margin: var(--spacing-medium) 0 var(--spacing-medium) 0;
+        box-shadow: var(--shadow-medium) var(--shadow-color);
     }
 }

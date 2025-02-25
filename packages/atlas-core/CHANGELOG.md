@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking Changes
+
+-   We update removed scss variables in favor of pure css variables that directly supported in the browser.
+
 ## [3.16.4] Atlas Core - 2025-2-12
 
 ### Fixed
