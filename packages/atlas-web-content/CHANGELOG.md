@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.0.0] Atlas Web Content - 2025-2-26
+
 ### Breaking Changes
 
 -   We update removed scss variables in favor of pure css variables that directly supported in the browser.
