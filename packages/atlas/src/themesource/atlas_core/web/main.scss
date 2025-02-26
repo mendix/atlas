@@ -3,10 +3,15 @@
 @import "../../../theme/web/exclusion-variables";
 @import "generated-exclusion-variables";
 @import "../../../theme/web/custom-variables";
-@import "themes/theme-default";
-@import "themes/theme-dark";
-@import "legacy-variables-mappings";
-@import "color-variants";
+@import "themes/legacy-variables/variables";
+
+@if $use-css-variables {
+    @import "themes/theme-default";
+    @import "themes/theme-dark";
+    @import "color-variants";
+} @else {
+    @import "themes/legacy-variables/variables-css-mappings";
+}
 
 // Font Family Import
 @if $font-family-import != false {
