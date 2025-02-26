@@ -5,6 +5,8 @@
 
 //== If set to true, Atlas will only include styles that are required for the modern client.
 $use-modern-client: false;
+//== If set to true, Atlas will no longer uses legacy scss variables.
+$use-css-variables: true;
 
 //== Core style exclusion
 $exclude-bootstrap: false;

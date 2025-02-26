@@ -25,7 +25,3 @@ $screen-lg-max: ($screen-xl - 1);
 $important-flex: true; // ./base/flex.scss
 $important-spacing: true; // ./base/spacing.scss
 $important-helpers: true; // ./helpers/helperclasses.scss
-
-// == Legacy
-// ## Enable if your theme uses Sass variables (Atlas 3 standard)
-$use-legacy-variables: false;

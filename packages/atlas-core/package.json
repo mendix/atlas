@@ -3,7 +3,7 @@
   "moduleName": "Atlas Core",
   "version": "4.0.0",
   "license": "Apache-2.0",
-  "copyright": "© Mendix Technology BV 2024. All rights reserved.",
+  "copyright": "© Mendix Technology BV 2025. All rights reserved.",
   "repository": {
     "type": "git",
     "url": "https://github.com/mendix/atlas.git"
@@ -14,7 +14,7 @@
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "mts/10.12",
+    "branchName": "atlas-4",
     "mxVersion": "10.12.6.46815"
   },
   "scripts": {
