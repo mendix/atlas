@@ -37,8 +37,7 @@ module.exports = async function createAtlasCoreModule() {
         moduleNameInModeler: "Atlas_Core",
         moduleFolderNameInModeler: "atlas_core"
     };
-
-    await githubAuthentication(moduleInfo);
+    // await githubAuthentication(moduleInfo);
 
     const moduleChangelogs = await updateModuleChangelogs(moduleInfo);
     if (!moduleChangelogs) {

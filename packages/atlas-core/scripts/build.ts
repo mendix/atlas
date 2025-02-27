@@ -41,9 +41,9 @@ async function main(): Promise<void> {
         // when targeting a networked windows drive, the cmds executed by concurrently run into a race condition when
         // creating directories. create them here to avoid the error.
         mkdir("-p", join(outputDir, "themesource/atlas_core"));
-
         await copyStylesAndAssets(mode === "start", outputDir);
     }
+    console.info(`copyStylesAndAssets outputDir: ${outputDir}`);
 
     // await buildAndCopyWidgets(mode, ["feedback-native", "language-selector-web"], outputDir);
 }

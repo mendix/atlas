@@ -218,6 +218,7 @@ async function updateChangelogs(widgetFolders, moduleInfo) {
 }
 
 async function githubAuthentication(moduleInfo) {
+    console.log("githubAuthentication..", moduleInfo);
     await setLocalGitCredentials();
     await execShellCommand(
         `git remote set-url origin https://${process.env.GH_USERNAME}:${process.env.GH_PAT}@${moduleInfo.url.replace(
