@@ -13,21 +13,8 @@
 // ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝
 //
 
-//== Gray Shades
-//## Different gray shades to be used for our variables and components
-$gray-darker: #3b4251 !default;
-$gray-dark: #606671 !default;
-$gray: #787d87 !default;
-$gray-light: #6c7180 !default;
-$gray-primary: #ced0d3 !default;
-$gray-lighter: #f8f8f8 !default;
-
 //== Step 1: Brand Colors
 $brand-default: $gray-primary !default;
-$brand-primary: #264ae5 !default;
-$brand-success: #3cb33d !default;
-$brand-warning: #eca51c !default;
-$brand-danger: #e33f4e !default;
 
 $brand-logo: false !default;
 $brand-logo-height: 26px !default;
@@ -36,7 +23,6 @@ $brand-logo-width: 26px !default; // Only used for CSS brand logo
 //== Step 2: UI Customization
 
 // Default Font Size & Color
-$font-size-default: 14px !default;
 $font-color-default: #6c717e !default;
 
 // Global Border Color
@@ -78,35 +64,11 @@ $link-hover-color: darken($link-color, 15%) !default;
 //== Typography
 //## Change your font family, weight, line-height, headings and more (used in components/typography)
 
-// Font Family Import (Used for google font plugin in theme creater)
-$font-family-import: "resources/fonts/open-sans/open-sans.css" !default;
-
-// Font Family / False = fallback from Bootstrap (Helvetica Neue)
-$font-family-base: "Open Sans", sans-serif !default;
-
-// Font Sizes
-$font-size-large: 18px !default;
-$font-size-small: 12px !default;
-
-// Font Weights
-$font-weight-light: 100 !default;
-$font-weight-normal: normal !default;
-$font-weight-semibold: 600 !default;
-$font-weight-bold: bold !default;
-
 // Font Size Headers
-$font-size-h1: 31px !default;
-$font-size-h2: 26px !default;
-$font-size-h3: 24px !default;
-$font-size-h4: 18px !default;
 $font-size-h5: $font-size-default !default;
-$font-size-h6: 12px !default;
 
 // Font Weight Headers
 $font-weight-header: $font-weight-semibold !default;
-
-// Line Height
-$line-height-base: 1.428571429 !default;
 
 // Spacing
 $font-header-margin: 0 0 8px 0 !default;
@@ -148,7 +110,6 @@ $navsidebar-sub-color-hover: $brand-primary !default;
 $navsidebar-sub-color-active: $brand-primary !default;
 
 $navsidebar-width-closed: 52px !default;
-$navsidebar-width-open: 232px !default;
 
 // Navigation topbar
 $navtopbar-font-size: $font-size-default !default;
@@ -173,11 +134,6 @@ $navtopbar-sub-color-active: $brand-primary !default;
 // Shadow color
 $shadow-color-border: rgba($gray-primary, 0.5);
 $shadow-color: rgba($gray-primary, 0.66);
-
-//Shadow size
-$shadow-small: 0 2px 4px 0;
-$shadow-medium: 0 5px 7px 0;
-$shadow-large: 0 8px 10px 0;
 
 //## Used in layouts/base
 $navtopbar-border-color: $topbar-border-color !default;
@@ -265,7 +221,6 @@ $btn-link-bg-hover: $gray-lighter !default;
 //== Header blocks
 //## Define look and feel over multible building blocks that serve as header
 
-$header-min-height: 240px !default;
 $header-bg-color: $brand-primary !default;
 $header-bgimage-filter: brightness(60%) !default;
 $header-text-color: #fff !default;
@@ -565,31 +520,12 @@ $accordion-danger-border-color: $btn-danger-border-color !default;
 
 //== Spacing
 //## Advanced layout options (used in base/mixins/default-spacing)
-
-// Smallest spacing
-$spacing-smallest: 2px !default;
-
-// Smaller spacing
-$spacing-smaller: 4px !default;
-
-// Small spacing
-$spacing-small: 8px !default;
-
-// Medium spacing
-$spacing-medium: 16px !default;
 $t-spacing-medium: 16px !default;
 $m-spacing-medium: 16px !default;
 
 // Large spacing
-$spacing-large: 24px !default;
 $t-spacing-large: 24px !default;
 $m-spacing-large: 16px !default;
-
-// Larger spacing
-$spacing-larger: 32px !default;
-
-// Largest spacing
-$spacing-largest: 48px !default;
 
 // Layout spacing
 $layout-spacing-top: 24px !default;

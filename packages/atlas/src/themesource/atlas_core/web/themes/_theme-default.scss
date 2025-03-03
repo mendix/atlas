@@ -1,38 +1,40 @@
 @mixin theme-default() {
     :root {
-        --gray-darker: #212225;
-        --gray-dark: #8b8d92;
-        --gray: #b8babf;
-        --gray-light: #c1c3c8;
-        --gray-primary: #e7e7e9;
-        --gray-lighter: #f8f8f8;
+        --gray-darker: #{$gray-darker};
+        --gray-dark: #{$gray-dark};
+        --gray: #{$gray};
+        --gray-light: #{$gray-light};
+        --gray-primary: #{$gray-primary};
+        --gray-lighter: #{$gray-lighter};
 
         --brand-default: var(--gray-primary);
-        --brand-primary: #264ae5;
-        --brand-success: #1ac61a;
-        --brand-warning: #f0b000;
-        --brand-danger: #ea3337;
+        --brand-primary: #{$brand-primary};
+        --brand-success: #{$brand-success};
+        --brand-warning: #{$brand-warning};
+        --brand-danger: #{$brand-danger};
+        --brand-inverse: color-mix(in srgb, var(--brand-primary), var(--white) 20%);
+        --brand-info: color-mix(in srgb, var(--brand-primary), white 30%);
 
-        --white: #fff;
-        --black: #000;
+        --white: #{$white};
+        --black: #{$black};
 
         --brand-logo: false;
-        --brand-logo-height: 24px;
-        --brand-logo-width: 32px;
+        --brand-logo-height: #{$content-size-small};
+        --brand-logo-width: #{$content-size-medium};
         --brand-gradient: linear-gradient(to bottom, var(--brand-primary-90), var(--brand-primary-70));
 
-        --font-size-default: 14px;
+        --font-size-default: #{$font-size-default};
         --font-color-default: var(--gray-darker);
 
-        --border-color-default: #e6e6e6;
-        --border-default: 1px solid var(--border-color-default);
-        --border-radius-s: 4px;
-        --border-radius-m: 8px;
-        --border-radius-l: 12px;
+        --border-color-default: #{$color-border-default};
+        --border-default: #{$border-width-default} solid var(--border-color-default);
+        --border-radius-s: #{$border-radius-s};
+        --border-radius-m: #{$border-radius-m};
+        --border-radius-l: #{$border-radius-l};
         --border-radius-default: var(--border-radius-m);
 
         --topbar-bg: linear-gradient(to bottom, var(--brand-primary-50), var(--brand-primary-60));
-        --topbar-minimalheight: 48px;
+        --topbar-minimalheight: #{$spacing-largest};
         --topbar-border-color: var(--border-color-default);
 
         --sidebar-bg: linear-gradient(to bottom, var(--brand-primary-60), var(--brand-primary-75));
@@ -40,7 +42,7 @@
         --m-header-height: 4px;
         --m-header-bg: var(--topbar-bg);
         --m-header-color: var(--white);
-        --m-header-title-size: 16px;
+        --m-header-title-size: #{$font-size-h4};
 
         --navbar-brand-name: var(--font-color-default);
 
@@ -50,27 +52,27 @@
         --link-color: var(--brand-primary);
         --link-hover-color: color-mix(in srgb, var(--link-color), var(--black) 15%);
 
-        --font-family-import: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&display=swap";
-        --font-family-base: "Poppins", sans-serif;
+        --font-family-import: #{$font-family-import};
+        --font-family-base: #{$font-family-base};
 
-        --font-size-large: 18px;
-        --font-size-small: 12px;
+        --font-size-large: #{$font-size-large};
+        --font-size-small: #{$font-size-small};
 
-        --font-weight-light: 300;
-        --font-weight-normal: 400;
-        --font-weight-semibold: 600;
-        --font-weight-bold: 700;
+        --font-weight-light: #{$font-weight-light};
+        --font-weight-normal: #{$font-weight-normal};
+        --font-weight-semibold: #{$font-weight-semibold};
+        --font-weight-bold: #{$font-weight-bold};
 
-        --font-size-h1: 34px;
-        --font-size-h2: 26px;
-        --font-size-h3: 24px;
-        --font-size-h4: 16px;
+        --font-size-h1: #{$font-size-h1};
+        --font-size-h2: #{$font-size-h2};
+        --font-size-h3: #{$font-size-h3};
+        --font-size-h4: #{$font-size-h4};
         --font-size-h5: var(--font-size-default);
-        --font-size-h6: 12px;
+        --font-size-h6: #{$font-size-h6};
 
         --font-weight-header: var(--font-weight-semibold);
 
-        --line-height-base: 1.428571429;
+        --line-height-base: #{$line-height-base};
 
         --font-header-margin: 0 0 8px 0;
 
@@ -78,19 +80,19 @@
         --font-color-header: var(--gray-darker);
 
         --navigation-item-height: unset;
-        --navigation-item-padding: 8px;
+        --navigation-item-padding: #{$spacing-small};
 
-        --navigation-font-size: 14px;
+        --navigation-font-size: #{$font-size-default};
         --navigation-sub-font-size: var(--font-size-small);
-        --navigation-glyph-size: 20px;
+        --navigation-glyph-size: #{$content-size-smaller};
 
-        --navigation-color: white;
-        --navigation-color-hover: white;
-        --navigation-color-active: white;
+        --navigation-color: var(--white);
+        --navigation-color-hover: var(--white);
+        --navigation-color-active: var(--white);
 
-        --navigation-sub-color: white;
-        --navigation-sub-color-hover: white;
-        --navigation-sub-color-active: white;
+        --navigation-sub-color: var(--white);
+        --navigation-sub-color-hover: var(--white);
+        --navigation-sub-color-active: var(--white);
 
         --navsidebar-bg: var(--sidebar-bg);
         --navsidebar-bg-hover: rgba(var(--black), 0.2);
@@ -101,11 +103,11 @@
         --navsidebar-sub-bg-active: var(--navsidebar-bg-active);
 
         --navsidebar-border-color: var(--border-color-default);
-        --navsidebar-shadow: 0 0 4px rgb(0 0 0 / 14%), 2px 4px 8px rgb(0 0 0 / 28%);
+        --navsidebar-shadow: #{$shadow-navbar};
 
         --navsidebar-font-size: var(--font-size-default);
         --navsidebar-sub-font-size: var(--font-size-small);
-        --navsidebar-glyph-size: 20px;
+        --navsidebar-glyph-size: #{$content-size-smaller};
 
         --navsidebar-color: var(--navigation-color);
         --navsidebar-color-hover: var(--navigation-color);
@@ -115,12 +117,12 @@
         --navsidebar-sub-color-hover: var(--navigation-color);
         --navsidebar-sub-color-active: var(--navigation-color);
 
-        --navsidebar-width-closed: 52px;
-        --navsidebar-width-open: 232px;
+        --navsidebar-width-closed: #{$content-size-larger};
+        --navsidebar-width-open: #{$navsidebar-width-open};
 
         --navtopbar-font-size: var(--font-size-small);
         --navtopbar-sub-font-size: var(--font-size-small);
-        --navtopbar-glyph-size: 1.2em;
+        --navtopbar-glyph-size: #{$font-size-base};
 
         --navtopbar-bg: var(--topbar-bg);
         --navtopbar-bg-hover: rgba(0, 0, 0, 0.1);
@@ -140,25 +142,25 @@
 
         --shadow-color-border: var(--border-color-default);
         --shadow-color: var(--gray-primary);
-        --shadow-small: 0 2px 4px 0;
-        --shadow-medium: 0 5px 7px 0;
-        --shadow-large: 0 8px 10px 0;
+        --shadow-small: #{$shadow-small};
+        --shadow-medium: #{$shadow-medium};
+        --shadow-large: #{$shadow-large};
 
         --form-input-style: default;
 
         --form-label-color: var(--font-color-default);
         --form-label-size: var(--font-size-default);
         --form-label-weight: var(--font-weight-normal);
-        --form-label-gutter: 8px;
+        --form-label-gutter: #{$spacing-small};
 
         --form-input-height: auto;
-        --form-input-padding-y: 8px;
-        --form-input-padding-x: 8px;
-        --form-input-static-padding-y: 8px;
+        --form-input-padding-y: #{$spacing-small};
+        --form-input-padding-x: #{$spacing-small};
+        --form-input-static-padding-y: #{$spacing-small};
         --form-input-static-padding-x: 0;
         --form-input-font-size: var(--form-label-size);
         --form-input-line-height: var(--line-height-base);
-        --form-input-border-radius: 6px;
+        --form-input-border-radius: #{$border-radius-form};
 
         --form-input-bg: var(--white);
         --form-input-bg-focus: var(--white);
@@ -166,8 +168,8 @@
         --form-input-bg-disabled: var(--bg-color);
         --form-input-color: var(--font-color-default);
         --form-input-focus-color: var(--form-input-color);
-        --form-input-disabled-color: #9da1a8;
-        --form-input-placeholder-color: #a1a9b8;
+        --form-input-disabled-color: #{$color-input-disabled};
+        --form-input-placeholder-color: #{$color-input-placeholder};
         --form-input-border-color: var(--gray-primary);
         --form-input-border-focus-color: var(--brand-primary);
         --form-input-border-hover-color: color-mix(
@@ -178,10 +180,10 @@
 
         --form-input-static-border-color: var(--gray-primary);
 
-        --form-group-margin-bottom: 16px;
-        --form-group-gutter: 16px;
+        --form-group-margin-bottom: #{$spacing-medium};
+        --form-group-gutter: #{$spacing-medium};
 
-        --btn-font-size: 14px;
+        --btn-font-size: #{$font-size-default};
         --btn-bordered: false;
         --btn-border-radius: var(--border-radius-default);
 
@@ -198,10 +200,10 @@
         --btn-danger-border-color: var(--brand-danger);
 
         --btn-default-color: var(--brand-primary);
-        --btn-primary-color: white;
-        --btn-success-color: white;
-        --btn-warning-color: white;
-        --btn-danger-color: white;
+        --btn-primary-color: var(--white);
+        --btn-success-color: var(--white);
+        --btn-warning-color: var (--white);
+        --btn-danger-color: var(--white);
 
         --btn-default-icon-color: var(--gray);
 
@@ -212,7 +214,7 @@
         --btn-danger-bg-hover: color-mix(in srgb, var(--btn-danger-bg), var(--black) 20%);
         --btn-link-bg-hover: var(--gray-lighter);
 
-        --header-min-height: 240px;
+        --header-min-height: #{$header-min-height};
         --header-bg-color: var(--brand-primary);
         --header-bgimage-filter: brightness(60%);
         --header-text-color: var(--white);
@@ -220,15 +222,15 @@
 
         --grid-border-color: var(--border-color-default);
 
-        --grid-padding-top: 16px;
-        --grid-padding-right: 16px;
-        --grid-padding-bottom: 16px;
-        --grid-padding-left: 16px;
+        --grid-padding-top: #{$spacing-medium};
+        --grid-padding-right: #{$spacing-medium};
+        --grid-padding-bottom: #{$spacing-medium};
+        --grid-padding-left: #{$spacing-medium};
 
-        --listview-padding-top: 16px;
-        --listview-padding-right: 16px;
-        --listview-padding-bottom: 16px;
-        --listview-padding-left: 16px;
+        --listview-padding-top: #{$spacing-medium};
+        --listview-padding-right: #{$spacing-medium};
+        --listview-padding-bottom: #{$spacing-medium};
+        --listview-padding-left: #{$spacing-medium};
 
         --grid-bg: transparent;
         --grid-bg-header: transparent;
@@ -251,11 +253,11 @@
         --tabs-color-active: var(--font-color-default);
         --tabs-lined-color-active: var(--font-color-default);
 
-        --tabs-lined-border-width: 3px;
+        --tabs-lined-border-width: #{$border-width-l};
         --tabs-border-color: var(--border-color-default);
         --tabs-lined-border-color: var(--brand-primary);
         --tabs-bg: transparent;
-        --tabs-bg-pills: #e7e7e9;
+        --tabs-bg-pills: #{$gray-primary};
         --tabs-bg-hover: color-mix(in srgb, var(--tabs-border-color) 50%, var(--white));
         --tabs-bg-active: var(--brand-primary);
 
@@ -281,8 +283,8 @@
         --alert-warning-border-color: var(--brand-warning-65);
         --alert-danger-border-color: var(--brand-danger-65);
 
-        --wizard-step-height: 48px;
-        --wizard-step-number-size: 64px;
+        --wizard-step-height: #{$spacing-largest};
+        --wizard-step-number-size: #{$content-size-largest};
         --wizard-step-number-font-size: var(--font-size-h3);
 
         --wizard-default-bg: var(--white);
@@ -313,10 +315,10 @@
         --label-danger-border-color: var(--brand-danger);
 
         --label-default-color: var(--font-color-default);
-        --label-primary-color: #fff;
-        --label-success-color: #fff;
-        --label-warning-color: #fff;
-        --label-danger-color: #fff;
+        --label-primary-color: var(--white);
+        --label-success-color: var(--white);
+        --label-warning-color: var(--white);
+        --label-danger-color: var(--white);
 
         --groupbox-default-bg: var(--gray-primary);
         --groupbox-primary-bg: var(--brand-primary);
@@ -345,10 +347,10 @@
         --timeline-icon-color: var(--brand-primary);
         --timeline-border-color: var(--border-color-default);
         --timeline-event-time-color: var(--brand-primary);
-        --timeline-icon-size: 18px;
-        --timeline-image-size: 36px;
-        --timeline-grouping-size: 120px;
-        --timeline-grouping-border-radius: 30px;
+        --timeline-icon-size: #{$font-size-large};
+        --timeline-image-size: #{$content-size-large};
+        --timeline-grouping-size: #{$content-size-grouping};
+        --timeline-grouping-border-radius: #{$border-radius-xl};
         --timeline-grouping-border-color: var(--timeline-border-color);
 
         --accordion-header-default-bg: var(--bg-color-secondary);
@@ -382,35 +384,28 @@
         --accordion-warning-border-color: var(--btn-warning-border-color);
         --accordion-danger-border-color: var(--btn-danger-border-color);
 
-        --spacing-smallest: 2px;
-        --spacing-smaller: 4px;
-        --spacing-small: 8px;
-        --spacing-medium: 16px;
+        --spacing-smallest: #{$spacing-smallest};
+        --spacing-smaller: #{$spacing-smaller};
+        --spacing-small: #{$spacing-small};
+        --spacing-medium: #{$spacing-medium};
+        --spacing-large: #{$spacing-large};
+        --spacing-larger: #{$spacing-larger};
+        --spacing-largest: #{$spacing-largest};
 
-        --t-spacing-medium: 16px;
-        --m-spacing-medium: 16px;
+        --layout-spacing-top: #{$spacing-large};
+        --layout-spacing-right: #{$spacing-large};
+        --layout-spacing-bottom: #{$spacing-large};
+        --layout-spacing-left: #{$spacing-large};
 
-        --spacing-large: 24px;
-        --t-spacing-large: 24px;
-        --m-spacing-large: 16px;
+        --t-layout-spacing-top: #{$spacing-large};
+        --t-layout-spacing-right: #{$spacing-large};
+        --t-layout-spacing-bottom: #{$spacing-large};
+        --t-layout-spacing-left: #{$spacing-large};
 
-        --spacing-larger: 32px;
-        --spacing-largest: 48px;
-
-        --layout-spacing-top: 24px;
-        --layout-spacing-right: 24px;
-        --layout-spacing-bottom: 24px;
-        --layout-spacing-left: 24px;
-
-        --t-layout-spacing-top: 24px;
-        --t-layout-spacing-right: 24px;
-        --t-layout-spacing-bottom: 24px;
-        --t-layout-spacing-left: 24px;
-
-        --m-layout-spacing-top: 16px;
-        --m-layout-spacing-right: 16px;
-        --m-layout-spacing-bottom: 16px;
-        --m-layout-spacing-left: 16px;
+        --m-layout-spacing-top: #{$spacing-medium};
+        --m-layout-spacing-right: #{$spacing-medium};
+        --m-layout-spacing-bottom: #{$spacing-medium};
+        --m-layout-spacing-left: #{$spacing-medium};
 
         --layout-spacing: var(--layout-spacing-top) var(--layout-spacing-right) var(--layout-spacing-bottom)
             var(--layout-spacing-left);
@@ -419,15 +414,12 @@
         --t-layout-spacing: var(--t-layout-spacing-top) var(--t-layout-spacing-right) var(--t-layout-spacing-bottom)
             var(--t-layout-spacing-left);
 
-        --gutter-size: 8px;
+        --gutter-size: #{$spacing-small};
 
-        --padding-table-cell-top: 8px;
-        --padding-table-cell-bottom: 8px;
-        --padding-table-cell-left: 8px;
-        --padding-table-cell-right: 8px;
-
-        --brand-inverse: color-mix(in srgb, var(--brand-primary), var(--white) 20%);
-        --brand-info: color-mix(in srgb, var(--brand-primary), white 30%);
+        --padding-table-cell-top: #{$spacing-small};
+        --padding-table-cell-bottom: #{$spacing-small};
+        --padding-table-cell-left: #{$spacing-small};
+        --padding-table-cell-right: #{$spacing-small};
 
         --btn-inverse-bg: var(--brand-inverse);
         --btn-info-bg: var(--brand-info);
