@@ -3,8 +3,19 @@
 @import "../../../theme/web/exclusion-variables";
 @import "generated-exclusion-variables";
 @import "../../../theme/web/custom-variables";
-@import "variables";
-@import "variables-css-mappings";
+
+@import "themes/legacy-variables/variables";
+@import "themes/legacy-variables/variables-css-mappings";
+
+@import "themes/theme-variables";
+@import "themes/theme-default";
+@import "themes/theme-dark";
+@import "themes/color-variants";
+
+@include color-variants();
+@include theme-default();
+@include legacy-css-variables();
+@include theme-dark();
 
 // Font Family Import
 @if $font-family-import != false {
@@ -53,6 +64,11 @@
 @import "core/base/login";
 @if not $exclude-login {
     @include login();
+}
+
+@import "core/base/card";
+@if not $exclude-card {
+    @include card();
 }
 
 // Widgets

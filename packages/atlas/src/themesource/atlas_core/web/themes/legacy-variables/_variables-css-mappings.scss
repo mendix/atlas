@@ -1,0 +1,146 @@
+@mixin legacy-css-variables() {
+    :root {
+        /*
+   DISCLAIMER:
+   This is a mapping file which will be used to help moving towards CSS variables over time.
+   Do not change this file because it is core styling.
+   Customizing core files will make updating Atlas much more difficult in the future.
+   To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+  */
+
+        /*## Used in layouts/base */
+        --navtopbar-border-color: #{$navtopbar-border-color};
+
+        /* Form Input Static styling */
+        --form-input-static-border-color: #{$form-input-static-border-color};
+
+        /* Color variations */
+        --color-default-darker: #{$color-default-darker};
+        --color-default-dark: #{$color-default-dark};
+        --color-default-light: #{$color-default-light};
+        --color-default-lighter: #{$color-default-lighter};
+
+        --color-primary-darker: #{$color-primary-darker};
+        --color-primary-dark: #{$color-primary-dark};
+        --color-primary-light: #{$color-primary-light};
+        --color-primary-lighter: #{$color-primary-lighter};
+
+        --color-success-darker: #{$color-success-darker};
+        --color-success-dark: #{$color-success-dark};
+        --color-success-light: #{$color-success-light};
+        --color-success-lighter: #{$color-success-lighter};
+
+        --color-warning-darker: #{$color-warning-darker};
+        --color-warning-dark: #{$color-warning-dark};
+        --color-warning-light: #{$color-warning-light};
+        --color-warning-lighter: #{$color-warning-lighter};
+
+        --color-danger-darker: #{$color-danger-darker};
+        --color-danger-dark: #{$color-danger-dark};
+        --color-danger-light: #{$color-danger-light};
+        --color-danger-lighter: #{$color-danger-lighter};
+
+        /*== Alerts */
+        /*## Default Bootstrap alerts, not a widget in the Modeler (used in components/alerts) */
+
+        /* Background Color */
+        --alert-primary-bg: #{$alert-primary-bg};
+        --alert-secondary-bg: #{$alert-secondary-bg};
+
+        /* Text Color */
+        --alert-primary-color: #{$alert-primary-color};
+        --alert-secondary-color: #{$alert-secondary-color};
+
+        /* Border Color */
+        --alert-primary-border-color: #{$alert-primary-border-color};
+        --alert-secondary-border-color: #{$alert-secondary-border-color};
+        --alert-success-border-color: #{$alert-success-border-color};
+        --alert-warning-border-color: #{$alert-warning-border-color};
+        --alert-danger-border-color: #{$alert-danger-border-color};
+
+        /*Wizard states */
+        --wizard-default: #{$wizard-default};
+        --wizard-active: #{$wizard-active};
+        --wizard-visited: #{$wizard-visited};
+
+        /*== Callout (groupbox) Colors */
+        /*## Extended variables for Groupbox Widget (used in components/groupbox) */
+
+        /* Text and Border Color */
+        --callout-primary-color: #{$callout-primary-color};
+
+        /* Background Color */
+        --callout-primary-bg: #{$callout-primary-bg};
+
+        /*== Accordions */
+        /*## Extended variables for Accordion Widget */
+
+        /* Default */
+        --accordion-header-default-bg: #{$accordion-header-default-bg};
+        --accordion-header-default-bg-hover: #{$accordion-header-default-bg-hover};
+        --accordion-header-default-color: #{$accordion-header-default-color};
+        --accordion-default-border-color: #{$accordion-default-border-color};
+
+        --accordion-bg-striped: #{$accordion-bg-striped};
+        --accordion-bg-striped-hover: #{$accordion-bg-striped-hover};
+
+        /*== Spacing */
+        /*## Advanced layout options (used in base/mixins/default-spacing) */
+        --t-spacing-medium: #{$t-spacing-medium};
+        --m-spacing-medium: #{$m-spacing-medium};
+
+        --t-spacing-large: #{$t-spacing-large};
+        --m-spacing-large: #{$m-spacing-large};
+
+        /* Combined layout spacing */
+        --layout-spacing: #{$layout-spacing};
+        --m-layout-spacing: #{$m-layout-spacing};
+        --t-layout-spacing: #{$t-layout-spacing};
+
+        /*== Media queries breakpoints */
+        /*## Define the breakpoints at which your layout will change, adapting to different screen sizes. */
+
+        --screen-xs: #{$screen-xs};
+        --screen-sm: #{$screen-sm};
+        --screen-md: #{$screen-md};
+        --screen-lg: #{$screen-lg};
+        --screen-xl: #{$screen-xl};
+
+        /* So media queries don't overlap when required, provide a maximum (used for max-width) */
+        --screen-xs-max: #{$screen-xs-max};
+        --screen-sm-max: #{$screen-sm-max};
+        --screen-md-max: #{$screen-md-max};
+        --screen-lg-max: #{$screen-lg-max};
+
+        /*== Settings */
+        /*## Enable or disable your desired framework features */
+        /* Use of !important */
+        --important-flex: #{$important-flex}; // ./base/flex.scss
+        --important-spacing: #{$important-spacing}; // ./base/spacing.scss
+        --important-helpers: #{$important-helpers}; // ./helpers/helperclasses.scss
+
+        /* Default Navigation styling */
+        --navigation-bg: #{$navigation-bg};
+        --navigation-bg-hover: #{$navigation-bg-hover};
+        --navigation-bg-active: #{$navigation-bg-active};
+
+        --navigation-sub-bg: #{$navigation-sub-bg};
+        --navigation-sub-bg-hover: #{$navigation-sub-bg-hover};
+        --navigation-sub-bg-active: #{$navigation-sub-bg-active};
+
+        --navigation-border-color: #{$navigation-border-color};
+
+        --navsidebar-border-color: #{$navsidebar-border-color};
+
+        /* Color variations */
+        --color-inverse-darker: #{$color-inverse-darker};
+        --color-inverse-dark: #{$color-inverse-dark};
+        --color-inverse-light: #{$color-inverse-light};
+        --color-inverse-lighter: #{$color-inverse-lighter};
+
+        --color-info-darker: #{$color-info-darker};
+        --color-info-dark: #{$color-info-dark};
+        --color-info-light: #{$color-info-light};
+        --color-info-lighter: #{$color-info-lighter};
+    }
+}
