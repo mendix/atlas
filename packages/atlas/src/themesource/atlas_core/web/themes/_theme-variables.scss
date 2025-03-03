@@ -1,0 +1,83 @@
+// Base colors
+$black: #000 !default;
+$white: #fff !default;
+
+// Branding & Logo
+$brand-danger: #ea3337 !default;
+$brand-primary: #264ae5 !default;
+$brand-success: #1ac61a !default;
+$brand-warning: #f0b000 !default;
+
+// Grays
+$gray: #b8babf !default;
+$gray-dark: #8b8d92 !default;
+$gray-darker: #212225 !default;
+$gray-light: #c1c3c8 !default;
+$gray-lighter: #f8f8f8 !default;
+$gray-primary: #e7e7e9 !default;
+
+// Colors
+$color-border-default: #e6e6e6;
+$color-input-disabled: #9da1a8;
+$color-input-placeholder: #a1a9b8;
+
+// Borders & Radius
+$border-radius-xl: 30px !default;
+$border-radius-l: 12px !default;
+$border-radius-m: 8px !default;
+$border-radius-s: 4px !default;
+$border-radius-form: 6px !default;
+$border-width-default: 1px;
+$border-width-l: 3px !default;
+
+// Spacing
+$spacing-large: 24px !default;
+$spacing-larger: 32px !default;
+$spacing-largest: 48px !default;
+$spacing-medium: 16px !default;
+$spacing-small: 8px !default;
+$spacing-smaller: 4px !default;
+$spacing-smallest: 2px !default;
+
+//== Typography
+//## Change your font family, weight, line-height, headings and more (used in components/typography)
+$font-family-import: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&display=swap";
+$font-family-base: "Poppins", sans-serif;
+
+// Font sizes
+$font-size-default: 14px !default;
+$font-size-h1: 34px !default;
+$font-size-h2: 26px !default;
+$font-size-h3: 24px !default;
+$font-size-h4: 16px !default;
+$font-size-h6: 12px !default;
+$font-size-large: 18px !default;
+$font-size-small: 12px !default;
+
+$content-size-smaller: 20px !default;
+$content-size-small: 24px !default;
+$content-size-medium: 32px !default;
+$content-size-large: 36px !default;
+$content-size-larger: 52px !default;
+$content-size-largest: 64px !default;
+$content-size-grouping: 120px !default;
+
+// Font weights
+$font-weight-bold: 700;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+
+// Line heights
+$font-size-base: 1.2em;
+$line-height-base: 1.428571429;
+
+// Navigation & Header
+$header-min-height: 240px !default;
+$navsidebar-width-open: 232px !default;
+
+// Shadows
+$shadow-large: 0 8px 10px 0;
+$shadow-medium: 0 5px 7px 0;
+$shadow-navbar: 0 0 4px rgb(0 0 0 / 14%), 2px 4px 8px rgb(0 0 0 / 28%);
+$shadow-small: 0 2px 4px 0;

@@ -7,18 +7,15 @@
 @import "themes/legacy-variables/variables";
 @import "themes/legacy-variables/variables-css-mappings";
 
+@import "themes/theme-variables";
 @import "themes/theme-default";
 @import "themes/theme-dark";
 @import "themes/color-variants";
 
-@if $use-css-variables {
-    @include color-variants();
-    @include theme-default();
-    @include theme-dark();
-}
-else {
-    @include legacy-css-variables();
-}
+@include color-variants();
+@include theme-default();
+@include legacy-css-variables();
+@include theme-dark();
 
 // Font Family Import
 @if $font-family-import != false {
