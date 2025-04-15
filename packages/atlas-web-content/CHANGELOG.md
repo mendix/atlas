@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We updated studio pro minimum version to 10.21 to support Mendix 11.
+
 ## [3.7.0] Atlas Web Content - 2024-11-14
 
 ### Changed
