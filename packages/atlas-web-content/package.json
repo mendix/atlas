@@ -14,8 +14,8 @@
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "mts/10.12",
-    "mxVersion": "10.12.6.46815"
+    "branchName": "main",
+    "mxVersion": "10.21.0.64362"
   },
   "scripts": {
     "build:module": "ts-node ./scripts/build.ts build",
