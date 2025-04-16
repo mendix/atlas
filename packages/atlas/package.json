@@ -5,7 +5,7 @@
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
     "branchName": "main",
-    "mxVersion": "10.18.0.54340"
+    "mxVersion": "10.21.1.64969"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
