@@ -1,7 +1,7 @@
 {
   "name": "atlas-content-native",
   "moduleName": "Atlas NativeMobile Content",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "license": "Apache-2.0",
   "copyright": "© Mendix Technology BV 2024. All rights reserved.",
   "repository": {
