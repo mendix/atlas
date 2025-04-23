@@ -4,19 +4,18 @@
 // Customizing core files will make updating Atlas much more difficult in the future.
 // To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
 //
-
-@mixin progress-circle() {
+@mixin card() {
     /* ==========================================================================
-       Progress Circle
-
-       Default Mendix progress circle widget.
+        Cards
     ========================================================================== */
-
-    .widget-progress-circle {
-        display: inline-block;
-    }
-
-    .widget-progress-circle-trail-path {
-        stroke: var(--bg-color);
+    .card {
+        border: var(--border-default);
+        border-radius: var(--border-card-default, var(--border-radius-default));
+        background-color: var(--bg-color-secondary);
+        overflow: hidden;
+        position: relative;
+        padding: var(--spacing-large);
+        box-shadow: var(--shadow-medium) var(--shadow-color);
+        margin-bottom: var(--spacing-small);
     }
 }
