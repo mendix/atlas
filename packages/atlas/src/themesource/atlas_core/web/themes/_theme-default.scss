@@ -1,17 +1,16 @@
-@import "breakpoints";
-
+@import "../breakpoints";
 :root {
     /* Brand Colors */
     --brand-primary: #264ae5;
     --brand-success: #1ac61a;
     --brand-warning: #f0b000;
     --brand-danger: #ea3337;
-
-    /* Gray Shades */
+    --brand-default: color-mix(in srgb, var(--brand-primary) 10%, #e7e7e9);
     --gray: #b8babf;
+
+    /* Base and contrast colors (default white and black for light theme) */
     --color-base: #fff;
     --color-contrast: #000;
-    --brand-default: color-mix(in srgb, var(--brand-primary) 10%, #e7e7e9);
 
     /* Brand Logo */
     --brand-logo-height: 24px;
