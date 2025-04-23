@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.2.0] Atlas NativeMobile Content - 2025-4-23
+
 ### Changed
 
 -   We updated studio pro minimum version to 10.21 to support Mendix 11.
