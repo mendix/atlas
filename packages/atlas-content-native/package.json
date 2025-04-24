@@ -1,7 +1,7 @@
 {
   "name": "atlas-content-native",
   "moduleName": "Atlas NativeMobile Content",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "license": "Apache-2.0",
   "copyright": "© Mendix Technology BV 2024. All rights reserved.",
   "repository": {
@@ -9,13 +9,13 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "10.21.1.64969",
+    "minimumMXVersion": "10.21.0.64362",
     "marketplaceId": 117175
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/native-mobile-resources",
     "branchName": "main",
-    "mxVersion": "10.21.1.64969"
+    "mxVersion": "10.21.0.64362"
   },
   "scripts": {
     "release": "ts-node ./scripts/build.ts release",
