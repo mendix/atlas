@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Breaking change
 
--   Atlas major changes.
+-   Atlas major changes. Atlas 4 will fully utilize css variables instead of SASS variables.
 
 ## [3.17.0] Atlas Core - 2025-4-16
 
