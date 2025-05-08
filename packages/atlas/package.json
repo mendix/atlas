@@ -4,8 +4,8 @@
   "description": "Mendix Atlas UI is the foundation of making beautiful apps with Mendix. For more information about the framework go to https://atlas.mendix.com.",
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "main",
-    "mxVersion": "10.21.1.64969"
+    "branchName": "ui-refresh",
+    "mxVersion": "11.0.0.68828"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
