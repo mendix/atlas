@@ -27,7 +27,7 @@ paste this rules inside your own Styling folder to change the value and override
 
 ### Color mix
 
-darker, dark, light, lighter suffix variables will no longer use sass function `mix` in favor of css function color-mix.
+darker, dark, light, lighter suffix variables (gray, brand-primary, brand-success, brand-warning, brand-danger, brand-default) will no longer use sass function `mix` in favor of css function color-mix.
 and there will be a new `color-variants.scss` file to support this mapping which will produce css variables such as:
 
 ```
