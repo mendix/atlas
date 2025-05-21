@@ -221,4 +221,27 @@
             }
         }
     }
+
+
+    // make the first child of the MAIN part of the scroll container to grow full height
+    .region-content {
+        display: flex;
+        flex-direction: column;
+
+        & > .mx-scrollcontainer-wrapper{
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            & > .mx-placeholder{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+
+                & > *:only-child{
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
 }
