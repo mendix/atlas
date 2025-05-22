@@ -22,7 +22,7 @@
   },
   "author": "Mendix",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@playwright/test": "^1.49.1",
     "node-fetch": "^3.3.1",
     "shelljs": "^0.8.5"
