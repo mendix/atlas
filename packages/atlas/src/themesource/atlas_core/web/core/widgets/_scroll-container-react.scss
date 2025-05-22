@@ -189,14 +189,8 @@
     }
 
     .mx-scrollcontainer-wrapper {
-        height: 100%;
-
         &:not(.mx-scrollcontainer-nested) {
             -webkit-overflow-scrolling: touch;
-        }
-
-        & > .mx-placeholder {
-            height: 100%;
         }
     }
 
