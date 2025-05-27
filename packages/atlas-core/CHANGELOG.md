@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.18.0] Atlas Core - 2025-5-27
+
 ### Fixed
 
 -   We fixed an issue where first element on the page failed to set to full height on react client.
