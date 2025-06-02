@@ -190,16 +190,8 @@
     }
 
     .mx-scrollcontainer-wrapper {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
         &:not(.mx-scrollcontainer-nested) {
             -webkit-overflow-scrolling: touch;
-        }
-
-        & > .mx-placeholder {
-            flex: 1;
         }
     }
 

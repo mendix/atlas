@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where first element on the page failed to set to full height on react client.
+-   We fixed an issue where form vertical label not rendered correctly on rtl direction.
+
 ## [4.0.0] Atlas Core - 2025-5-8
 
 ### Breaking change
