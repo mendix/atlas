@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking change
+
+-   Design properties updates:
+    -   Introduced group names.
+    -   Introduced form orientation on document level.
+    -   Introduced label width on document level.
+    -   Introduced design properties on layout grid columns and rows.
+-   Theme variables updates:
+    -   accessibility improvements.
+    -   consistency and flexibililty improvements.
+-   Default fonts (Poppins) is now shipped with atlas.
+-   Introduced hover effect on input widgets.
+-   Apply similar styling for modal header if h2 is used.
+
 ## [4.0.1] Atlas Core - 2025-6-2
 
 ### Fixed
