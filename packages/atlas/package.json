@@ -5,7 +5,7 @@
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
     "branchName": "ui-refresh",
-    "mxVersion": "11.0.0.68828"
+    "mxVersion": "11.0.0.73100"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
