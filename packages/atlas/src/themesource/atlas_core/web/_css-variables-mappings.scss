@@ -1,29 +1,25 @@
-:root {
+/*
+DISCLAIMER:
+This mapping file provides backwards compatibility for projects which were still using SASS variables.
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+*/
+@mixin legacy-variables() {
+  :root {
     /*
-   DISCLAIMER:
-   This is a mapping file which will be used to help moving towards CSS variables over time.
-   Do not change this file because it is core styling.
-   Customizing core files will make updating Atlas much more difficult in the future.
-   To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
-  
-  
-   ██████╗  █████╗ ███████╗██╗ ██████╗
-   ██╔══██╗██╔══██╗██╔════╝██║██╔════╝
-   ██████╔╝███████║███████╗██║██║
-   ██╔══██╗██╔══██║╚════██║██║██║
-   ██████╔╝██║  ██║███████║██║╚██████╗
-   ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝
-  */
-
+    ██████╗  █████╗ ███████╗██╗ ██████╗
+    ██╔══██╗██╔══██╗██╔════╝██║██╔════╝
+    ██████╔╝███████║███████╗██║██║
+    ██╔══██╗██╔══██║╚════██║██║██║
+    ██████╔╝██║  ██║███████║██║╚██████╗
+    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝
+    */
     /*== Gray Shades*/
     /*## Different gray shades to be used for our variables and components */
-    --gray-darker: #{$gray-darker};
-    --gray-dark: #{$gray-dark};
     --gray: #{$gray};
-    --gray-light: #{$gray-light};
-    --gray-primary: #{$gray-primary};
-    --gray-lighter: #{$gray-lighter};
-
+    --color-base: #{$color-base};
+    --color-contrast: #{$color-contrast};
+    
     /*== Step 1: Brand Colors */
     --brand-default: #{$brand-default};
     --brand-primary: #{$brand-primary};
@@ -31,19 +27,35 @@
     --brand-warning: #{$brand-warning};
     --brand-danger: #{$brand-danger};
 
-    --brand-logo: #{$brand-logo};
+    --brand-default-hover: #{$color-default-light};
+    --brand-primary-hover: #{$color-primary-darker};
+    --brand-success-hover: #{$color-success-darker};
+    --brand-warning-hover: #{$color-warning-darker};
+    --brand-danger-hover: #{$color-danger-darker};
+
     --brand-logo-height: #{$brand-logo-height};
-    --brand-logo-width: #{$brand-logo-width}; /* Only used for CSS brand logo */
+    --brand-logo-width: #{$brand-logo-width};
+
+    /* Only used for CSS brand logo */
 
     /*== Step 2: UI Customization */
 
     /* Default Font Size & Color */
     --font-size-default: #{$font-size-default};
     --font-color-default: #{$font-color-default};
+    --font-color-contrast: #{$font-color-contrast};
 
-    /* Global Border Color */
+    /* Global Border */
     --border-color-default: #{$border-color-default};
+    --border-radius-s: #{$border-radius-s};
+    --border-radius-m: #{$border-radius-m};
+    --border-radius-l: #{$border-radius-l};
     --border-radius-default: #{$border-radius-default};
+    --border-width-thin: #{$border-width-thin};
+    --border-width-medium: #{$border-width-medium};
+    --border-width-thick: #{$border-width-thick};
+    --border-width-default: #{$border-width-default};
+    --border-default: #{$border-default};
 
     /* Topbar */
     --topbar-bg: #{$topbar-bg};
@@ -62,7 +74,6 @@
     /* Background Colors */
     /* Backgrounds */
     --bg-color: #{$bg-color};
-    --bg-color: #f8f8f8;
     --bg-color-secondary: #{$bg-color-secondary};
 
     /* Default Link Color */
@@ -70,19 +81,16 @@
     --link-hover-color: #{$link-hover-color};
 
     /*
-    █████╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗███████╗██████╗
-   ██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗
-   ███████║██║  ██║██║   ██║███████║██╔██╗ ██║██║     █████╗  ██║  ██║
-   ██╔══██║██║  ██║╚██╗ ██╔╝██╔══██║██║╚██╗██║██║     ██╔══╝  ██║  ██║
-   ██║  ██║██████╔╝ ╚████╔╝ ██║  ██║██║ ╚████║╚██████╗███████╗██████╔╝
-   ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═════╝
-  */
+      █████╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗ ██████╗███████╗██████╗
+    ██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗
+    ███████║██║  ██║██║   ██║███████║██╔██╗ ██║██║     █████╗  ██║  ██║
+    ██╔══██║██║  ██║╚██╗ ██╔╝██╔══██║██║╚██╗██║██║     ██╔══╝  ██║  ██║
+    ██║  ██║██████╔╝ ╚████╔╝ ██║  ██║██║ ╚████║╚██████╗███████╗██████╔╝
+    ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═════╝
+    */
 
     /*== Typography */
     /*## Change your font family, weight, line-height, headings and more (used in components/typography) */
-
-    /* Font Family Import (Used for google font plugin in theme creater) */
-    --font-family-import: #{$font-family-import};
 
     /* Font Family / False = fallback from Bootstrap (Helvetica Neue) */
     --font-family-base: #{$font-family-base};
@@ -120,14 +128,15 @@
 
     /*== Navigation */
     /*## Used in components/navigation
-  
-  /* Default Navigation styling */
+    
+    /* Default Navigation styling */
     --navigation-item-height: #{$navigation-item-height};
     --navigation-item-padding: #{$navigation-item-padding};
 
     --navigation-font-size: #{$navigation-font-size};
     --navigation-sub-font-size: #{$navigation-sub-font-size};
-    --navigation-glyph-size: #{$navigation-glyph-size}; /* For glyphicons that you can select in the Mendix Modeler */
+    --navigation-glyph-size: #{$navigation-glyph-size};
+    /* For glyphicons that you can select in the Mendix Modeler */
 
     --navigation-color: #{$navigation-color};
     --navigation-color-hover: #{$navigation-color-hover};
@@ -140,7 +149,8 @@
     /* Navigation Sidebar */
     --navsidebar-font-size: #{$navsidebar-font-size};
     --navsidebar-sub-font-size: #{$navsidebar-sub-font-size};
-    --navsidebar-glyph-size: #{$navsidebar-glyph-size}; /* For glyphicons that you can select in the Mendix Modeler */
+    --navsidebar-glyph-size: #{$navsidebar-glyph-size};
+    /* For glyphicons that you can select in the Mendix Modeler */
 
     --navsidebar-color: #{$navsidebar-color};
     --navsidebar-color-hover: #{$navsidebar-color-hover};
@@ -188,9 +198,6 @@
     /*== Form */
     /*## Used in components/inputs */
 
-    /* Values that can be used default | lined */
-    --form-input-style: #{$form-input-style};
-
     /* Form Label */
     --form-label-size: #{$form-label-size};
     --form-label-weight: #{$form-label-weight};
@@ -217,6 +224,7 @@
     --form-input-placeholder-color: #{$form-input-placeholder-color};
     --form-input-border-color: #{$form-input-border-color};
     --form-input-border-focus-color: #{$form-input-border-focus-color};
+    --form-input-border-hover-color: #{$form-input-border-hover-color};
 
     /* Form Input Static styling */
     --form-input-static-border-color: #{$form-input-static-border-color};
@@ -230,7 +238,7 @@
 
     /* Default button style */
     --btn-font-size: #{$btn-font-size};
-    --btn-bordered: #{$btn-bordered}; /* Default value false, set to true if you want this effect */
+    /* Default value false, set to true if you want this effect */
     --btn-border-radius: #{$btn-border-radius};
 
     /* Button Background Color */
@@ -275,42 +283,42 @@
     --header-text-color-detail: #{$header-text-color-detail};
 
     /*
-   ███████╗██╗  ██╗██████╗ ███████╗██████╗ ████████╗
-   ██╔════╝╚██╗██╔╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝
-   █████╗   ╚███╔╝ ██████╔╝█████╗  ██████╔╝   ██║
-   ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══╝  ██╔══██╗   ██║
-   ███████╗██╔╝ ██╗██║     ███████╗██║  ██║   ██║
-   ╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝
-  */
+    ███████╗██╗  ██╗██████╗ ███████╗██████╗ ████████╗
+    ██╔════╝╚██╗██╔╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝
+    █████╗   ╚███╔╝ ██████╔╝█████╗  ██████╔╝   ██║
+    ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══╝  ██╔══██╗   ██║
+    ███████╗██╔╝ ██╗██║     ███████╗██║  ██║   ██║
+    ╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝
+    */
 
     /*== Color variations */
     /*## These variations are used to support several other variables and components */
 
     /* Color variations */
-    --color-default-darker: #{$color-default-darker};
-    --color-default-dark: #{$color-default-dark};
-    --color-default-light: #{$color-default-light};
-    --color-default-lighter: #{$color-default-lighter};
+    --brand-default-700: #{$color-default-darker};
+    --brand-default-600: #{$color-default-dark};
+    --brand-default-200: #{$color-default-light};
+    --brand-default-100: #{$color-default-lighter};
 
-    --color-primary-darker: #{$color-primary-darker};
-    --color-primary-dark: #{$color-primary-dark};
-    --color-primary-light: #{$color-primary-light};
-    --color-primary-lighter: #{$color-primary-lighter};
+    --brand-primary-700: #{$color-primary-darker};
+    --brand-primary-600: #{$color-primary-dark};
+    --brand-primary-200: #{$color-primary-light};
+    --brand-primary-100: #{$color-primary-lighter};
 
-    --color-success-darker: #{$color-success-darker};
-    --color-success-dark: #{$color-success-dark};
-    --color-success-light: #{$color-success-light};
-    --color-success-lighter: #{$color-success-lighter};
+    --brand-success-700: #{$color-success-darker};
+    --brand-success-600: #{$color-success-dark};
+    --brand-success-200: #{$color-success-light};
+    --brand-success-100: #{$color-success-lighter};
 
-    --color-warning-darker: #{$color-warning-darker};
-    --color-warning-dark: #{$color-warning-dark};
-    --color-warning-light: #{$color-warning-light};
-    --color-warning-lighter: #{$color-warning-lighter};
+    --brand-warning-700: #{$color-warning-darker};
+    --brand-warning-600: #{$color-warning-dark};
+    --brand-warning-200: #{$color-warning-light};
+    --brand-warning-100: #{$color-warning-lighter};
 
-    --color-danger-darker: #{$color-danger-darker};
-    --color-danger-dark: #{$color-danger-dark};
-    --color-danger-light: #{$color-danger-light};
-    --color-danger-lighter: #{$color-danger-lighter};
+    --brand-danger-700: #{$color-danger-darker};
+    --brand-danger-600: #{$color-danger-dark};
+    --brand-danger-200: #{$color-danger-light};
+    --brand-danger-100: #{$color-danger-lighter};
 
     --brand-gradient: #{$brand-gradient};
 
@@ -379,15 +387,11 @@
 
     /*== Modals */
     /*## Default Mendix Modal, Blocking Modal and Login Modal (used in components/modals) */
-
-    /* Background Color */
     --modal-header-bg: #{$modal-header-bg};
-
-    /* Border Color */
     --modal-header-border-color: #{$modal-header-border-color};
-
-    /* Text Color */
     --modal-header-color: #{$modal-header-color};
+    --modal-body-bg: #{$modal-body-bg};
+    --modal-footer-bg: #{$modal-footer-bg};
 
     /*== Dataview */
     /*## Default variables for Dataview Widget (used in components/dataview) */
@@ -395,6 +399,8 @@
     /* Controls */
     --dataview-controls-bg: #{$dataview-controls-bg};
     --dataview-controls-border-color: #{$dataview-controls-border-color};
+    --dataview-controls-alignment: #{$dataview-controls-alignment};
+
 
     /* Empty Message */
     --dataview-emptymessage-bg: #{$dataview-emptymessage-bg};
@@ -405,21 +411,18 @@
 
     /* Background Color */
     --alert-primary-bg: #{$alert-primary-bg};
-    --alert-secondary-bg: #{$alert-secondary-bg};
     --alert-success-bg: #{$alert-success-bg};
     --alert-warning-bg: #{$alert-warning-bg};
     --alert-danger-bg: #{$alert-danger-bg};
 
     /* Text Color */
     --alert-primary-color: #{$alert-primary-color};
-    --alert-secondary-color: #{$alert-secondary-color};
     --alert-success-color: #{$alert-success-color};
     --alert-warning-color: #{$alert-warning-color};
     --alert-danger-color: #{$alert-danger-color};
 
     /* Border Color */
     --alert-primary-border-color: #{$alert-primary-border-color};
-    --alert-secondary-border-color: #{$alert-secondary-border-color};
     --alert-success-border-color: #{$alert-success-border-color};
     --alert-warning-border-color: #{$alert-warning-border-color};
     --alert-danger-border-color: #{$alert-danger-border-color};
@@ -429,11 +432,6 @@
     --wizard-step-height: #{$wizard-step-height};
     --wizard-step-number-size: #{$wizard-step-number-size};
     --wizard-step-number-font-size: #{$wizard-step-number-font-size};
-
-    /*Wizard states */
-    --wizard-default: #{$wizard-default};
-    --wizard-active: #{$wizard-active};
-    --wizard-visited: #{$wizard-visited};
 
     /*Wizard step states */
     --wizard-default-bg: #{$wizard-default-bg};
@@ -569,6 +567,9 @@
     /*== Spacing */
     /*## Advanced layout options (used in base/mixins/default-spacing) */
 
+    /* No spacing */
+    --spacing-none: #{$spacing-none};
+    
     /* Smallest spacing */
     --spacing-smallest: #{$spacing-smallest};
 
@@ -626,34 +627,7 @@
     --padding-table-cell-left: #{$padding-table-cell-left};
     --padding-table-cell-right: #{$padding-table-cell-right};
 
-    /*== Media queries breakpoints */
-    /*## Define the breakpoints at which your layout will change, adapting to different screen sizes. */
-
-    --screen-xs: #{$screen-xs};
-    --screen-sm: #{$screen-sm};
-    --screen-md: #{$screen-md};
-    --screen-lg: #{$screen-lg};
-    --screen-xl: #{$screen-xl};
-
-    /* So media queries don't overlap when required, provide a maximum (used for max-width) */
-    --screen-xs-max: #{$screen-xs-max};
-    --screen-sm-max: #{$screen-sm-max};
-    --screen-md-max: #{$screen-md-max};
-    --screen-lg-max: #{$screen-lg-max};
-
-    /*== Settings */
-    /*## Enable or disable your desired framework features */
-    /* Use of !important */
-    --important-flex: #{$important-flex}; // ./base/flex.scss
-    --important-spacing: #{$important-spacing}; // ./base/spacing.scss
-    --important-helpers: #{$important-helpers}; // ./helpers/helperclasses.scss
-
     /*===== Legacy variables ===== */
-
-    /*== Step 1: Brand Colors */
-    --brand-inverse: #{$brand-inverse};
-    --brand-info: #{$brand-info};
-
     /*== Step 2: UI Customization */
     /* Sidebar */
     --sidebar-bg: #{$sidebar-bg};
@@ -680,8 +654,11 @@
     --navsidebar-sub-bg: #{$navsidebar-sub-bg};
     --navsidebar-sub-bg-hover: #{$navsidebar-sub-bg-hover};
     --navsidebar-sub-bg-active: #{$navsidebar-sub-bg-active};
+    --navsidebar-sub-bg-header: #{$navsidebar-sub-bg};
+    --navsidebar-sub-bg-collapsed: #{$navsidebar-sub-bg};
 
     --navsidebar-border-color: #{$navsidebar-border-color};
+    --navsidebar-shadow: #{$navsidebar-shadow};
 
     /*== Form */
     /*## Used in components/inputs */
@@ -707,20 +684,6 @@
     /* Button Background Color */
     --btn-inverse-bg-hover: #{$btn-inverse-bg-hover};
     --btn-info-bg-hover: #{$btn-info-bg-hover};
-
-    /*== Color variations */
-    /*## These variations are used to support several other variables and components */
-
-    /* Color variations */
-    --color-inverse-darker: #{$color-inverse-darker};
-    --color-inverse-dark: #{$color-inverse-dark};
-    --color-inverse-light: #{$color-inverse-light};
-    --color-inverse-lighter: #{$color-inverse-lighter};
-
-    --color-info-darker: #{$color-info-darker};
-    --color-info-dark: #{$color-info-dark};
-    --color-info-light: #{$color-info-light};
-    --color-info-lighter: #{$color-info-lighter};
 
     /*== Alerts */
     /*## Default Bootstrap alerts, not a widget in the Modeler (used in components/alerts) */
@@ -766,4 +729,5 @@
 
     /* Background Color */
     --callout-info-bg: #{$callout-info-bg};
+  }
 }
