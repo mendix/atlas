@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.1.1] Atlas Core - 2025-7-1
+
 ### Fixed
 
 -   We fixed login page isn't showing the image.
