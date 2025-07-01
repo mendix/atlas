@@ -5,7 +5,7 @@
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
     "branchName": "ui-refresh",
-    "mxVersion": "11.0.0.68828"
+    "mxVersion": "11.0.0.73100"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
@@ -14,7 +14,7 @@
     "e2edev": "npx playwright test --ui",
     "release": "node ./scripts/build.js release",
     "release-ts": "tsc",
-    "update-screenshots": "npm run e2e && docker run -t --rm --ipc=host --network=host -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.36.2-jammy bash -c 'npx playwright test --project=chromium --update-snapshots'"
+    "update-screenshots": "npm run e2e && docker run -t --rm --ipc=host --network=host -v $(pwd):/tests -w /tests mcr.microsoft.com/playwright:v1.49.1-jammy bash -c 'npx playwright test --project=chromium --update-snapshots'"
   },
   "repository": {
     "type": "git",
