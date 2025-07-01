@@ -6,12 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.1.1] Atlas Core - 2025-7-1
+
 ### Fixed
 
--  We fixed login page isn't showing the image.
--  We fixed too much spacing between radio buttons and their values.
--  We fixed broken slider with label.
--  We fixed invisible checkbox disabled control.
+-   We fixed login page isn't showing the image.
+-   We fixed too much spacing between radio buttons and their values.
+-   We fixed broken slider with label.
+-   We fixed invisible checkbox disabled control.
 
 ## [4.1.0] Atlas Core - 2025-6-20
 
