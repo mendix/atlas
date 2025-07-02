@@ -14,7 +14,6 @@ main().catch(e => {
 });
 
 async function main() {
-
     try {
         execSync("docker info");
     } catch (e) {
@@ -79,7 +78,7 @@ async function main() {
         execSync(
             `docker run --name mxbuild -t -v ${process.cwd()}:/source ` +
                 `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
-                `-o /tmp/automation.mda /source/${projectFile}"`,
+                `--modern-web-client --ignore-unsupported-widgets -o /tmp/automation.mda /source/${projectFile}"`,
             { stdio: "inherit" }
         );
         console.log("Bundle created and all the widgets are updated");
@@ -158,7 +157,7 @@ async function copyGitHubTestProject() {
             );
         }
         mkdir("-p", "tests/testProject");
-        await promisify(exec)(`unzip -o ${testArchivePath} -d tests/testProject`);
+        execSync(`unzip -o ${testArchivePath} -d tests/testProject`, { stdio: "inherit" });
         if (process.argv.includes("--remove-atlas-files")) {
             rm(
                 "-rf",

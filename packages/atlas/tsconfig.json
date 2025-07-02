@@ -1,10 +1,30 @@
 {
-    "extends": "../../tsconfig.base",
-    "include": ["./src/theme/native/**/*.ts", "./src/themesource/atlas_core/native/**/*.ts", "./src/themesource/atlas_nativemobile_content/native/**/*.ts"],
+    "include": [
+        "./src/theme/native/**/*.ts",
+        "./src/themesource/atlas_core/native/**/*.ts",
+        "./src/themesource/atlas_nativemobile_content/native/**/*.ts"
+    ],
     "compilerOptions": {
+        "noEmitOnError": true,
+        "sourceMap": false,
+        "outDir": "./dist",
         "target": "ES2019",
         "lib": ["ES2017"],
-        "sourceMap": false,
-        "outDir": "./dist"
+        "moduleResolution": "node",
+        "declaration": false,
+        "noLib": false,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "strict": true,
+        "strictFunctionTypes": false,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "jsx": "react",
+        "jsxFactory": "createElement",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "useUnknownInCatchVariables": false,
+        "exactOptionalPropertyTypes": false
     }
 }
