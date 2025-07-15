@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.9.0] Atlas Web Content - 2025-7-15
+
 ### Changed
 
 -   We updated Data Widgets module to version 2.32.2.
