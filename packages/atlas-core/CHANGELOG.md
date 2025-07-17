@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.1.2] Atlas Core - 2025-7-17
+
 ### Fixed
 
 -   We fixed an issue where dataview scrollbar is not placed on content when dataview is placed as first element on the page.
