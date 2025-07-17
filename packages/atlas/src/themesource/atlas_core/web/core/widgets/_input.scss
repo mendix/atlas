@@ -240,6 +240,11 @@
     .dj_webkit.dj_ios .form-control {
         transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
+
+        &.widget-dropdown-filter{
+            transform: inherit;
+            -webkit-transform: inherit;
+        }
     }
 
     @media only screen and (min-width: $screen-md) {
