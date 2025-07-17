@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where dataview scrollbar is not placed on content when dataview is placed as first element on the page.
+-   We fixed an issue where filter failed to render correctly on ios.
+
 ## [3.18.0] Atlas Core - 2025-5-27
 
 ### Fixed
