@@ -19,10 +19,10 @@
         > .mx-dataview-content {
             flex-grow: 1;
 
-            .mx-placeholder>&{
+            .mx-placeholder > &{
                 overflow-y: auto;
             }
-            
+
             > .mx-container-nested {
                 > .row {
                     margin-right: 0;
