@@ -128,6 +128,7 @@
         flex: 1;
         flex-wrap: wrap;
         max-width: 100%;
+        align-items: center;
 
         .btn {
             margin-left: var(--spacing-small);
@@ -170,6 +171,7 @@
         .control-label {
             overflow: hidden;
             margin-bottom: 4px;
+            text-align: left;
             text-overflow: ellipsis;
             color: var(--form-label-color);
             font-size: var(--form-label-size);
@@ -253,6 +255,7 @@
                 margin-bottom: 0;
                 padding-top: var(--form-input-padding-y);
                 padding-bottom: var(--form-input-padding-y);
+                padding-right: var(--form-label-gutter);
                 line-height: var(--form-input-line-height);
             }
         }
