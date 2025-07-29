@@ -186,6 +186,13 @@
     .mx-scrollcontainer-push {
         // in order to prevent sidebars when content is pushed aside, disable horizontal scroll
         overflow-x: clip;
+        position: relative;
+        transition: left 250ms ease-in-out;
+        left: calc(0px - var(--navsidebar-width-closed));
+
+        &.mx-scrollcontainer-open {
+            left: 0px;
+        }
     }
 
     .mx-scrollcontainer-wrapper {
