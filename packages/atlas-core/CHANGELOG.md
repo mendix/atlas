@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We fixed an issue where horizontal scrollbar is showing up on forms.
+-   We added styling for checkbox radio button widget.
+
 ## [3.18.1] Atlas Core - 2025-7-17
 
 ### Fixed
