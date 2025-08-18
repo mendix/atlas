@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We removed select entity page templates that still uses dojo core widget (template grid).
+
 ## [4.0.0] Atlas Web Content - 2025-5-8
 
 ### Breaking change
