@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Moved .sr-only from bootstrap to base
+
 ## [4.1.3] Atlas Core - 2025-7-28
 
 ### Fixed
