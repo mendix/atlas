@@ -8,7 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- Moved .sr-only from bootstrap to base
+-   Moved .sr-only from bootstrap to base
+
+### Fixed
+
+-   We fixed an issue with sidebar menu not overlaying some elements in modern client.
 
 ## [3.18.2] Atlas Core - 2025-8-7
 
