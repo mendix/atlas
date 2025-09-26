@@ -6,6 +6,11 @@ on:
       package:
         description: "Package name to release (name in package.json)"
         required: true
+        type: choice
+        options:
+          - atlas-core
+          - atlas-content-native
+          - atlas-web-content
 
 jobs:
   create-release:
