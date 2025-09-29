@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   We fixed an issue with sidebar menu not overlaying some elements in modern client.
 
+### Added
+
+-   Support to toggle the widget background
+-   Support to change the widget text and svg icon color with design property
+
 ## [4.1.3] Atlas Core - 2025-7-28
 
 ### Fixed
