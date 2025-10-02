@@ -6,11 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.0] Atlas Core - 2025-10-2
+
 ### Changed
 
 -   Moved .sr-only from bootstrap to base
 
-### Fixed 
+### Fixed
 
 -   We fixed an issue with sidebar menu not overlaying some elements in modern client.
 
