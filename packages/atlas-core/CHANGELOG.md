@@ -6,13 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking change
+
+-   Layout Behavior: Minor behavioral changes may be observed in layouts, particularly concerning the topbar component
+
 ### Changed
 
 -   Moved .sr-only from bootstrap to base
+-   Topbar redesign incl. horizontal centering
+-   Introduced configurable options for the topbar bottom border and sidebar border
+-   General layout improvements
 
 ### Fixed 
 
 -   We fixed an issue with sidebar menu not overlaying some elements in modern client.
+-   Resolved issues pertaining to active navigation item styling and behavior
+-   Reduced navigation padding
 
 ## [4.1.3] Atlas Core - 2025-7-28
 
