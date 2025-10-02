@@ -1,7 +1,7 @@
 {
   "name": "atlas-core",
   "moduleName": "Atlas Core",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "license": "Apache-2.0",
   "copyright": "© Mendix Technology BV 2024. All rights reserved.",
   "repository": {
@@ -14,7 +14,7 @@
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "main",
+    "branchName": "atlas4-layout-fixes",
     "mxVersion": "11.0.0.73100"
   },
   "scripts": {
