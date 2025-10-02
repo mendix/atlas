@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.0] Atlas Core - 2025-10-2
+
 ### Breaking change
 
 -   Layout Behavior: Minor behavioral changes may be observed in layouts, particularly concerning the topbar component
@@ -17,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 -   Introduced configurable options for the topbar bottom border and sidebar border
 -   General layout improvements
 
-### Fixed 
+### Fixed
 
 -   We fixed an issue with sidebar menu not overlaying some elements in modern client.
 -   Resolved issues pertaining to active navigation item styling and behavior
