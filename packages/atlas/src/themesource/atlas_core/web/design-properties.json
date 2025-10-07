@@ -485,7 +485,7 @@
                 },
                 {
                     "name": "Hug content (only shrink)",
-                    "variable": "--flex-fit-content",
+                    "variable": "--flex-shrink",
                     "icon": "Atlas_Core.Atlas_Styling.grow-shrink-auto-fit"
                 },
                 {
