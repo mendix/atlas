@@ -14,7 +14,7 @@
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "atlas4-layout-fixes",
+    "branchName": "main",
     "mxVersion": "11.0.0.73100"
   },
   "scripts": {

@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Breaking change
 
 -   Layout Behavior: behavioral changes may be observed in layouts, particularly concerning the topbar component
+-   Language selector: we changed language selector to use combobox instead of the widget.
 
 ### Changed
 
