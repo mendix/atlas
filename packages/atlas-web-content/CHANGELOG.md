@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We updated page some page templates.
+-   Lists templates renamed into Galleries / Lists to reflect update on modern client support gallery widget usage.
+-   Galleries / Lists templates are updated to have card view sample and more filters.
+
+
+### Added
+
+-   We added new building blocks based on container and layout configs.
+-   We added new and updated building blocks and templates based on new Gallery configurations.
+
 ## [4.1.0] Atlas Web Content - 2025-8-18
 
 ### Changed
