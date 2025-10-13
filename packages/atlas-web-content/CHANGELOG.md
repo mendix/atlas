@@ -6,12 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.2.0] Atlas Web Content - 2025-10-13
+
 ### Changed
 
 -   We updated page some page templates.
 -   Lists templates renamed into Galleries / Lists to reflect update on modern client support gallery widget usage.
 -   Galleries / Lists templates are updated to have card view sample and more filters.
-
 
 ### Added
 
