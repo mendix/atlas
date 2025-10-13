@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.2.0] Atlas Web Content - 2025-10-13
+
 ### Breaking changes
 
 -   Design properties from data widgets 3.5.0 and above is needed for page template and building blocks using galleries to work.
