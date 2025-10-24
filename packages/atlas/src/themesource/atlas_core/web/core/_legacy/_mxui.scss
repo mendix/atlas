@@ -2357,14 +2357,8 @@ Main class hierarchy:
         padding-right: 15px;
     }
 
-    .mx-radiobuttons.inline .radio {
-        display: inline-block;
-        margin-right: 20px;
-    }
-
     .mx-radiobuttons .radio input[type="radio"] {
         /* Reset bootstrap rules */
-        position: static;
         margin-right: 8px;
         margin-left: 0;
     }
