@@ -25,14 +25,15 @@
     }
 
     .radio {
-        display: flex !important; // Remove after mxui merge
+        display: flex;
         align-items: center;
         margin-top: 0;
     }
 
     input[type="radio"] {
-        position: relative !important; // Remove after mxui merge
+        position: relative !important;
         width: 16px;
+        flex: 0 0 16px;
         height: 16px;
         margin: 0;
         cursor: pointer;
