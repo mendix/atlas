@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 -   We fixed an issue with radio buttons being distorted in some cases.
+-   We fixed an app exception caused by fontSize: 0 in the React Native New Architecture.
 
 ## [4.3.0] Atlas Core - 2025-10-10
 

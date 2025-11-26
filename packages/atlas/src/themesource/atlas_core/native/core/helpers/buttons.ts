@@ -96,7 +96,7 @@ export const btnIcon: ActionButtonType = {
         color: font.colorTitle
     },
     caption: {
-        fontSize: 0
+        display: "none"
     }
 };
 export const btnIconPrimary: ActionButtonType = merge(btnIcon, {
@@ -144,7 +144,7 @@ export const btnIconGrayRounded: ActionButtonType = {
         color: contrast.high
     },
     caption: {
-        fontSize: 0
+        display: "none"
     }
 };
 //
