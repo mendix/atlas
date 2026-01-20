@@ -12,11 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
--   We added design properties for combobox to allow usage as language selector.
+-   We added design properties for Combobox widget to allow usage as a language selector.
 
 ### Breaking Changed
 
--   We added removed language selector widgets from layouts and use combobox widget to support strict mode.
+-   We replaced Language selector widget with Combobox widget in layouts acting like a language selector.
 
 ## [3.19.0] Atlas Core - 2025-9-26
 

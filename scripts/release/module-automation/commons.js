@@ -176,7 +176,7 @@ async function commitAndCreatePullRequest(moduleInfo) {
 
     console.log("Creating PR for changelog");
     await execShellCommand(
-        `gh pr create --title "${moduleInfo.nameWithSpace}: Updating changelogs" --body "This is an automated PR." --base main --head ${changelogBranchName}`
+        `gh pr create --title "[LTS/10.24][${moduleInfo.nameWithSpace}]: Updating changelogs" --body "This is an automated PR." --base "lts/mx/10.24" --head "${changelogBranchName}"`
     );
     console.log("Created PR for changelog updates.");
 }
