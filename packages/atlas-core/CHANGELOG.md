@@ -10,6 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   We fixed an issue with radio buttons being distorted in some cases.
 
+### Added
+
+-   We added design properties for combobox to allow usage as language selector.
+
+### Breaking Changed
+
+-   We added removed language selector widgets from layouts and use combobox widget to support strict mode.
+
 ## [3.19.0] Atlas Core - 2025-9-26
 
 ### Changed
