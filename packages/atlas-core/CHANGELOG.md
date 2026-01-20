@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.20.0] Atlas Core - 2026-1-20
+
 ### Fixed
 
 -   We fixed an issue with radio buttons being distorted in some cases.
