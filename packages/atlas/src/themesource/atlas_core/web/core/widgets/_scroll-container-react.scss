@@ -122,7 +122,8 @@
     // Animate transitions for toggleable sidebars
     .mx-scrollcontainer-left.mx-scrollcontainer-toggleable,
     .mx-scrollcontainer-right.mx-scrollcontainer-toggleable {
-        transition: flex-basis var(--navsidebar-animation-duration) var(--navsidebar-animation-function), margin-right var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+        transition: flex-basis var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+            margin-right var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
             margin-left var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
         z-index: 1;
     }
@@ -191,8 +192,23 @@
     .mx-scrollcontainer-wrapper {
         &:not(.mx-scrollcontainer-nested) {
             -webkit-overflow-scrolling: touch;
+            isolation: isolate;
+
+            // when this scroll region contains some elements that
+            // can overflow and appear on top of other containers then
+            // bump z-index (relative is needed for z-index to work)
+            // withouth this bump, regions that are defined later in the HTML
+            // will take higher implicit z-index and popup goes under them
+            &:has(.mx-navbar .dropdown.open), // navbar
+            &:has(.widget-combobox-menu:not(.widget-combobox-menu-hidden)), // combobox
+            &:has(.date-filter-container .react-datepicker-popper), // datepicker of a date filter in DG2
+            &:has(.filter-selectors.visible), // filter oepration selector in DG2 filter
+            &:has(.widget-dropdown-filter[data-expanded="true"]) // dropdown filter
+            {
+                z-index: 1;
+                position: relative;
+            }
         }
-        isolation: isolate;
     }
 
     // for push aside and slide over the main part should be non-interactive if sidebar is open
@@ -218,25 +234,24 @@
         }
     }
 
-
     // make the first child of the MAIN part of the scroll container to grow full height
     .region-content {
         display: flex;
         flex-direction: column;
 
-        & > .mx-scrollcontainer-wrapper{
+        & > .mx-scrollcontainer-wrapper {
             height: 100%;
             flex: 1;
             display: flex;
             flex-direction: column;
 
-            & > .mx-placeholder{
+            & > .mx-placeholder {
                 height: 100%;
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
 
-                & > *:only-child{
+                & > *:only-child {
                     height: 100%;
                     flex-grow: 1;
                 }
