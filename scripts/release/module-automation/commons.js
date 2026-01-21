@@ -179,6 +179,8 @@ async function commitAndCreatePullRequest(moduleInfo) {
         `gh pr create --title "[LTS/10.24][${moduleInfo.nameWithSpace}]: Updating changelogs" --body "This is an automated PR." --base "lts/mx/10.24" --head "${changelogBranchName}"`
     );
     console.log("Created PR for changelog updates.");
+
+    return changelogBranchName;
 }
 
 async function updateWidgetChangelogs(widgetsFolders) {
@@ -248,24 +250,18 @@ async function createMPK(tmpFolder, moduleInfo, excludeFilesRegExp) {
     return (await getFiles(tmpFolder, [`.mpk`]))[0];
 }
 
-async function createGithubRelease(moduleInfo, moduleChangelogs, mpkOutput) {
-    console.log(`Creating Github release for module ${moduleInfo.nameWithSpace}`);
-    await createGithubReleaseFrom({
-        title: `${moduleInfo.nameWithSpace} ${moduleInfo.version} - Mendix ${moduleInfo.minimumMXVersion}`,
-        body: moduleChangelogs,
-        tag: process.env.TAG,
-        mpkOutput
-    });
-}
+async function createGithubReleaseFrom(params) {
+    const { body, title, tag, filesToRelease = "", target, isDraft = false, repo } = params;
 
-async function createGithubReleaseFrom({ title, body, tag, mpkOutput, isDraft = false }) {
     const command = [
         `gh release create`,
         `--title '${title}'`,
         `--notes '${body}'`,
         isDraft ? "--draft" : "",
+        repo ? `-R '${repo}'` : "",
         `'${tag}'`,
-        `'${mpkOutput}'`
+        `--target '${target}'`,
+        filesToRelease ? `'${filesToRelease}'` : ""
     ]
         .filter(str => str !== "")
         .join(" ");
@@ -340,7 +336,6 @@ module.exports = {
     updateChangelogs,
     cloneRepo,
     createMPK,
-    createGithubRelease,
     createGithubReleaseFrom,
     writeToWidgetChangelogs,
     zip,
