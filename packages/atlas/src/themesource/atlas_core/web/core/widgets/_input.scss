@@ -107,6 +107,11 @@
         justify-content: space-between;
     }
 
+    // Text box widget should stay in the middle horizontally
+    .form-group.mx-textbox .form-control {
+        align-self: center;
+    }
+
     // Not editable textarea, textarea will be rendered as a label
     .mx-textarea .control-label {
         height: auto;
@@ -197,7 +202,7 @@
     .page-form-horizontal {
         @extend .form-horizontal;
         @media not screen and (max-width: $screen-sm-max) {
-            .form-group.no-columns:not(.label-after){
+            .form-group.no-columns:not(.label-after) {
                 // overwrite default no-columns behavior when
                 // page form orientation is set to horizontal
                 flex-direction: row;
@@ -206,7 +211,7 @@
 
         $label-breakpoints: sm, md, lg, xl, xxl;
         @each $bp in $label-breakpoints {
-            &:not([class*="form-label-width-"]){
+            &:not([class*="form-label-width-"]) {
                 // default label width 3 if none specified
                 .form-group > label {
                     @extend .col-#{$bp}-3;
@@ -240,10 +245,10 @@
 
     // Targets only webkit iOS devices
     .dj_webkit.dj_ios .form-control {
-        transform: translate3d(0,0,0);
-        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
 
-        &.widget-dropdown-filter{
+        &.widget-dropdown-filter {
             transform: inherit;
             -webkit-transform: inherit;
         }
