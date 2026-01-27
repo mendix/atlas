@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   We have fixed an issue where switch widget screen reader only element still visible to user.
+
 ## [3.12.5] Atlas Core - 2024-11-1
 
 ### Added
