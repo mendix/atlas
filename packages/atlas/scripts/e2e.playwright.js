@@ -14,8 +14,6 @@ main().catch(e => {
 });
 
 async function main() {
-    const mendixVersion = await getMendixVersion();
-
     try {
         execSync("docker info");
     } catch (e) {
@@ -24,6 +22,7 @@ async function main() {
 
     const packageConf = JSON.parse(await readFile("package.json"));
     const widgetVersion = packageConf?.version;
+    const mendixVersion = packageConf?.testProject?.mxVersion;
 
     // Downloading test project
     if (process.argv.includes("--update-test-project") || ls(`tests/testProject/*.mpr`).length === 0) {
@@ -79,7 +78,7 @@ async function main() {
         execSync(
             `docker run --name mxbuild -t -v ${process.cwd()}:/source ` +
                 `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mxbuild ` +
-                `-o /tmp/automation.mda /source/${projectFile}"`,
+                `--modern-web-client --ignore-unsupported-widgets -o /tmp/automation.mda /source/${projectFile}"`,
             { stdio: "inherit" }
         );
         console.log("Bundle created and all the widgets are updated");
@@ -158,7 +157,7 @@ async function copyGitHubTestProject() {
             );
         }
         mkdir("-p", "tests/testProject");
-        await promisify(exec)(`unzip -o ${testArchivePath} -d tests/testProject`);
+        execSync(`unzip -o ${testArchivePath} -d tests/testProject`, { stdio: "inherit" });
         if (process.argv.includes("--remove-atlas-files")) {
             rm(
                 "-rf",

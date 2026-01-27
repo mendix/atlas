@@ -58,6 +58,7 @@ async function getPackageInfo(path) {
             url: repository?.url,
             testProjectUrl: testProject?.githubUrl,
             testProjectBranchName: testProject?.branchName,
+            testProjectMxVersion: testProject?.mxVersion,
             changelogPath: `${path}/CHANGELOG.md`
         };
     } catch (error) {
@@ -80,12 +81,21 @@ async function createModuleMpkInDocker(sourceDir, moduleName, mendixVersion, exc
 
     // Build testProject via mxbuild
     const projectFile = basename((await getFiles(sourceDir, [`.mpr`]))[0]);
-    await execShellCommand(
-        `docker run -t -v ${sourceDir}:/source ` +
-            `--rm mxbuild:${mendixVersion} bash -c "mx update-widgets --loose-version-check /source/${projectFile} && mono /tmp/mxbuild/modeler/mxutil.exe create-module-package ${
-                excludeFilesRegExp ? `--exclude-files='${excludeFilesRegExp}'` : ""
-            } /source/${projectFile} ${moduleName}"`
-    );
+
+    const args = [
+        // update widgets
+        "mx",
+        "update-widgets",
+        "--loose-version-check",
+        `/source/${projectFile}`,
+        "&&",
+        "/tmp/mxbuild/modeler/mx create-module-package",
+        excludeFilesRegExp ? `--exclude-files='${excludeFilesRegExp}'` : "",
+        `/source/${projectFile}`,
+        moduleName
+    ].join(" ");
+
+    await execShellCommand(`docker run -v ${sourceDir}:/source --rm mxbuild:${mendixVersion} bash -c "${args}"`);
     console.log(`Module ${moduleName} created successfully.`);
 }
 
@@ -169,6 +179,8 @@ async function commitAndCreatePullRequest(moduleInfo) {
         `gh pr create --title "${moduleInfo.nameWithSpace}: Updating changelogs" --body "This is an automated PR." --base main --head ${changelogBranchName}`
     );
     console.log("Created PR for changelog updates.");
+
+    return changelogBranchName;
 }
 
 async function updateWidgetChangelogs(widgetsFolders) {
@@ -232,30 +244,24 @@ async function createMPK(tmpFolder, moduleInfo, excludeFilesRegExp) {
     await createModuleMpkInDocker(
         tmpFolder,
         moduleInfo.moduleNameInModeler,
-        moduleInfo.minimumMXVersion,
+        moduleInfo.testProjectMxVersion,
         excludeFilesRegExp
     );
     return (await getFiles(tmpFolder, [`.mpk`]))[0];
 }
 
-async function createGithubRelease(moduleInfo, moduleChangelogs, mpkOutput) {
-    console.log(`Creating Github release for module ${moduleInfo.nameWithSpace}`);
-    await createGithubReleaseFrom({
-        title: `${moduleInfo.nameWithSpace} ${moduleInfo.version} - Mendix ${moduleInfo.minimumMXVersion}`,
-        body: moduleChangelogs,
-        tag: process.env.TAG,
-        mpkOutput
-    });
-}
+async function createGithubReleaseFrom(params) {
+    const { body, title, tag, filesToRelease = "", target, isDraft = false, repo } = params;
 
-async function createGithubReleaseFrom({ title, body, tag, mpkOutput, isDraft = false }) {
     const command = [
         `gh release create`,
         `--title '${title}'`,
         `--notes '${body}'`,
         isDraft ? "--draft" : "",
+        repo ? `-R '${repo}'` : "",
         `'${tag}'`,
-        `'${mpkOutput}'`
+        `--target '${target}'`,
+        filesToRelease ? `'${filesToRelease}'` : ""
     ]
         .filter(str => str !== "")
         .join(" ");
@@ -268,7 +274,8 @@ function zip(src, fileName) {
 }
 
 function unzip(src, dest) {
-    return execShellCommand(`unzip "${src}" -d "${dest}"`);
+    console.log(`unzip ${src} to ${dest}`);
+    return execShellCommand(`unzip -qq "${src}" -d "${dest}"`);
 }
 
 // Unzip the module, copy the widget and update package.xml
@@ -329,7 +336,6 @@ module.exports = {
     updateChangelogs,
     cloneRepo,
     createMPK,
-    createGithubRelease,
     createGithubReleaseFrom,
     writeToWidgetChangelogs,
     zip,

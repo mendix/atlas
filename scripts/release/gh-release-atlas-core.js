@@ -46,7 +46,7 @@ module.exports = async function createAtlasCoreModule() {
             `No unreleased changes found in the CHANGELOG.md for ${moduleInfo.nameWithSpace} ${moduleInfo.version}.`
         );
     }
-    await commitAndCreatePullRequest(moduleInfo);
+    const targetBranchName = await commitAndCreatePullRequest(moduleInfo);
     await updateTestProject(moduleInfo, testProject, tmp);
 
     const mpkOutput = await createMPK(testProject, moduleInfo, regex.excludeFiles);
@@ -57,7 +57,8 @@ module.exports = async function createAtlasCoreModule() {
         title: `${moduleInfo.nameWithSpace} - Marketplace Release v${moduleInfo.version}`,
         body: moduleChangelogs.replace(/"/g, "'"),
         tag: `${moduleFolderNameInRepo}-v${moduleInfo.version}`,
-        mpkOutput,
+        target: targetBranchName,
+        filesToRelease: mpkOutput,
         isDraft: true
     });
 
