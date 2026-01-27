@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jdk-11.0.19_7-slim
+FROM eclipse-temurin:21-jdk-jammy
 
 ARG MENDIX_VERSION
 
@@ -43,3 +43,4 @@ RUN apt-get update -qqy && \
     echo "#!/bin/bash -x" >/bin/m2ee && \
     echo "python3 /var/opt/m2ee/m2ee.py \$@" >>/bin/m2ee && \
     chmod +x /bin/m2ee
+
