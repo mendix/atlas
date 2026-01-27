@@ -10,7 +10,7 @@ const {
     githubAuthentication,
     cloneRepo,
     createMPK,
-    createGithubRelease,
+    createGithubReleaseFrom,
     regex
 } = require("./module-automation/commons");
 
@@ -29,12 +29,19 @@ module.exports = async function createAtlasNativeContentModule() {
     };
     await githubAuthentication(moduleInfo);
     const moduleChangelogs = await updateModuleChangelogs(moduleInfo);
-    await commitAndCreatePullRequest(moduleInfo);
+    const targetBranchName = await commitAndCreatePullRequest(moduleInfo);
     await updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder);
     const mpkOutput = await createMPK(tmpFolder, moduleInfo, regex.excludeFiles);
     console.log(`Change owner and group after module export...`);
     execSync(`sudo chown -R runner:docker ${tmpFolder}`, { stdio: "inherit" });
-    await createGithubRelease(moduleInfo, moduleChangelogs, mpkOutput);
+    console.log(`Creating Github release for module ${moduleInfo.nameWithSpace}`);
+    await createGithubReleaseFrom({
+        title: `${moduleInfo.nameWithSpace} ${moduleInfo.version} - Mendix ${moduleInfo.minimumMXVersion}`,
+        body: moduleChangelogs,
+        target: targetBranchName,
+        tag: process.env.TAG,
+        filesToRelease: mpkOutput
+    });
     await execShellCommand(`rm -rf ${tmpFolder}`);
     console.log("Done.");
 };
@@ -49,7 +56,7 @@ async function updateNativeComponentsTestProjectWithAtlas(moduleInfo, tmpFolder)
     const tmpFolderNativeStyles = join(tmpFolder, `themesource/${moduleInfo.moduleFolderNameInModeler}`);
 
     console.log("Updating NativeComponentsTestProject..");
-    await cloneRepo(moduleInfo.testProjectUrl, testProject, moduleInfo.testProjectBranchName);
+    await cloneRepo(moduleInfo.testProjectUrl, tmpFolder, moduleInfo.testProjectBranchName);
 
     console.log("Copying Native styling files..");
     await Promise.all([
