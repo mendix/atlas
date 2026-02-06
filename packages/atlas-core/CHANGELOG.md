@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   We fixed an issue with label alignment in Check Box widgets.
 -   We fixed an issue Text Box widget being stretched when corresponding label is multiline.
+-   We fixed an issue where circular references in legacy-variables() would cause undefined variables, in projects not using CSS custom properties yet.
 
 ## [4.3.3] Atlas Core - 2026-1-30
 
