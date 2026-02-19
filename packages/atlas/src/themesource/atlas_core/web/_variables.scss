@@ -65,28 +65,14 @@ $color-value-map: (
     }
 }
 
-/// Generates a linear gradient with direction and computed color shades
-/// @param {string} $color-name - Base color name ("brand-primary", "gray", etc.)
-/// @param {number} $shade-1 - First shade (50, 100, 200, ..., 900)
-/// @param {number} $shade-2 - Second shade (50, 100, 200, ..., 900)
-/// @param {string} $direction - CSS gradient direction (e.g., "to bottom", "45deg", "to right") [default: "to bottom"]
-/// @return {gradient} - Linear gradient string
-@function get-gradient($color-name, $shade-1, $shade-2, $direction: "to bottom") {
-    @if $use-css-variables {
-        @return linear-gradient(#{$direction}, var(--#{$color-name}-#{$shade-1}), var(--#{$color-name}-#{$shade-2}));
-    } @else {
-        @return linear-gradient(
-            #{$direction},
-            get-color-value($color-name, $shade-1),
-            get-color-value($color-name, $shade-2)
-        );
-    }
-}
-
 $brand-logo: false !default;
 $brand-logo-height: 24px !default;
 $brand-logo-width: 32px !default;
-$brand-gradient: get-gradient("brand-primary", 900, 700, "to bottom") !default;
+$brand-gradient: linear-gradient(
+    to bottom,
+    get-color-value("brand-primary", 900),
+    get-color-value("brand-primary", 700)
+) !default;
 
 /* Default Font Size & Color */
 $font-size-default: 14px !default;
@@ -106,12 +92,20 @@ $border-width-default: $border-width-thin !default;
 $border-default: $border-width-default solid $border-color-default !default;
 
 /* Topbar */
-$topbar-bg: get-gradient("brand-primary", 500, 600, "to bottom") !default;
+$topbar-bg: linear-gradient(
+    to bottom,
+    get-color-value("brand-primary", 500),
+    get-color-value("brand-primary", 600)
+) !default;
 $topbar-minimalheight: 48px !default;
 $topbar-border-color: $border-color-default !default;
 
 /* Sidebar */
-$sidebar-bg: get-gradient("brand-primary", 600, 700, "to bottom") !default;
+$sidebar-bg: linear-gradient(
+    to bottom,
+    get-color-value("brand-primary", 600),
+    get-color-value("brand-primary", 700)
+) !default;
 
 /* Topbar mobile */
 $m-header-height: 45px !default;
