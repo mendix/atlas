@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.0] Atlas Web Content - 2026-2-23
+
 ### Changed
 
 -   We remove Maps widget from the module due to dependencies license issues. Maps widget will be restored once the new development completed.
