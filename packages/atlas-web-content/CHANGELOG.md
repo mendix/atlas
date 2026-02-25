@@ -12,8 +12,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 -   We remove Maps widget from the module due to dependencies license issues. Maps widget will be restored once the new development completed.
 
--   We updated Slider, Range Slider, Carousel, HTML Element, and Rich Text widget version to the latest.
-
 ## [4.2.0] Atlas Web Content - 2025-10-13
 
 ### Breaking changes
