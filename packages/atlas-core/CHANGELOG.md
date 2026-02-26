@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.4] Atlas Core - 2026-2-25
+
 ### Fixed
 
 -   We fixed an issue with label alignment in Check Box widgets.
--   We fixed an issue Text Box widget being stretched when corresponding label is multiline. 
+-   We fixed an issue Text Box widget being stretched when corresponding label is multiline.
 
 ## [4.3.3] Atlas Core - 2026-1-30
 
