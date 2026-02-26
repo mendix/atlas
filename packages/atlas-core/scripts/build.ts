@@ -87,9 +87,17 @@ async function copyStylesAndAssets(watchMode: boolean, destination: string): Pro
     const watchArg = watchMode ? "--watch" : "";
 
     try {
+        // create version file
         const versionFile = join(destination, "themesource", "atlas_core", ".version");
         echo("version:");
         echo(packageFile.version).to(versionFile);
+
+        // create license file
+        const licenseSource = join(repoRoot, "LICENSE");
+        const licenseDestination = join(destination, "License.txt");
+        cp(licenseSource, licenseDestination);
+        console.info(`Copied LICENSE to ${licenseDestination}`);
+
         await concurrently(
             [
                 {
