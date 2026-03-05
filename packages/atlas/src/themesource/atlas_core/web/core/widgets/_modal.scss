@@ -103,6 +103,7 @@
         }
 
         .modal-content {
+            background-color: var(--bg-color-secondary, $bg-color-secondary);
             input {
                 height: 56px;
                 padding: 12px 12px;
@@ -127,7 +128,7 @@
         }
 
         h2, h4 {
-            color: #aaaaaa;
+            color: var(--font-color-detail, $font-color-detail);
             font-size: 20px;
             font-weight: var(--font-weight-bold);
         }
