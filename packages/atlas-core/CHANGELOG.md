@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - We fixed an issue where the scroll container did not stretch to the full height in popup layouts.
+- We fixed an issue with Text Box widget in vertical form orientation.
 
 ## [4.3.4] Atlas Core - 2026-2-25
 
