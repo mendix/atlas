@@ -42,6 +42,10 @@
         flex-direction: column;
     }
 
+    .mx-window-body:has(> .mx-scrollcontainer:only-child) {
+        display: flex;
+    }
+
     .mx-scrollcontainer {
         flex: 1 0 0;
         display: flex;
