@@ -108,7 +108,7 @@
     }
 
     // Text box widget should stay in the middle horizontally
-    .form-group.mx-textbox .form-control {
+    .form-group.mx-textbox:not(.no-columns) .form-control {
         align-self: center;
     }
 
