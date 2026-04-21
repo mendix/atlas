@@ -8,9 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
-- We fixed an issue where the scroll container did not stretch to the full height in popup layouts.
-- We fixed an issue with Text Box widget in vertical form orientation.
-- We fixed an issue with logo overriding using $brand-logo variable not working correctly. 
+-   We fixed an issue with logo overriding using $brand-logo variable not working correctly. 
+
+## [4.3.5] Atlas Core - 2026-3-26
+
+### Fixed
+
+-   We fixed an issue where the scroll container did not stretch to the full height in popup layouts.
+-   We fixed an issue with Text Box widget in vertical form orientation.
+-   We fixed an issue where circular references in legacy-variables() would cause undefined variables, in projects not using CSS custom properties yet.
 
 ## [4.3.4] Atlas Core - 2026-2-25
 
