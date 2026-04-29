@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.6] Atlas Core - 2026-4-23
+
 ### Fixed
 
--   We fixed an issue with logo overriding using $brand-logo variable not working correctly. 
+-   We fixed an issue with logo overriding using $brand-logo variable not working correctly.
 
 ## [4.3.5] Atlas Core - 2026-3-26
 

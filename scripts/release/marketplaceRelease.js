@@ -3,10 +3,9 @@ const { join } = require("path");
 
 const config = {
     appStoreUrl: "https://appstore.home.mendix.com/rest/packagesapi/v2",
-    contributorUrl: "https://contributor.mendixcloud.com/apis/v1",
-    // This one, for some reasons, needs to be added as OpenID header to contributor request.
-    // The open id  value (a39025a8-55b8-4532-bc5d-4e74901d11f9) is taken from widgets@mendix.com
-    // account and could be found at Profile -> Advanced -> Personal Info -> View My Data -> Open id
+    contributorUrl: "https://contributor.mendix.com/apis/v1",
+    // OpenID header needs to be added to contributor request.
+    // Could be found at Profile -> Advanced -> Personal Info -> View My Data -> Open id
     // For each env (accp, test, prod) we have different Open Ids.
     // If this header is missing API will return 401.
     openIdUrl: process.env.OPENID_URL
