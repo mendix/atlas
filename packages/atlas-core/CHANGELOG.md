@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+-   We removed legacy styling for switch widget below version 3.0.
+
+### Fixed
+
+-   We added scss variables fallback for css variables styling in modal-dialog.
+
 ## [4.3.6] Atlas Core - 2026-4-23
 
 ### Fixed
