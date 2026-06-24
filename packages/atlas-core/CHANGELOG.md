@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.3.7] Atlas Core - 2026-6-24
+
 ### Changed
 
 -   We removed legacy styling for switch widget below version 3.0.
