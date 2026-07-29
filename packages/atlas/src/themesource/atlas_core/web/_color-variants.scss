@@ -29,31 +29,38 @@ $lightness-steps: (
     900: -60%
 );
 
-// generate corresponding CSS variables
-:root {
-    @each $name, $bg-class, $text-class, $base-color in $brand-colors {
-        @each $shade, $adjustment in $lightness-steps {
-            --#{$name}-#{$shade}: #{adjust-color-lightness($base-color, $adjustment)};
-        }
+// Guard against duplicate :root emission when this file is imported repeatedly.
+$atlas-color-variants-root-emitted: false !default;
 
-        @if ($bg-class != "") {
-            .#{$bg-class} {
-                @each $shade, $adjustment in $lightness-steps {
-                    &.shade-#{$shade} {
-                        background-color: adjust-color-lightness($base-color, $adjustment);
+// generate corresponding CSS variables
+@if $atlas-color-variants-root-emitted == false {
+    :root {
+        @each $name, $bg-class, $text-class, $base-color in $brand-colors {
+            @each $shade, $adjustment in $lightness-steps {
+                --#{$name}-#{$shade}: #{adjust-color-lightness($base-color, $adjustment)};
+            }
+
+            @if ($bg-class != "") {
+                .#{$bg-class} {
+                    @each $shade, $adjustment in $lightness-steps {
+                        &.shade-#{$shade} {
+                            background-color: adjust-color-lightness($base-color, $adjustment);
+                        }
                     }
                 }
             }
-        }
 
-        @if ($text-class != "") {
-            .#{$text-class} {
-                @each $shade, $adjustment in $lightness-steps {
-                    &.shade-#{$shade} {
-                        color: adjust-color-lightness($base-color, $adjustment);
+            @if ($text-class != "") {
+                .#{$text-class} {
+                    @each $shade, $adjustment in $lightness-steps {
+                        &.shade-#{$shade} {
+                            color: adjust-color-lightness($base-color, $adjustment);
+                        }
                     }
                 }
             }
         }
     }
+
+    $atlas-color-variants-root-emitted: true !global;
 }
