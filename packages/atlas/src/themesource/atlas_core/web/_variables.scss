@@ -4,7 +4,7 @@ This mapping file provides defaults for sass variables to provide backwards comp
 Do not change this file because it is core styling. Customizing core files will make updating Atlas much more difficult in the future.
 */
 @import "breakpoints";
-@import "color-variants";
+@import "color-variants-defaults";
 
 $use-css-variables: false !default;
 
@@ -45,7 +45,7 @@ $color-value-map: (
         @if $use-css-variables {
             @return var(--#{$color-name}-#{$shade});
         } @else {
-            // Get the adjustment percentage from $lightness-steps (imported from _color-variants.scss)
+            // Get the adjustment percentage from $lightness-steps (imported from _color-variants-defaults.scss)
             $adjustment: map-get($lightness-steps, $shade);
             @if $adjustment == null {
                 @error "Shade '#{$shade}' not found in $lightness-steps. Available shades: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900";
