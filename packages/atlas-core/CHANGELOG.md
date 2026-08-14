@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.4.0] Atlas Core - 2026-8-14
+
 ### Fixed
 
--   We fixed an issue where the color variant declarations were included three times in the Atlas Core stylesheet and once more in the app theme stylesheet, reducing their combined size by about 50 KB.
+-   We fixed an issue where the color variants were declared multiple times due to repeated imports of the Atlas Core variables.
 
 ## [4.3.8] Atlas Core - 2026-8-6
 
