@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.4.0] Atlas Core - 2026-8-14
+
 ### Fixed
 
 -   We fixed an issue where the color variants were declared multiple times due to repeated imports of the Atlas Core variables.
