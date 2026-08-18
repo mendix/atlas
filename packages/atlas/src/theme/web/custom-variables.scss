@@ -597,7 +597,3 @@ $btn-bordered: false; // Default value false, set to true if you want this effec
 // $screen-lg: 992px;
 // $screen-xl: 1200px;
 // $screen-xxl: 1400px;
-
-// Ensures backwards compatibility. Set to false if the theme variables is not using CSS variables (e.g. --brand-primary).
-$use-css-variables: true;
-@import "../../themesource/atlas_core/web/variables";

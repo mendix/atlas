@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking change
+
+-   We removed the legacy SASS-variables-to-CSS compatibility layer (`_variables.scss`, `_css-variables-mappings.scss`, and the `$use-css-variables` toggle). Styling is now driven exclusively by CSS custom properties defined in `themes/_theme-default.scss`.
+    Projects that still override SASS variables (e.g. `$brand-primary: ...`) in their own `Styling/web/custom-variables.scss` must switch to overriding the corresponding CSS variable instead (e.g. `--brand-primary: ...`), otherwise the SCSS build will fail with an undefined variable error.
+
 ## [4.3.7] Atlas Core - 2026-6-24
 
 ### Changed

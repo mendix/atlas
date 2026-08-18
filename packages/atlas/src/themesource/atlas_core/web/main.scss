@@ -5,13 +5,6 @@
 @import "themes/theme-default";
 @import "color-variants";
 @import "../../../theme/web/custom-variables";
-@import "variables"; // support for legacy modules using sass variables
-
-// support for legacy themes using sass variables
-@import "css-variables-mappings";
-@if not $use-css-variables {
-    @include legacy-variables();
-}
 
 // Font Family Import
 @if $font-family-import != false {

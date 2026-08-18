@@ -10,10 +10,10 @@ Changes in the module should be present in the `CHANGELOG.md` file.
 
 ### Highlight
 
--   Atlas 4 will fully utilize css variables instead of SASS variables. All the available css variables can be seen at `Atlas-core/Styling/web/themes/_theme-default.scss`.
--   Currently, atlas 4 is released under compatibility mode. To fully ignore SASS variables mapping in styling, user can add `$use-css-variables: true;` inside their `Styling/web/custom-variables.scss`.
--   For backward compatibility, we maintain `_variables-css-mappings.scss` file which contains conversion from SASS to CSS variables.
-    This file is now renamed into `_css-variables-mappings.scss` with a few minor changes.
+-   Atlas 4 fully utilizes css variables instead of SASS variables. All the available css variables can be seen at `Atlas-core/Styling/web/themes/_theme-default.scss`.
+-   The SASS-variables compatibility mode has been removed. `_variables.scss` and `_css-variables-mappings.scss` no longer exist, and the `$use-css-variables` toggle is gone.
+    Styling is driven exclusively by CSS custom properties, so projects still overriding SASS variables (e.g. `$brand-primary: ...`) in their own `Styling/web/custom-variables.scss`
+    must switch to overriding the corresponding CSS variable instead (e.g. `--brand-primary: ...`).
 
 ### Debugging and overriding css variables
 
