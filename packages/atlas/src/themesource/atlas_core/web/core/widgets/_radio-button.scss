@@ -68,7 +68,7 @@
             pointer-events: none;
             background-color: var(--form-input-border-focus-color);
         }
-        
+
         &:focus-visible {
             border-radius: 100%;
             @extend .focus-ring !optional;
@@ -108,7 +108,7 @@
         }
 
         & + label {
-            margin-left: var(--form-label-gutter);
+            margin-inline-start: var(--form-label-gutter);
         }
     }
 }
