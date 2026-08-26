@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.5.0] Atlas Core - 2026-8-26
+
 ### Fixed
 
-- We fixed an issue where exclude-bootstrap and exclude-mxui variable creates compile error when set to true
+-   We fixed an issue where exclude-bootstrap and exclude-mxui variable creates compile error when set to true
 
 ## [4.4.0] Atlas Core - 2026-8-14
 
