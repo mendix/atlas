@@ -169,7 +169,7 @@
         div[class*="textBox"] > .control-label,
         div[class*="textArea"] > .control-label,
         div[class*="datePicker"] > .control-label {
-            @extend .form-control-static;
+            @extend .form-control-static !optional;
         }
 
         // Label
@@ -193,14 +193,14 @@
     }
 
     .page-form-vertical {
-        @extend .form-vertical;
+        @extend .form-vertical !optional;
         .form-group:not(.label-after) {
             flex-direction: column;
         }
     }
 
     .page-form-horizontal {
-        @extend .form-horizontal;
+        @extend .form-horizontal !optional;
         @media not screen and (max-width: $screen-sm-max) {
             .form-group.no-columns:not(.label-after) {
                 // overwrite default no-columns behavior when
