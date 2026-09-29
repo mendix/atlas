@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.21.0] Atlas Core - 2026-8-19
+
+### Changed
+
+-   We changed account current user retrieval on language selector from administration module to system user.
+
 ### Fixed
 
 -   We fixed an issue with label alignment in Check Box widgets.
