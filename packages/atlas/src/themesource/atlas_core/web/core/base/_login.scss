@@ -124,36 +124,6 @@
         }
     }
 
-    // Divider - only on login-with-mendixsso-button.html
-    .loginpage-alternativelabel {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        margin: 25px 0px;
-
-        hr {
-            flex: 1;
-            margin: 20px 0 20px 10px;
-            border: 0;
-            border-color: #d8d8d8;
-            border-top: 1px solid #eeeeee;
-        }
-    }
-
-    .loginpage-signin {
-        color: #555555;
-    }
-
-    .loginpage-form .btn {
-        img {
-            vertical-align: middle;
-            top: -1px;
-            position: relative;
-        }
-    }
-
     // Show only on wide screens
     @media screen and (min-width: $screen-xl) {
         .loginpage-left {
