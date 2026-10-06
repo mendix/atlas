@@ -1,4 +1,74 @@
 {
+    "FormBase": [
+        {
+            "category": "Form",
+            "name": "Form orientation",
+            "description": "Determines the form orientation of input fields on the page.",
+            "type": "ToggleButtonGroup",
+            "options": [
+                {
+                    "name": "Vertical",
+                    "class": "page-form-vertical"
+                },
+                {
+                    "name": "Horizontal",
+                    "class": "page-form-horizontal"
+                }
+            ]
+        },
+        {
+            "category": "Form",
+            "name": "Label width",
+            "description": "Determines the width of the input fields on the page.",
+            "type": "Dropdown",
+            "options": [
+                {
+                    "name": "1",
+                    "class": "form-label-width-1"
+                },
+                {
+                    "name": "2",
+                    "class": "form-label-width-2"
+                },
+                {
+                    "name": "3",
+                    "class": "form-label-width-3"
+                },
+                {
+                    "name": "4",
+                    "class": "form-label-width-4"
+                },
+                {
+                    "name": "5",
+                    "class": "form-label-width-5"
+                },
+                {
+                    "name": "6",
+                    "class": "form-label-width-6"
+                },
+                {
+                    "name": "7",
+                    "class": "form-label-width-7"
+                },
+                {
+                    "name": "8",
+                    "class": "form-label-width-8"
+                },
+                {
+                    "name": "9",
+                    "class": "form-label-width-9"
+                },
+                {
+                    "name": "10",
+                    "class": "form-label-width-10"
+                },
+                {
+                    "name": "11",
+                    "class": "form-label-width-11"
+                }
+            ]
+        }
+    ],
     "Widget": [
         {
             "name": "Spacing",
