@@ -208,7 +208,8 @@
     ],
     "DivContainer": [
         {
-            "name": "Align content",
+            "name": "Align content (deprecated)",
+            "oldNames": ["Align content"],
             "type": "Dropdown",
             "description": "Align content of this element left, right or center it. Align elements inside the container as a row or as a column.",
             "options": [
@@ -304,11 +305,13 @@
             "description": "Apply a shade to your background color",
             "options": [
                 {
-                    "name": "Light",
+                    "name": "200",
+                    "oldNames": ["Light"],
                     "class": "background-light"
                 },
                 {
-                    "name": "Dark",
+                    "name": "600",
+                    "oldNames": ["Dark"],
                     "class": "background-dark"
                 }
             ]
@@ -815,9 +818,9 @@
                     "preview": "--brand-primary"
                 },
                 {
-                    "name": "Brand Secondary",
-                    "oldNames": ["Default", "Brand Default"],
-                    "class": "text-secondary",
+                    "name": "Default",
+                    "oldNames": ["Default", "Brand Default", "Brand Secondary"],
+                    "class": "text-default",
                     "preview": "--font-color-default"
                 },
                 {
@@ -839,7 +842,8 @@
                     "preview": "--brand-danger"
                 },
                 {
-                    "name": "White",
+                    "name": "Contrast",
+                    "oldNames": ["White"],
                     "class": "text-white",
                     "preview": "white"
                 }
