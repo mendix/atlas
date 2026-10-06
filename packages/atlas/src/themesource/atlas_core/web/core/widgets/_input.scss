@@ -189,6 +189,41 @@
         }
     }
 
+    .page-form-vertical {
+        @extend .form-vertical !optional;
+        .form-group:not(.label-after) {
+            flex-direction: column;
+        }
+    }
+
+    .page-form-horizontal {
+        @extend .form-horizontal !optional;
+        @media not screen and (max-width: $screen-sm-max) {
+            .form-group.no-columns:not(.label-after) {
+                // overwrite default no-columns behavior when
+                // page form orientation is set to horizontal
+                flex-direction: row;
+            }
+        }
+
+        $label-breakpoints: sm, md, lg, xl;
+        @each $bp in $label-breakpoints {
+            &:not([class*="form-label-width-"]) {
+                // default label width 3 if none specified
+                .form-group > label {
+                    @extend .col-#{$bp}-3;
+                }
+            }
+            @for $i from 1 through 11 {
+                &.form-label-width-#{$i} {
+                    .form-group > label {
+                        @extend .col-#{$bp}-#{$i};
+                    }
+                }
+            }
+        }
+    }
+
     .form-group.label-after {
         .form-control-static {
             flex: unset;
