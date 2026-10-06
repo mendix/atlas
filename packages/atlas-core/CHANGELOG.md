@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+-   We added the Form orientation and Label width design properties on page level, to stay compatible with modules that are built with Atlas Core 4.
+
+### Changed
+
+-   We renamed some design properties to match their Atlas Core 4 names, so modules built with Atlas Core 4 can be used in apps on Atlas Core 3. Existing values are migrated automatically:
+    -   Container: "Align content" is now "Align content (deprecated)".
+    -   Container: the Shade options "Light" and "Dark" are now "200" and "600".
+    -   Text: the Color options "Brand Secondary" and "White" are now "Default" and "Contrast".
+
 ## [3.21.0] Atlas Core - 2026-8-19
 
 ### Changed
