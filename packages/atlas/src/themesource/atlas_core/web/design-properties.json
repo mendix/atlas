@@ -278,8 +278,8 @@
     ],
     "DivContainer": [
         {
-            "name": "Align content (deprecated)",
-            "oldNames": ["Align content"],
+            "name": "Align content",
+            "oldNames": ["Align content (deprecated)"],
             "type": "Dropdown",
             "description": "Align content of this element left, right or center it. Align elements inside the container as a row or as a column.",
             "options": [
