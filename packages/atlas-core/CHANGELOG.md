@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [3.22.0] Atlas Core - 2026-10-6
+
 ### Added
 
 -   We added the Form orientation and Label width design properties on page level, to stay compatible with modules that are built with Atlas Core 4.
