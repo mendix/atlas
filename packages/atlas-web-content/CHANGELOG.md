@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.4.0] Atlas Web Content - 2026-9-29
+
+### Changed
+
+-   We updated widgets versions.
+
 ## [4.3.0] Atlas Web Content - 2026-2-23
 
 ### Changed
