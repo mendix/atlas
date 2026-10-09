@@ -121,6 +121,10 @@
         flex-basis: auto;
     }
 
+    .mx-textarea textarea.form-control {
+        min-height: var(--suggested-height);
+    }
+
     .mx-compound-control {
         display: flex;
         flex: 1;
