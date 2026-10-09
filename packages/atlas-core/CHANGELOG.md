@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.5.1] Atlas Core - 2026-10-9
+
+### Changed
+
+-   We improved the styling of the Text Area widget to make its height easier to customize.
+
 ## [4.5.0] Atlas Core - 2026-9-3
 
 ### Fixed
