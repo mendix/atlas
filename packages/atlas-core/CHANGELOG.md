@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.6.0] Atlas Core - 2026-10-12
+
 ### Breaking change
 
 -   We changed the default theme to Atlas Neutral. Apps that do not set the following in `theme/web/custom-variables.scss` get new defaults:
