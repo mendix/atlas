@@ -1,7 +1,7 @@
 {
   "name": "atlas-core",
   "moduleName": "Atlas Core",
-  "version": "5.0.beta-1",
+  "version": "4.6.0",
   "license": "Apache-2.0",
   "copyright": "© Mendix Technology BV 2026. All rights reserved.",
   "repository": {
@@ -9,13 +9,13 @@
     "url": "https://github.com/mendix/atlas.git"
   },
   "marketplace": {
-    "minimumMXVersion": "11.12.0",
+    "minimumMXVersion": "11.0.0.73100",
     "marketplaceId": 117187
   },
   "testProject": {
     "githubUrl": "https://github.com/mendix/Atlas-Design-System",
-    "branchName": "atlas-5",
-    "mxVersion": "11.12.0"
+    "branchName": "main",
+    "mxVersion": "11.0.0.73100"
   },
   "scripts": {
     "build:module": "ts-node ./scripts/build.ts build",
