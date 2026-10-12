@@ -6,6 +6,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Breaking change
+
+-   We changed the default theme to Atlas Neutral. Apps that do not set the following in `theme/web/custom-variables.scss` get new defaults:
+    -   Brand colors: `--brand-primary` is now navy (`#243b53`) instead of blue (`#264ae5`), with quieter success, warning and danger colors.
+    -   Font: `--font-family-base` is now the system font stack instead of Poppins. Poppins is still shipped with Atlas.
+    -   Corners: `--border-radius-s/-m/-l` are now 2 / 4 / 8px instead of 4 / 8 / 12px, and the default is `--border-radius-m`.
+    -   Page, text and border colors are neutral grays and no longer tinted by the brand color.
+    -   Labels and badges are soft (light tint with dark text) instead of solid with white text.
+    -   Buttons, grids and cards: neutral default button, quieter grid hover and selection, cards without shadow and with medium padding.
+    -   `--focus-outline-offset` is now `-2px`, so the focus outline is drawn inside the element.
+    -   `--brand-logo-width` and `--brand-logo-height` are now 32px instead of 36px.
+-   Atlas no longer sets the navigation region variables (`--topbar-bg`, `--topbar-color`, `--topbar-border-color`, `--sidebar-bg`, `--navbar-brand-name`, and the `--navsidebar-*` and `--navtopbar-*` colors) or the shared navigation colors (`--navigation-color*`, `--navigation-sub-color*`, `--navigation-bg*`, `--navigation-sub-bg*`, `--navigation-border-color`). They remain available as overrides, so themes that set them keep their look. Apps that relied on the Atlas defaults get one dark primary bar and one light secondary bar per layout, which no longer follow the brand color.
+-   A theme that sets only the background of a navigation region must also set the text colors of that region, or `--navigation-color`. Otherwise the text uses the secondary bar color in layouts where that region is the secondary bar.
+-   Sidebar navigation items are now full width without rounded corners, and the icon box is 40px instead of 52 x 44px.
+
+### Added
+
+-   We added the `--bar-primary-*` and `--bar-secondary-*` theme variables (`bg`, `bg-hover`, `bg-active`, `color`, `color-hover`, `color-active`, `sub-color`, `title-color`, `border-color`, `edge`) to style the navigation bars by role. Each layout has one primary bar and at most one secondary bar: in Atlas_SideBar the sidebar is primary and the top bar secondary, in Atlas_Default the top bar is primary and the sidebar secondary.
+-   We added a hover highlight for cards with an on-click action, with the new `--card-border-color-hover` and `--card-shadow-hover` variables. The transition is disabled when the user prefers reduced motion.
+-   We added `--navsidebar-label-indent`, `--navsidebar-sub-glyph-size`, `--navsidebar-spacing` and `--navigation-sub-item-padding` to control the alignment of sidebar items.
+-   We added a 2px inset bar on the current page in the sidebar (`--navsidebar-box-shadow-active`).
+-   We added styling for the app logo (`sidebar-brand-logo`) and app name (`sidebar-brand-name`) in the sidebar and top bar. The logo size follows `--brand-logo-width` and `--brand-logo-height`, the name follows the title color of its bar, and long names end in an ellipsis.
+-   We added a default `logo.svg` to the public folder. An app's `theme/web/logo.svg` or a theme module's `public/logo.svg` overrides it.
+-   We added a default chart theme, `com.mendix.charts.json`, with a 10-color palette for charts that have theme folder config loading enabled. An app's `theme/web/com.mendix.charts.json` overrides it.
+
+### Changed
+
+-   We aligned all sidebar labels in one column, including items without an icon, and centered sub-item icons in the icon column of their parent.
+-   We changed the collapsed sidebar so that labels and the app name fade out instead of wrapping, and the fly-out menu no longer indents its items.
+-   We changed the sidebar toggle button to animate only its position, rotation and opacity.
+-   We changed the language selector text to follow the color of the bar it is placed in.
+-   We changed the mobile header to use `--topbar-bg` and `--topbar-color` when set, and the primary bar colors otherwise.
+
+### Fixed
+
+-   We fixed an issue where the active item in the top bar navigation was not styled because the selector never matched.
+-   We fixed an issue where sidebar navigation items did not get their hover style.
+-   We fixed an issue where the secondary top bar background did not fall back to `--navtopbar-bg` when `--navtopbar-bg-secondary` was not set.
+
 ## [4.5.1] Atlas Core - 2026-10-9
 
 ### Changed
