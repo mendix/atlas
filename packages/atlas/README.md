@@ -17,8 +17,6 @@ Mendix Atlas UI is the foundation of making beautiful apps with Mendix. For more
     │   └── web
     │       ├── custom-variables.scss
     │       ├── exclusion-variables.scss
-    │       ├── login-with-mendixsso-automatically.html
-    │       ├── login-with-mendixsso-button.html
     │       ├── login.html
     │       ├── logo.png
     │       ├── main.scss
