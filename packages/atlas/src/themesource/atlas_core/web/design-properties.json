@@ -1,7 +1,6 @@
 {
     "FormBase": [
         {
-            "category": "Form",
             "name": "Form orientation",
             "description": "Determines the form orientation of input fields on the page.",
             "type": "ToggleButtonGroup",
@@ -17,7 +16,6 @@
             ]
         },
         {
-            "category": "Form",
             "name": "Label width",
             "description": "Determines the width of the input fields on the page.",
             "type": "Dropdown",
