@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.6.0] Atlas Core - 2026-10-13
+
 ### Breaking change
 
 -   The default theme is now Atlas Neutral. Apps that set their own values in `theme/web/custom-variables.scss` keep them; everything an app left to Atlas changes:
@@ -81,7 +83,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 --grid-bg-selected: var(--brand-default);
 --grid-bg-selected-hover: var(--brand-default-600);
 --form-input-placeholder-color: var(--gray-600);
---form-input-border-hover-color: color-mix(in srgb, var(--form-input-border-color), var(--form-input-border-focus-color) 50%);
+--form-input-border-hover-color: color-mix(
+    in srgb,
+    var(--form-input-border-color),
+    var(--form-input-border-focus-color) 50%
+);
 --focus-outline-offset: 2px;
 --brand-logo-height: 36px;
 --brand-logo-width: 36px;
