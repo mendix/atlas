@@ -128,11 +128,11 @@ Size target for phases 3 and 4 together: the compiled Atlas Core CSS goes from 6
 
 The same widgets are touched again in phase 7, step 1, where they take over their styling from Atlas. Do both in one pass per widget.
 
-1. Data Widgets: replace `var(--x, $fallback)` with `var(--x, <literal>)` or with widget tokens that default to Atlas tokens. Remove the 3 Sass color functions and the values from `variables.scss`.
+1. Data Widgets: keep `var(--name, $name)` with module-defined `!default` fallbacks. Replace the 3 Sass color functions on overridable names with named literal defaults, and define the four names it borrows from Atlas.
 2. Do the same for `carousel-web`, `timeline-web`, `rich-text-web`, `datagrid-web`, `calendar-web`, `accordion-web`.
-3. Stop importing `theme/web/custom-variables` for values. Keep the import only where a feature switch is needed.
+3. Consequence for Atlas 5: the bridge in `_variables.scss` must keep every Sass name these modules read, each pointing to a CSS variable the default theme defines. Data Widgets hands over its list.
 
-This is a hard dependency for phase 6. Once the Sass names resolve to `var(--x)`, a Sass color function or Sass arithmetic applied to one of them is a compile error. The new widget releases must still work with Atlas 4, including Sass themes: check the minimum Atlas and Mendix versions of each module before removing fallbacks. Data Widgets has to be clean before Atlas 5 is released, and Atlas 5 needs a minimum Data Widgets version in its release notes.
+Tested on 2026-10-13: the Data Widgets theme compiles against a simulated Atlas 5 bridge (all 398 Sass value names set to `var(--name)`). Its color functions sit in `!default` assignments that Sass skips when Atlas already defines the name. One value becomes invalid CSS (`rgba(var(--brand-primary), 0.4)`), and 106 fallbacks become `var(--x, var(--x))`. So Data Widgets is not a compile-time gate for phase 6, but it needs a small fix before Atlas 5. The Feedback module is the real gate: its Sass arithmetic on Atlas names does fail. An OpenSpec change for Data Widgets exists in `web-widgets`: `packages/modules/data-widgets/openspec/changes/css-variables-only-theming`. It also found that Data Widgets supports Mendix 10.24, so on Atlas 3 the Sass fallbacks are what carries an app's brand color. Decided for Data Widgets: the Sass fallbacks stay. A value is `var(--name, $name)`, the module defines `$name` with `!default`, and the host may override it, with a Sass literal on older hosts or with a CSS variable on Atlas 5. The only rule is that no function is applied to such a name: a derived value is its own named default with a literal value. The new widget releases must still work with Atlas 4, including Sass themes: check the minimum Atlas and Mendix versions of each module before removing fallbacks. Atlas 5 still names a minimum Data Widgets version in its release notes.
 
 #### Phase 6: Atlas Core 5.0.0, one mode
 
@@ -215,6 +215,16 @@ Phase 1, items 1 and 2, and the deprecation notice of phase 2.
 - Changed: adopted rules sit behind a new temporary switch until 5.0.0, so projects that already exclude Bootstrap or mxui are not affected.
 - Added: a size target for phases 3 and 4, and a dark theme variant as the test for phase 1.
 - Not taken from Themis: its own `--themis-*` token set, literal fallbacks on every value, layout copies under `.layout-themis`, and duplicated snippets.
+
+2026-10-13, after writing the OpenSpec change for Data Widgets:
+
+- Corrected: Data Widgets compiles against the Atlas 5 bridge. Phase 5 is no longer a compile-time gate for it; the Feedback module still is.
+- Added: Data Widgets supports Mendix 10.24 and Atlas 3, which limits how early its Sass fallbacks can be removed.
+
+2026-10-13, while implementing the Data Widgets change:
+
+- Corrected: Atlas Core styles no Data Widgets. `core/widgets/_pagination.scss` targets the Pagination widget of List View Controls, and the dropdown filter rule in `_input.scss` is a Dojo client leftover. Nothing moves from Atlas to Data Widgets in phase 7.
+- Found and fixed in Data Widgets: Sass variables inside custom properties were emitted as text, so their fallbacks were invalid on hosts without CSS variables. Worth checking in Atlas Core and the other widget packages for the same pattern.
 
 ### Related open points from the 4.6.0 work
 

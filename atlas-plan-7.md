@@ -30,7 +30,7 @@ Classified `core/widgets/`, `core/helpers/`, and `core/widgetscustom/` by the cl
 | Badge Button | `widgets/_badge-button.scss`, `helpers/_badge-button.scss` | 131 | No |
 | Checkbox Radio Selection | `widgets/_checkboxradiobutton.scss` | 21 | Yes, 68 lines |
 | Combo Box | `widgets/_combobox.scss` | 35 | Yes, 463 lines, already on 19 Atlas CSS variables |
-| Pagination | `widgets/_pagination.scss` | 76 | Part of Data Widgets |
+| Pagination (List View Controls) | `widgets/_pagination.scss` | 76 | Not in `web-widgets`. The class `.widget-pagination` is rendered by the Pagination widget of the List View Controls package. It is not the pagination of Data Grid 2 or Gallery, which Data Widgets styles itself (`.pagination-bar`). Owner to be found |
 | Progress Bar | `widgets/_progress-bar.scss`, `helpers/_progress-bar.scss` | 139 | No |
 | Progress Circle | `widgets/_progress-circle.scss`, `helpers/_progress-circle.scss` | 128 | No |
 | Range Slider | `widgets/_range-slider.scss`, `helpers/_range-slider.scss` | 54 | Yes, 20 lines |
@@ -42,7 +42,9 @@ Classified `core/widgets/`, `core/helpers/`, and `core/widgetscustom/` by the cl
 | Barcode Scanner | `widgets/_barcode-scanner.scss` | 61 | Yes, 143 lines |
 | Pop-up Menu | `widgets/_pop-up-menu.scss` | 130 | Yes, 11 lines |
 
-About 1,500 lines in 24 files. One more fragment: `.widget-dropdown-filter` in `widgets/_input.scss` belongs to Data Widgets.
+About 1,500 lines in 24 files.
+
+Not part of this list: Data Widgets. Checked on 2026-10-13 while implementing its OpenSpec change: Atlas Core styles none of its widgets. The one `.widget-dropdown-filter` rule in `widgets/_input.scss` sits under `.dj_webkit.dj_ios`, body classes of the Dojo client, and only cancels another Atlas rule; it goes away with the Dojo rules in phase 4.
 
 Design properties: 12 of the 33 keys in `design-properties.json` are pluggable widget IDs: Badge, Progress Bar, Badge Button, Progress Circle, Switch, Star Rating, Accordion, Image, Slider, Tooltip, Range Slider, Combo Box.
 
@@ -134,3 +136,4 @@ Remove the 24 files, their includes in `main.scss`, the switches, and the 12 key
 | 3 | The old built-in data grid files: dead or needed? | Confirm with the client team, together with the Dojo question of phase 4 |
 | 4 | Generic classes that widgets share with app authors (`.badge`, `.label-*`): stay in Atlas? | Yes |
 | 5 | Who owns the widget work in `web-widgets`? | Open |
+| 6 | Who owns List View Controls, whose Pagination widget Atlas styles? Is it still supported? | Open. If it is not, `widgets/_pagination.scss` is dropped instead of moved |
