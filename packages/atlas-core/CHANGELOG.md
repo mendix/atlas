@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+-   We added styling for the keyboard resize grip and its keyboard hint in resizable popups.
+
 ## [4.5.1] Atlas Core - 2026-10-9
 
 ### Changed

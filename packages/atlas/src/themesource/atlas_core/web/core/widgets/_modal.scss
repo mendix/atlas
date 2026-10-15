@@ -13,7 +13,8 @@
     ========================================================================== */
     .modal-dialog {
         .modal-content {
-            border: var(--border-width-default, $border-width-default) solid var(--modal-header-border-color, $modal-header-border-color);
+            border: var(--border-width-default, $border-width-default) solid
+                var(--modal-header-border-color, $modal-header-border-color);
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             background-color: var(--bg-color-secondary, $bg-color-secondary);
@@ -24,7 +25,8 @@
                 border-radius: 0; // Because of the class .mx-window-active in mxui.css
                 background-color: var(--modal-header-bg, $modal-header-bg);
 
-                h2, h4 {
+                h2,
+                h4 {
                     margin: 0;
                     color: var(--modal-header-color, $modal-header-color);
                     font-size: 16px;
@@ -97,6 +99,93 @@
         padding: 24px;
     }
 
+    // Resize grip of resizable popups. Takes the place of the bottom-right resize handle and can also be operated
+    // with the keyboard.
+    $resizer-grip-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Ccircle cx='10' cy='10' r='1.1'/%3E%3Ccircle cx='10' cy='6' r='1.1'/%3E%3Ccircle cx='6' cy='10' r='1.1'/%3E%3Ccircle cx='10' cy='2' r='1.1'/%3E%3Ccircle cx='6' cy='6' r='1.1'/%3E%3Ccircle cx='2' cy='10' r='1.1'/%3E%3C/svg%3E");
+
+    .mx-resizer.mx-resizer-grip {
+        right: 2px;
+        bottom: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: var(--border-radius-default, $border-radius-default);
+        color: var(--font-color-detail, $font-color-detail);
+        cursor: nwse-resize;
+        touch-action: none;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            background-color: currentColor;
+            -webkit-mask: $resizer-grip-icon center / contain no-repeat;
+            mask: $resizer-grip-icon center / contain no-repeat;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: var(--brand-primary, $brand-primary);
+        }
+    }
+
+    // Keyboard hint shown below the popup while the resize grip is focused or hovered
+    .mx-resizer-hint {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 50%;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 8px 12px;
+        align-items: center;
+        width: max-content;
+        max-width: calc(100vw - 16px);
+        padding: 8px 12px;
+        transform: translateX(-50%);
+        border: var(--border-width-default, $border-width-default) solid
+            var(--border-color-default, $border-color-default);
+        border-radius: var(--border-radius-default, $border-radius-default);
+        background-color: var(--bg-color, $bg-color);
+        color: var(--font-color-default, $font-color-default);
+        font-size: var(--font-size-small, $font-size-small);
+        pointer-events: none;
+
+        &[hidden] {
+            display: none;
+        }
+
+        kbd {
+            min-width: 16px;
+            padding: 2px 6px;
+            border: 1px solid var(--border-color-default, $border-color-default);
+            border-bottom-width: 2px;
+            border-radius: 4px;
+            background-color: var(--bg-color-secondary, $bg-color-secondary);
+            box-shadow: none;
+            color: var(--font-color-default, $font-color-default);
+            font-family: ui-monospace, Menlo, monospace;
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+
+    .mx-resizer-hint-item {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .mx-resizer-hint-keys {
+        display: inline-flex;
+        flex-shrink: 0;
+        gap: 4px;
+    }
+
+    .mx-resizer-hint-label {
+        color: var(--font-color-detail, $font-color-detail);
+    }
+
     // Login modal
     .mx-login {
         .modal-body {
@@ -127,7 +216,8 @@
             font-size: 16px;
         }
 
-        h2, h4 {
+        h2,
+        h4 {
             color: #aaaaaa;
             font-size: 20px;
             font-weight: var(--font-weight-bold);
