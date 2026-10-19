@@ -250,18 +250,23 @@ async function createMPK(tmpFolder, moduleInfo, excludeFilesRegExp) {
     return (await getFiles(tmpFolder, [`.mpk`]))[0];
 }
 
+// Wraps a value in single quotes for the shell, escaping any single quotes it contains
+function shellQuote(value) {
+    return `'${String(value).replace(/'/g, `'\\''`)}'`;
+}
+
 async function createGithubReleaseFrom(params) {
     const { body, title, tag, filesToRelease = "", target, isDraft = false, repo } = params;
 
     const command = [
         `gh release create`,
-        `--title '${title}'`,
-        `--notes '${body}'`,
+        `--title ${shellQuote(title)}`,
+        `--notes ${shellQuote(body)}`,
         isDraft ? "--draft" : "",
-        repo ? `-R '${repo}'` : "",
-        `'${tag}'`,
-        `--target '${target}'`,
-        filesToRelease ? `'${filesToRelease}'` : ""
+        repo ? `-R ${shellQuote(repo)}` : "",
+        shellQuote(tag),
+        `--target ${shellQuote(target)}`,
+        filesToRelease ? shellQuote(filesToRelease) : ""
     ]
         .filter(str => str !== "")
         .join(" ");
