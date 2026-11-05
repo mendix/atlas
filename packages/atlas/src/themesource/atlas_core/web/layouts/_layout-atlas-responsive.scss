@@ -399,8 +399,16 @@
                     rotate: 180deg;
                 }
                 .sidebar-brand-logo {
+                    flex-shrink: 0; // a wide logo keeps its proportions, the name gives way and ends in an ellipsis
                     padding: 0 var(--spacing-small);
                     transition: padding var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+                    img {
+                        max-width: calc(var(--navsidebar-width-open) - 2 * var(--spacing-small));
+                    }
+                }
+                // Header row stays on one line: a wide logo would otherwise push the name onto a row of its own
+                .sidebar-wrapper .flex-row {
+                    flex-wrap: nowrap;
                 }
                 // App name next to the logo. The class goes on the element that holds only the name (the text
                 // widget, or a data view around the text alone), never on a wrapper that also holds the logo,
@@ -440,6 +448,11 @@
                 .sidebar-brand-logo {
                     padding: 0 calc((var(--closed-sidebar-width) - var(--brand-logo-width)) / 2);
                     transition: padding var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+                    // the rail centres a fixed box: a wide logo shrinks into it rather than overflowing the rail
+                    img {
+                        width: var(--brand-logo-width);
+                        max-width: none; // the rail row is too narrow for 100% to hold the box
+                    }
                 }
                 // Header row (logo and name) never wraps: at the collapsed width a wrapping row pushes the
                 // logo and the menu down

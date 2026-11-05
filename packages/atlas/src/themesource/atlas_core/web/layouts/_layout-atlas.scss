@@ -87,10 +87,12 @@
             }
         }
 
-        // App logo (AppInfo snippet), in the sidebar and the top bar: the theme's --brand-logo-* sets its size, which
-        // also centres it in the collapsed sidebar
+        // App logo (AppInfo snippet), in the sidebar and the top bar: --brand-logo-height sets its height, the width
+        // follows the logo's own proportions, so a wide logo is not squeezed. The collapsed sidebar rail gives it the
+        // fixed --brand-logo-width box instead, which centres it in the rail.
         .sidebar-brand-logo img {
-            width: var(--brand-logo-width);
+            width: auto;
+            max-width: 100%;
             height: var(--brand-logo-height);
             object-fit: contain;
         }
