@@ -46,12 +46,12 @@
     --form-input-border-focus-color: var(--brand-primary-600);
 
     --btn-default-bg: var(--gray-lighter);
-    --btn-default-color: var(--font-color-base);
+    --btn-default-color: var(--font-color-default);
     --btn-link-bg-hover: var(--brand-default-900);
-    --btn-primary-color: var(--font-color-base);
-    --btn-success-color: var(--font-color-base);
-    --btn-warning-color: var(--font-color-base);
-    --btn-danger-color: var(--font-color-base);
+    --btn-primary-color: var(--font-color-default);
+    --btn-success-color: var(--font-color-default);
+    --btn-warning-color: var(--font-color-default);
+    --btn-danger-color: var(--font-color-default);
 
     --header-text-color: var(--font-color-default);
     --header-text-color-detail: rgba(255, 255, 255, 0.2);
