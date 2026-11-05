@@ -414,7 +414,7 @@
                     white-space: nowrap;
                     // the app name takes the title colour of the bar it sits in, the same in the sidebar and the top bar
                     // (a light name on a dark sidebar, a dark one on a light sidebar)
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                     opacity: 1;
                     // room left of the name: sidebar minus the icon column and the sidebar padding
                     max-width: calc(
@@ -432,7 +432,7 @@
                         white-space: nowrap;
                     }
                     .mx-text {
-                        color: var(--navbar-brand-name, var(--bar-title-color));
+                        color: var(--bar-name-color);
                     }
                 }
             }
@@ -451,7 +451,7 @@
                 .sidebar-brand-name {
                     overflow: hidden;
                     white-space: nowrap;
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                     max-width: 0;
                     opacity: 0;
                     pointer-events: none;
