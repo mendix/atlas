@@ -7,7 +7,7 @@
     :root {
         --closed-sidebar-width: 0px;
     }
-    
+
     .layout-atlas {
         .mx-scrollcontainer {
             // Direct child: the outer (topbar) scroll container is never "open"
@@ -81,13 +81,15 @@
                             display: none;
                         }
                     }
+                }
 
-                    & > a {
-                        .glyphicon,
-                        .mx-icon-lined,
-                        .mx-icon-filled {
-                            flex-basis: var(--closed-sidebar-width);
-                        }
+                // Top-level icons fill the collapsed rail. Only top-level items: a broader `ul li > a` also matched
+                // the fly-out's sub items and beat their own flex-basis (wide icon gap, label overflow in Firefox).
+                .mx-scrollcontainer-wrapper .mx-navigationtree .navbar-inner > ul > li > a {
+                    .glyphicon,
+                    .mx-icon-lined,
+                    .mx-icon-filled {
+                        flex-basis: var(--closed-sidebar-width);
                     }
                 }
             }
@@ -114,6 +116,37 @@
                         ul {
                             display: none;
                         }
+                    }
+                }
+            }
+        }
+
+        // Collapsed rail below $screen-md: there is no fly-out, an expanded group shows its sub items inside the
+        // rail. Stack the icon above the label, so the label wraps in the rail instead of being cut off behind the
+        // icon column.
+        @media (max-width: $screen-sm-max) {
+            .mx-scrollcontainer:not(.mx-scrollcontainer-open) > .region-sidebar {
+                .mx-navigationtree li.mx-navigationtree-has-items > ul li > a {
+                    &,
+                    &:has(.glyphicon, .mx-icon-lined, .mx-icon-filled, img) {
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: var(--spacing-smaller);
+                        padding-right: var(--spacing-smaller);
+                        text-align: center;
+                        white-space: normal;
+                        overflow-wrap: anywhere;
+                    }
+                    .glyphicon,
+                    .mx-icon-lined,
+                    .mx-icon-filled {
+                        flex: 0 0 auto;
+                        margin: 0 0 var(--spacing-smallest);
+                    }
+                    img {
+                        width: auto;
+                        padding: 0;
+                        margin: 0 0 var(--spacing-smallest);
                     }
                 }
             }
@@ -209,7 +242,10 @@
                         &.active .glyphicon,
                         &.active .mx-icon-lined,
                         &.active .mx-icon-filled {
-                            color: var(--navsidebar-color-active, var(--navigation-color-active, var(--bar-color-active)));
+                            color: var(
+                                --navsidebar-color-active,
+                                var(--navigation-color-active, var(--bar-color-active))
+                            );
                         }
                         //margin: var(--spacing-smaller) 0 0 0;
                         white-space: nowrap;
@@ -227,7 +263,8 @@
                             height: var(--navsidebar-icon-height);
                             padding: var(--spacing-small) var(--spacing-medium);
                             border-radius: var(--navsidebar-border-radius);
-                            transition: flex-basis var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+                            transition: flex-basis var(--navsidebar-animation-duration)
+                                var(--navsidebar-animation-function);
                         }
                         img {
                             width: var(--navsidebar-icon-width);
@@ -395,8 +432,16 @@
                     rotate: 180deg;
                 }
                 .sidebar-brand-logo {
+                    flex-shrink: 0; // a wide logo keeps its proportions, the name gives way and ends in an ellipsis
                     padding: 0 var(--spacing-small);
                     transition: padding var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+                    img {
+                        max-width: calc(var(--navsidebar-width-open) - 2 * var(--spacing-small));
+                    }
+                }
+                // Header row stays on one line: a wide logo would otherwise push the name onto a row of its own
+                .sidebar-wrapper .flex-row {
+                    flex-wrap: nowrap;
                 }
                 // App name next to the logo. The class goes on the element that holds only the name (the text
                 // widget, or a data view around the text alone), never on a wrapper that also holds the logo,
@@ -410,12 +455,15 @@
                     white-space: nowrap;
                     // the app name takes the title colour of the bar it sits in, the same in the sidebar and the top bar
                     // (a light name on a dark sidebar, a dark one on a light sidebar)
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                     opacity: 1;
                     // room left of the name: sidebar minus the icon column and the sidebar padding
-                    max-width: calc(var(--navsidebar-width-open) - var(--navsidebar-width-closed) - 2 * var(--navsidebar-spacing));
+                    max-width: calc(
+                        var(--navsidebar-width-open) - var(--navsidebar-width-closed) - 2 * var(--navsidebar-spacing)
+                    );
                     // opening: width is back at once, the text fades in with the sidebar
-                    transition: opacity var(--navsidebar-animation-duration) var(--navsidebar-animation-function), max-width 0s;
+                    transition: opacity var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+                        max-width 0s;
                     // long names end in an ellipsis instead of pushing the header apart
                     .mx-dataview-content,
                     .mx-text {
@@ -425,7 +473,7 @@
                         white-space: nowrap;
                     }
                     .mx-text {
-                        color: var(--navbar-brand-name, var(--bar-title-color));
+                        color: var(--bar-name-color);
                     }
                 }
             }
@@ -433,6 +481,11 @@
                 .sidebar-brand-logo {
                     padding: 0 calc((var(--closed-sidebar-width) - var(--brand-logo-width)) / 2);
                     transition: padding var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+                    // the rail centres a fixed box: a wide logo shrinks into it rather than overflowing the rail
+                    img {
+                        width: var(--brand-logo-width);
+                        max-width: none; // the rail row is too narrow for 100% to hold the box
+                    }
                 }
                 // Header row (logo and name) never wraps: at the collapsed width a wrapping row pushes the
                 // logo and the menu down
@@ -444,12 +497,13 @@
                 .sidebar-brand-name {
                     overflow: hidden;
                     white-space: nowrap;
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                     max-width: 0;
                     opacity: 0;
                     pointer-events: none;
                     // the width only goes once the fade is done (auto cannot be delayed, a pixel max-width can)
-                    transition: opacity var(--navsidebar-animation-duration) var(--navsidebar-animation-function), max-width 0s linear var(--navsidebar-animation-duration);
+                    transition: opacity var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+                        max-width 0s linear var(--navsidebar-animation-duration);
                 }
             }
 

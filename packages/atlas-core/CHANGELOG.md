@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   The primary button hover color follows the app's brand color again (`--brand-primary-hover` is now derived from `--brand-primary`).
+-   The keyboard focus outline is visible in the sidebar and the top bar: it takes the bar's active text color (a theme's region or navigation color first).
+-   The app name is no longer invisible in themes built on the earlier navigation variables: it takes `--navbar-brand-name`, then the region's text color a theme sets (`--navsidebar-color`, `--navtopbar-color`, `--topbar-color`, `--navigation-color`), then the bar's title color.
+-   Wide logos are no longer squeezed into a square: `--brand-logo-height` sets the logo height and the width follows the logo. In the open sidebar the app name stays on the same row and ends in an ellipsis. Only the collapsed sidebar keeps the fixed `--brand-logo-width` box. Apps that relied on `--brand-logo-width` to size the logo in the open sidebar or the top bar set the size on the logo image instead.
+-   Sub-item labels are no longer cut off in the collapsed sidebar on phones: below the tablet breakpoint the icon sits above the label.
+-   The collapsed sidebar's fly-out menu no longer has a wide gap after sub-item icons, and labels no longer overflow in Firefox.
+-   Default labels have a visible background again (`--label-default-bg` is now `--border-color-default`).
+-   The default `logo.svg` is a vector image instead of an embedded bitmap, so it is sharp at any size.
+-   The example neutral theme inverts the sidebar logo, so the default white logo tile stays visible on its light sidebar. Apps with their own logo remove that rule.
+-   The login page template uses `logo.svg`. Apps whose `theme/web/login.html` still points to `logo.png` can change it to `logo.svg` to use the default logo, or keep their own `logo.png`.
+-   The example neutral and dark themes referred to `--font-color-base`, which Atlas Core does not define, so the neutral theme showed white navigation text on its light sidebar. They now use `--font-color-default`. Apps with a theme copied from these examples replace `var(--font-color-base)` with `var(--font-color-default)`.
+-   The "Previous look" block for Atlas Core 4.6 was missing three lines. Apps that used it add:
+
+    ```scss
+    --topbar-border-color: var(--border-color-default);
+    --navsidebar-border-color: var(--border-color-default);
+    --navsidebar-spacing: var(--spacing-medium);
+    ```
+
 ## [4.6.0] Atlas Core - 2026-10-27
 
 ### Breaking change
@@ -72,6 +93,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 --navsidebar-sub-bg-header: rgba(0, 0, 0, 0.2);
 --navsidebar-border-radius: var(--navigation-border-radius);
 --navsidebar-border-right: none;
+--navsidebar-border-color: var(--border-color-default);
+--navsidebar-spacing: var(--spacing-medium);
+--topbar-border-color: var(--border-color-default);
 --navsidebar-icon-height: 44px;
 --navsidebar-icon-width: 52px;
 --navtopbar-border-bottom: none;
