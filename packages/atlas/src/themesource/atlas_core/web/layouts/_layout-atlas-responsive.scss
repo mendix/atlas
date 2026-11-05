@@ -81,13 +81,15 @@
                             display: none;
                         }
                     }
+                }
 
-                    & > a {
-                        .glyphicon,
-                        .mx-icon-lined,
-                        .mx-icon-filled {
-                            flex-basis: var(--closed-sidebar-width);
-                        }
+                // Top-level icons fill the collapsed rail. Only top-level items: a broader `ul li > a` also matched
+                // the fly-out's sub items and beat their own flex-basis (wide icon gap, label overflow in Firefox).
+                .mx-scrollcontainer-wrapper .mx-navigationtree .navbar-inner > ul > li > a {
+                    .glyphicon,
+                    .mx-icon-lined,
+                    .mx-icon-filled {
+                        flex-basis: var(--closed-sidebar-width);
                     }
                 }
             }
