@@ -364,7 +364,7 @@
   --wizard-visited-border-color: var(--brand-success-700);
 
   /* Labels and badges: soft, a light tint of the color with a dark shade of it as text (Atlas Neutral) */
-  --label-default-bg: var(--bg-color);
+  --label-default-bg: var(--border-color-default); /* visible on the page and on cards */
   --label-primary-bg: var(--brand-primary-100);
   --label-success-bg: var(--brand-success-100);
   --label-warning-bg: var(--brand-warning-100);
