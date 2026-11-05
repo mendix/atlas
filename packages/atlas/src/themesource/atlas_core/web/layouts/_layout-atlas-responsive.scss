@@ -119,6 +119,37 @@
             }
         }
 
+        // Collapsed rail below $screen-md: there is no fly-out, an expanded group shows its sub items inside the
+        // rail. Stack the icon above the label, so the label wraps in the rail instead of being cut off behind the
+        // icon column.
+        @media (max-width: $screen-sm-max) {
+            .mx-scrollcontainer:not(.mx-scrollcontainer-open) > .region-sidebar {
+                .mx-navigationtree li.mx-navigationtree-has-items > ul li > a {
+                    &,
+                    &:has(.glyphicon, .mx-icon-lined, .mx-icon-filled, img) {
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: var(--spacing-smaller);
+                        padding-right: var(--spacing-smaller);
+                        text-align: center;
+                        white-space: normal;
+                        overflow-wrap: anywhere;
+                    }
+                    .glyphicon,
+                    .mx-icon-lined,
+                    .mx-icon-filled {
+                        flex: 0 0 auto;
+                        margin: 0 0 var(--spacing-smallest);
+                    }
+                    img {
+                        width: auto;
+                        padding: 0;
+                        margin: 0 0 var(--spacing-smallest);
+                    }
+                }
+            }
+        }
+
         @if (not $use-modern-client) {
             .mx-scrollcontainer-slide {
                 &:not(.mx-scrollcontainer-open) > .region-sidebar {
