@@ -15,7 +15,7 @@
 
   /* Hover Color Variants */
   --brand-default-hover: var(--brand-default-100);
-  --brand-primary-hover: #3b5673;
+  --brand-primary-hover: color-mix(in srgb, var(--brand-primary), white 12%); /* follows the brand */
   --brand-success-hover: var(--brand-success-700);
   --brand-warning-hover: var(--brand-warning-700);
   --brand-danger-hover: var(--brand-danger-700);
