@@ -47,6 +47,14 @@
         // Sidebar
         .region-sidebar {
             @include bar-role(primary);
+            // App name and keyboard focus ring follow the region's text colour: a theme's region or navigation
+            // colour first (themes built on the earlier variables), then the bar role
+            --bar-name-color: var(
+                --navbar-brand-name,
+                var(--navsidebar-color, var(--navigation-color, var(--bar-title-color)))
+            );
+            --focus-outline: 2px solid
+                var(--navsidebar-color-active, var(--navigation-color-active, var(--bar-color-active)));
             background: var(--navsidebar-bg, var(--sidebar-bg, var(--bar-bg)));
             @if not $use-modern-client {
                 z-index: 101;
@@ -79,10 +87,12 @@
             }
         }
 
-        // App logo (AppInfo snippet), in the sidebar and the top bar: the theme's --brand-logo-* sets its size, which
-        // also centres it in the collapsed sidebar
+        // App logo (AppInfo snippet), in the sidebar and the top bar: --brand-logo-height sets its height, the width
+        // follows the logo's own proportions, so a wide logo is not squeezed. The collapsed sidebar rail gives it the
+        // fixed --brand-logo-width box instead, which centres it in the rail.
         .sidebar-brand-logo img {
-            width: var(--brand-logo-width);
+            width: auto;
+            max-width: 100%;
             height: var(--brand-logo-height);
             object-fit: contain;
         }
@@ -90,6 +100,16 @@
         // Topbar
         .region-topbar {
             @include bar-role(primary);
+            // App name and keyboard focus ring follow the region's text colour (see .region-sidebar)
+            --bar-name-color: var(
+                --navbar-brand-name,
+                var(--navtopbar-color, var(--topbar-color, var(--navigation-color, var(--bar-title-color))))
+            );
+            --focus-outline: 2px solid
+                var(
+                    --navtopbar-color-active,
+                    var(--topbar-color, var(--navigation-color-active, var(--bar-color-active)))
+                );
             color: var(--topbar-color, var(--bar-color));
             position: relative;
             align-content: center;
@@ -130,7 +150,7 @@
                 h4,
                 h5,
                 h6 {
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                 }
             }
 
@@ -144,7 +164,7 @@
                 font-size: 16px;
                 margin-right: var(--spacing-small);
                 // App name (AppInfo snippet): the name follows the bar it sits in, whatever widget renders it
-                color: var(--navbar-brand-name, var(--bar-title-color));
+                color: var(--bar-name-color);
 
                 h1,
                 h2,
@@ -176,7 +196,7 @@
                 }
 
                 a {
-                    color: var(--navbar-brand-name, var(--bar-title-color));
+                    color: var(--bar-name-color);
                     font-size: var(--navtopbar-font-size);
 
                     &:hover,

@@ -3,9 +3,9 @@
     --sidebar-bg: var(--brand-default-100);
 
     // --brand-primary: rgb(0, 13, 110);
-    --navigation-color: var(--font-color-base);
-    --navigation-color-hover: var(--font-color-base);
-    --navigation-color-active: var(--font-color-base);
+    --navigation-color: var(--font-color-default);
+    --navigation-color-hover: var(--font-color-default);
+    --navigation-color-active: var(--font-color-default);
 
     --navigation-sub-color: var(--navigation-color);
     --navigation-sub-color-hover: var(--navigation-color-hover);
@@ -54,4 +54,10 @@
     --border-radius-s: 0;
     --border-radius-m: 1px;
     --border-radius-l: 2px;
+}
+
+// The default logo is a white tile made for a dark bar; invert it on the light sidebar of this theme.
+// Apps with their own logo remove this rule.
+:root.theme-neutral .region-sidebar .sidebar-brand-logo img {
+    filter: invert(1);
 }
