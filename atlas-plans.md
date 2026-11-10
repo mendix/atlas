@@ -27,14 +27,14 @@ Sass that goes: every variable that holds a color, size, font, spacing, border, 
 
 ### Decisions made
 
-| Decision                                             | Outcome                                                                                                                                                                                       |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Remove `$use-css-variables` and `legacy-variables()` | Yes, in a major version (5.0.0)                                                                                                                                                               |
-| Silent or loud                                       | Loud: compile errors with instructions, not a silent change of look                                                                                                                           |
-| Role of the mappings in Atlas 4                      | Migration mode. Kept as is until 5.0.0, then deleted                                                                                                                                          |
-| Sass compilation in CI                               | No. Studio Pro compiles the theme; CI in this repository is for development                                                                                                                   |
-| What Atlas Core is responsible for                   | Tokens, reset, layouts, navigation, helper classes, and the widgets built into Studio Pro (scroll container, text area, and so on). Styling of pluggable widgets moves out, in the last phase |
-| Themis                                               | A prototype of the layout shell on a trimmed core, not a second product. It is input for phases 1, 3, and 4                                                                                   |
+| Decision                                             | Outcome                                                                                                                                                                                                                                                          |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Remove `$use-css-variables` and `legacy-variables()` | Yes, in a major version (5.0.0)                                                                                                                                                                                                                                  |
+| Silent or loud                                       | Loud: compile errors with instructions, not a silent change of look                                                                                                                                                                                              |
+| Role of the mappings in Atlas 4                      | Migration mode. Kept as is until 5.0.0, then deleted                                                                                                                                                                                                             |
+| Sass compilation in CI                               | No. Studio Pro compiles the theme; CI in this repository is for development                                                                                                                                                                                      |
+| What Atlas Core is responsible for                   | Tokens, reset, layouts, navigation, helper classes, and the widgets built into Studio Pro (scroll container, text area, and so on). Styling of pluggable widgets moves out, in the last phase                                                                    |
+| Themis                                               | A separate layout module (TopBar and SideBar layouts) with no dependency on Atlas Core. Atlas Core is its default styling module and can be replaced by a copy the app changes. It is input for phases 1, 3, and 4. See [themis-findings.md](themis-findings.md) |
 
 ### Where Atlas stands now
 
@@ -225,6 +225,13 @@ Phase 1, items 1 and 2, and the deprecation notice of phase 2.
 
 -   Corrected: Atlas Core styles no Data Widgets. `core/widgets/_pagination.scss` targets the Pagination widget of List View Controls, and the dropdown filter rule in `_input.scss` is a Dojo client leftover. Nothing moves from Atlas to Data Widgets in phase 7.
 -   Found and fixed in Data Widgets: Sass variables inside custom properties were emitted as text, so their fallbacks were invalid on hosts without CSS variables. Worth checking in Atlas Core and the other widget packages for the same pattern.
+
+2026-11-10, Themis layout shell spike (WC-3573):
+
+-   Changed: Themis is a separate layout module, not a prototype inside Atlas Core. WC-3573 asks for a new module that works "with and without atlas"; read as "without Atlas Core installed", so an app can replace Atlas Core with its own styling module. Replaces the Themis row in the decisions table.
+-   Changed: Themis carries its own copy of the scroll container structure under `.layout-themis`, which the 2026-10-13 entry did not take. A module that works without Atlas Core cannot borrow it, because the React client ships no CSS for the scroll container regions.
+-   Kept: no `--themis-*` tokens and no literal fallbacks. Themis reads Atlas Core's CSS variables; the list is the contract for a replacement styling module.
+-   Found: the layout shell needs only the box-sizing, html/body and list resets from Bootstrap and mxui. The three setups (legacy files on, off, no Atlas Core styles) are in [themis-findings.md](themis-findings.md).
 
 ### Related open points from the 4.6.0 work
 
