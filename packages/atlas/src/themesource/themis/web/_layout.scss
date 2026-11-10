@@ -1,0 +1,193 @@
+// Themis layouts: Themis.TopBar (class "layout-themis layout-themis-topbar") and Themis.SideBar (class
+// "layout-themis layout-themis-sidebar").
+//
+// Bar roles follow Atlas Core 4.6.0: each layout has one primary bar, which carries the app's identity, and at most
+// one secondary bar. The styling module sets the look of each role (--bar-primary-*, --bar-secondary-*); the layout
+// decides which region plays which role.
+//
+// Breakpoint: 768px, the same value as Atlas Core's $screen-md. It is written out because media queries cannot read
+// CSS variables, and Themis cannot use Atlas Core's Sass variables.
+
+// Same as Atlas Core's bar-role mixin, minus --bar-sub-color and --bar-border-color: Themis reads neither, and leaving
+// them out keeps them out of the contract.
+@mixin themis-bar-role($role) {
+    --bar-bg: var(--bar-#{$role}-bg);
+    --bar-bg-hover: var(--bar-#{$role}-bg-hover);
+    --bar-bg-active: var(--bar-#{$role}-bg-active);
+    --bar-color: var(--bar-#{$role}-color);
+    --bar-color-hover: var(--bar-#{$role}-color-hover);
+    --bar-color-active: var(--bar-#{$role}-color-active);
+    --bar-title-color: var(--bar-#{$role}-title-color);
+    --bar-edge: var(--bar-#{$role}-edge);
+
+    color: var(--bar-color);
+    background: var(--bar-bg);
+}
+
+.layout-themis {
+    // Content canvas
+    .region-content {
+        background-color: var(--bg-color);
+    }
+
+    // Top bar
+    .region-topbar {
+        @include themis-bar-role(primary);
+        position: relative;
+        z-index: 60;
+        display: flex;
+        align-items: center;
+        min-height: var(--topbar-minimalheight);
+        padding: 0 var(--spacing-medium);
+        border-bottom: var(--bar-edge);
+    }
+
+    // Brand: logo and app name. Float, height and padding undo Bootstrap's .navbar-brand when it is loaded.
+    .navbar-brand {
+        float: none;
+        height: auto;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-small);
+        color: var(--bar-title-color);
+
+        img {
+            width: auto;
+            height: var(--brand-logo-height);
+        }
+    }
+
+    // Toggle buttons sit on the bar without a button look
+    .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        color: inherit;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    // Toggles in the top bar open the sidebar on phones only
+    @media (min-width: 768px) {
+        .themis-toggle-phone {
+            display: none;
+        }
+    }
+
+    // Sidebar
+    .region-sidebar {
+        @include themis-bar-role(primary);
+        border-right: var(--bar-edge);
+    }
+
+    .region-sidebar > .mx-scrollcontainer-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// TopBar layout: brand left, menu bar centered, extras right. The sidebar is the phone menu: hidden when closed.
+.layout-themis-topbar {
+    --closed-sidebar-width: 0px;
+
+    .themis-topbar-content {
+        display: grid;
+        flex: 1 1 auto;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        column-gap: var(--spacing-medium);
+    }
+
+    .themis-topbar-end {
+        justify-self: end;
+    }
+
+    @media (max-width: 767px) {
+        .themis-topbar-content {
+            grid-template-columns: 1fr auto;
+        }
+
+        // &.layout-themis outranks the menu bar rules in _navigation.scss, which come later
+        &.layout-themis .region-topbar .mx-navbar {
+            display: none;
+        }
+    }
+}
+
+// SideBar layout: the sidebar is primary and keeps its icon column when closed; the top bar beside it is secondary.
+.layout-themis-sidebar {
+    --closed-sidebar-width: var(--navsidebar-width-closed);
+
+    .region-topbar {
+        @include themis-bar-role(secondary);
+    }
+
+    .themis-topbar-content {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        gap: var(--spacing-small);
+    }
+
+    .themis-topbar-start {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        gap: var(--spacing-small);
+    }
+
+    // The logo stays centred in the icon column, open or closed. Sized by --brand-logo-width and assumed square; the
+    // image's own width in the model must match (32px for Atlas Core), because an inline width wins over this rule.
+    .region-sidebar .navbar-brand {
+        display: block;
+        width: var(--brand-logo-width);
+        height: auto;
+        margin: var(--spacing-medium) calc((var(--navsidebar-width-closed) - var(--brand-logo-width)) / 2);
+    }
+
+    // Collapse toggle on the sidebar edge, shown on hover and keyboard focus
+    .toggle-btn-sidebar {
+        position: absolute;
+        // just below the logo: logo margins + logo - half the toggle
+        top: calc(var(--spacing-medium) * 2 + var(--brand-logo-width) - var(--navsidebar-toggle-size) / 2);
+        right: calc(0px - var(--navsidebar-toggle-size) / 2);
+        width: var(--navsidebar-toggle-size);
+        height: var(--navsidebar-toggle-size);
+        border: var(--border-default);
+        border-radius: 50%;
+        color: var(--font-color-default);
+        background: var(--color-base);
+        opacity: 0;
+        transition: opacity var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+    }
+
+    // The toggle sticks out of the sidebar edge. Beats the closed-state overflow: hidden in _scroll-container.scss;
+    // nav labels are still clipped by their own links. min-width: 0 keeps the closed sidebar at its flex-basis, which
+    // overflow: hidden did before.
+    .mx-scrollcontainer > .region-sidebar.mx-scrollcontainer-left {
+        position: relative;
+        overflow: visible;
+        min-width: 0;
+    }
+
+    .region-sidebar:hover .toggle-btn-sidebar,
+    .toggle-btn-sidebar:focus-visible {
+        opacity: 1;
+    }
+
+    .mx-scrollcontainer-open .toggle-btn-sidebar {
+        rotate: 180deg;
+    }
+
+    // Phones: no icon column, and the edge toggle goes; the toggle in the top bar opens and closes the sidebar.
+    @media (max-width: 767px) {
+        --closed-sidebar-width: 0px;
+
+        .toggle-btn-sidebar {
+            display: none;
+        }
+    }
+}
