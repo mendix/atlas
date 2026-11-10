@@ -1,0 +1,12 @@
+// Themis: layout shell module (Topbar and Sidebar layouts).
+//
+// Themis owns the structure of its layouts and nothing else. The look comes from the CSS variables of a styling
+// module, Atlas Core by default (see README.md for the list of variables Themis reads). Without a styling module the
+// layouts still work, with browser defaults for colors and fonts.
+//
+// This file must compile on its own: no Sass variables, mixins or functions from other modules.
+
+@import "reset";
+@import "scroll-container";
+@import "layout";
+@import "navigation";

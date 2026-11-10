@@ -1,0 +1,151 @@
+// Structure of the scroll container that holds the layout regions.
+//
+// The React client renders the regions but ships no CSS for them: the flex layout lives in Atlas Core
+// (core/widgets/_scroll-container-react.scss). Themis needs it to work without Atlas Core, so it carries the subset its
+// own layouts use, scoped to them: left sidebar, top bar, content. Not copied: right-side push, pop-up windows
+// (.mx-window-body), and the closed-state margin resets, which only undo Atlas rules Themis does not have.
+//
+// Set by the client as inline styles: --sidebar-size on the left and right regions (their Size in Studio Pro; not on a
+// top region) and --toggleable-sidebar-width on the scroll container.
+//
+// --closed-sidebar-width is set by Themis itself (_layout.scss); its 0px fallback is the closed width without a
+// styling module, not a styling value.
+
+.mx-page:has(.layout-themis),
+.layout-themis.mx-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-themis {
+    .mx-scrollcontainer {
+        flex: 1 0 0;
+        display: flex;
+    }
+
+    .mx-scrollcontainer-horizontal {
+        flex-direction: row;
+    }
+
+    .mx-scrollcontainer-vertical {
+        flex-direction: column;
+    }
+
+    .mx-scrollcontainer-fixed {
+        min-height: 0;
+
+        .mx-scrollcontainer-left,
+        .mx-scrollcontainer-right,
+        .mx-scrollcontainer-center,
+        .mx-scrollcontainer-middle {
+            min-height: 0;
+            overflow: auto;
+        }
+
+        .mx-scrollcontainer-nested {
+            min-height: 0;
+        }
+    }
+
+    .mx-scrollcontainer-left,
+    .mx-scrollcontainer-right,
+    .mx-scrollcontainer-top,
+    .mx-scrollcontainer-bottom {
+        flex: 0 0 auto;
+    }
+
+    .mx-scrollcontainer-middle,
+    .mx-scrollcontainer-center {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mx-scrollcontainer-wrapper {
+        flex: 1 1 auto;
+        isolation: isolate;
+    }
+
+    .mx-scrollcontainer-nested {
+        padding: 0;
+        display: flex;
+    }
+
+    // Side regions take their Size. Top and bottom keep their content height: the client sets no --sidebar-size there.
+    .mx-scrollcontainer-left:not(.mx-scrollcontainer-toggleable),
+    .mx-scrollcontainer-right:not(.mx-scrollcontainer-toggleable) {
+        flex: 0 0 var(--sidebar-size);
+    }
+
+    .mx-scrollcontainer-left.mx-scrollcontainer-toggleable,
+    .mx-scrollcontainer-right.mx-scrollcontainer-toggleable {
+        z-index: 1;
+        transition: flex-basis var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+            margin-right var(--navsidebar-animation-duration) var(--navsidebar-animation-function),
+            margin-left var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+    }
+
+    // Closed: the sidebar keeps --closed-sidebar-width visible (the icon column), 0 without a styling module.
+    :is(.mx-scrollcontainer-shrink, .mx-scrollcontainer-push, .mx-scrollcontainer-slide):not(.mx-scrollcontainer-open)
+        > .mx-scrollcontainer-toggleable {
+        flex-basis: var(--closed-sidebar-width, 0px);
+        overflow: hidden;
+    }
+
+    :is(.mx-scrollcontainer-shrink, .mx-scrollcontainer-push, .mx-scrollcontainer-slide).mx-scrollcontainer-open
+        > .mx-scrollcontainer-toggleable {
+        flex-basis: var(--sidebar-size);
+    }
+
+    // Push and slide: the open sidebar overlaps the content.
+    :is(.mx-scrollcontainer-push, .mx-scrollcontainer-slide).mx-scrollcontainer-open
+        > .mx-scrollcontainer-toggleable.mx-scrollcontainer-left {
+        margin-right: calc(var(--closed-sidebar-width, 0px) - var(--sidebar-size));
+    }
+
+    :is(.mx-scrollcontainer-push, .mx-scrollcontainer-slide).mx-scrollcontainer-open
+        > .mx-scrollcontainer-toggleable.mx-scrollcontainer-right {
+        margin-left: calc(var(--closed-sidebar-width, 0px) - var(--sidebar-size));
+    }
+
+    .mx-scrollcontainer-push {
+        overflow-x: clip;
+    }
+
+    .mx-scrollcontainer-push > :not(.mx-scrollcontainer-toggleable) {
+        transition: transform var(--navsidebar-animation-duration) var(--navsidebar-animation-function);
+    }
+
+    .mx-scrollcontainer-push.mx-scrollcontainer-open > :not(.mx-scrollcontainer-toggleable) {
+        transform: translateX(var(--toggleable-sidebar-width)) translateX(calc(0px - var(--closed-sidebar-width, 0px)));
+    }
+
+    :is(.mx-scrollcontainer-push, .mx-scrollcontainer-slide).mx-scrollcontainer-open > div {
+        pointer-events: none;
+    }
+
+    :is(.mx-scrollcontainer-push, .mx-scrollcontainer-slide).mx-scrollcontainer-open > .mx-scrollcontainer-toggleable {
+        pointer-events: auto;
+    }
+
+    // The content region fills the remaining height, so a page with one data view can keep its footer at the bottom.
+    .region-content > .mx-scrollcontainer-wrapper {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+
+        > .mx-placeholder {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+
+            // a top-level data view as the only child grows, so its footer stays at the bottom
+            > *:only-child {
+                flex: 1 1 auto;
+                min-height: 0;
+            }
+        }
+    }
+}

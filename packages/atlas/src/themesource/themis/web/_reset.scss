@@ -1,0 +1,50 @@
+// The minimum the layout shell needs from a reset. Atlas Core gets these from Bootstrap and mxui; Themis must not
+// rely on either, because both can be excluded and Atlas Core can be absent.
+//
+// Every rule only applies on a page with a Themis layout, so pages on other layouts in the same app do not change.
+// Pop-ups render outside the layout and are not covered.
+
+html:has(.layout-themis),
+body:has(.layout-themis),
+:is(#content, #root):has(.layout-themis) {
+    height: 100%;
+    margin: 0;
+}
+
+body:has(.layout-themis) {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-default);
+    line-height: var(--line-height-base);
+    color: var(--font-color-default);
+    background-color: var(--bg-color);
+}
+
+// The layout class sits on the .mx-page element itself, so match it as well as its descendants.
+:is(#content, #root) > .mx-page:is(.layout-themis, :has(.layout-themis)) {
+    width: 100%;
+    min-height: 100%;
+}
+
+.layout-themis {
+    &,
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .mx-navbar ul.nav,
+    .mx-navigationtree ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}

@@ -1,0 +1,113 @@
+// Navigation widgets inside the Themis layouts: the menu bar in the top bar and the navigation tree in the sidebar.
+// Colors come from the bar role of the region they are in (see _layout.scss).
+
+.layout-themis {
+    // Menu bar (top bar)
+    .region-topbar .mx-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+
+        ul.nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--spacing-smaller);
+        }
+
+        ul.nav > .mx-navbar-item > a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-small);
+            padding: var(--navigation-item-padding);
+            color: var(--bar-color);
+            border-radius: var(--navigation-border-radius);
+            font-size: var(--navtopbar-font-size);
+
+            &:hover,
+            &:focus-visible {
+                color: var(--bar-color-hover);
+                background: var(--bar-bg-hover);
+            }
+
+            .mx-icon-lined,
+            .mx-icon-filled {
+                font-size: var(--navtopbar-glyph-size);
+            }
+        }
+
+        ul.nav > .mx-navbar-item.active > a,
+        ul.nav > .mx-navbar-item > a.active {
+            color: var(--bar-color-active);
+            background: var(--bar-bg-active);
+        }
+    }
+
+    // Navigation tree (sidebar)
+    .region-sidebar .mx-navigationtree {
+        .navbar-inner > ul > li > a {
+            display: flex;
+            align-items: center;
+            min-height: var(--navsidebar-icon-height);
+            overflow: hidden;
+            white-space: nowrap;
+            color: var(--bar-color);
+            font-size: var(--navsidebar-font-size);
+
+            &:hover,
+            &:focus-visible {
+                color: var(--bar-color-hover);
+                background: var(--bar-bg-hover);
+            }
+
+            &.active {
+                color: var(--bar-color-active);
+                background: var(--bar-bg-active);
+            }
+        }
+
+        // Icons sit in a column as wide as the closed sidebar, so a closed sidebar shows only the icons.
+        .navbar-inner > ul > li > a .mx-icon-lined,
+        .navbar-inner > ul > li > a .mx-icon-filled,
+        .navbar-inner > ul > li > a .glyphicon {
+            display: flex;
+            flex: 0 0 var(--navsidebar-width-closed);
+            align-items: center;
+            justify-content: center;
+            font-size: var(--navsidebar-glyph-size);
+        }
+
+        // An image icon keeps the glyph size and is centred in the same column
+        .navbar-inner > ul > li > a img {
+            flex: 0 0 auto;
+            width: var(--navsidebar-glyph-size);
+            margin-inline: calc((var(--navsidebar-width-closed) - var(--navsidebar-glyph-size)) / 2);
+        }
+
+        ul ul > li > a {
+            display: block;
+            padding: var(--spacing-small) var(--spacing-medium) var(--spacing-small) var(--navsidebar-width-closed);
+            color: var(--bar-color);
+            font-size: var(--navsidebar-sub-font-size);
+
+            &:hover {
+                color: var(--bar-color-hover);
+                background: var(--bar-bg-hover);
+            }
+        }
+
+        .mx-navigationtree-collapsed > ul {
+            display: none;
+        }
+    }
+
+    // Closed sidebar: hide sub items, they are reached by opening the sidebar
+    :is(.mx-scrollcontainer-shrink, .mx-scrollcontainer-push, .mx-scrollcontainer-slide):not(.mx-scrollcontainer-open)
+        > .region-sidebar
+        .mx-navigationtree
+        ul
+        ul {
+        display: none;
+    }
+}
