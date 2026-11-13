@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [4.7.0] Atlas Core - 2026-11-13
+
 ### Fixed
 
 -   The primary button hover color follows the app's brand color again (`--brand-primary-hover` is now derived from `--brand-primary`).
