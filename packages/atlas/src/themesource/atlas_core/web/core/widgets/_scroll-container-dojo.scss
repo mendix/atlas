@@ -34,6 +34,18 @@
     .mx-scrollcontainer-fixed > .mx-scrollcontainer-right > .mx-scrollcontainer-wrapper {
         overflow: auto;
     }
+    // Responsive top bar layout: the outer wrapper holds the top bar and the content region,
+    // and only the content region scrolls. With classic (non-overlay) scrollbars, a scrollbar on
+    // this outer wrapper narrows the top bar, which can wrap to another row and toggle the
+    // scrollbar again on every relayout (for example on each key press in a text area).
+    // Scoped to this layout: in other layouts, such as Tablet_Sidebar, this wrapper is the one that scrolls.
+    .layout-atlas-responsive-topbar
+        > .mx-placeholder
+        > .mx-scrollcontainer-fixed
+        > .mx-scrollcontainer-center
+        > .mx-scrollcontainer-wrapper.mx-scrollcontainer-nested {
+        overflow: hidden;
+    }
 
     .mx-scrollcontainer-move-in {
         transition: left 250ms ease-out;
