@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   In the Dojo client with the responsive top bar layout, typing in a text area no longer makes the top bar resize and the page scrollbar flicker on Windows. The page's outer wrapper no longer shows its own scrollbar; the content region still scrolls. Apps that applied the `overflow: hidden` workaround in their theme can remove it.
+
 ## [3.22.0] Atlas Core - 2026-10-27
 
 ### Added
