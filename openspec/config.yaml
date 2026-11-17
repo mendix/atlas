@@ -1,0 +1,25 @@
+schema: spec-driven
+
+context: |
+  Repo: Mendix Atlas — styling framework for Mendix apps + Marketplace modules built from it.
+  Source of truth: packages/atlas/src
+    - theme/web, themesource/*/web: SCSS (web)
+    - theme/native, themesource/*/native: TypeScript style objects (React Native)
+    - design-properties.json: Studio Pro design properties exposed to app developers
+  Modules (packaging only, no source): atlas-core, atlas-web-content, atlas-content-native.
+  Consumers: every Mendix app using Atlas, plus custom themes that override variables.
+  Tests: Playwright visual-snapshot E2E in packages/atlas/e2e against a Mendix test project
+    (github.com/mendix/Atlas-Design-System). No unit tests.
+  Conventions: conventional commits, Prettier, semver + CHANGELOG.md per module.
+
+rules:
+  proposal:
+    - State which modules are affected (atlas-core / atlas-web-content / atlas-content-native)
+    - State whether web, native, or both are affected
+    - Flag any change to class names, variables, or design-properties as potentially breaking for custom themes
+  design:
+    - Prefer adding/using SCSS/native variables over hard-coded values
+    - Note any interaction with Studio Pro design properties
+  tasks:
+    - Include a CHANGELOG.md entry task for each affected module (user-facing wording)
+    - Include a visual verification task (E2E snapshot update or manual check in test project)
