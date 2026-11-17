@@ -348,6 +348,7 @@ $modal-header-border-color: $border-color-default !default;
 $modal-header-color: $font-color-header !default;
 $modal-body-bg: $bg-color !default;
 $modal-footer-bg: $bg-color-secondary !default;
+$modal-footer-note-color: get-color-value("gray", 700) !default;
 
 /* Data View */
 $dataview-controls-bg: inherit !default;

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+-   The error ID in error dialogs is shown at the bottom left of the dialog footer in small grey text. Set `--modal-footer-note-color` to change its color.
+
 ## [4.7.0] Atlas Core - 2026-11-13
 
 ### Fixed
