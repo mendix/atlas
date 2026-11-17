@@ -13,7 +13,8 @@
     ========================================================================== */
     .modal-dialog {
         .modal-content {
-            border: var(--border-width-default, $border-width-default) solid var(--modal-header-border-color, $modal-header-border-color);
+            border: var(--border-width-default, $border-width-default) solid
+                var(--modal-header-border-color, $modal-header-border-color);
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             background-color: var(--bg-color-secondary, $bg-color-secondary);
@@ -24,7 +25,8 @@
                 border-radius: 0; // Because of the class .mx-window-active in mxui.css
                 background-color: var(--modal-header-bg, $modal-header-bg);
 
-                h2, h4 {
+                h2,
+                h4 {
                     margin: 0;
                     color: var(--modal-header-color, $modal-header-color);
                     font-size: 16px;
@@ -56,6 +58,15 @@
                 padding: 20px;
                 border-style: none;
                 background-color: var(--modal-footer-bg, $modal-footer-bg);
+
+                // Secondary text, such as an error ID, at the start of the footer
+                .mx-dialog-footer-note {
+                    margin-right: auto;
+                    align-self: center;
+                    font-size: var(--font-size-small, $font-size-small);
+                    color: var(--modal-footer-note-color, $modal-footer-note-color);
+                    user-select: text;
+                }
             }
         }
     }
@@ -127,7 +138,8 @@
             font-size: 16px;
         }
 
-        h2, h4 {
+        h2,
+        h4 {
             color: #aaaaaa;
             font-size: 20px;
             font-weight: var(--font-weight-bold);
