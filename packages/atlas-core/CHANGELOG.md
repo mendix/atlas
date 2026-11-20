@@ -6,11 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+-   In the Dojo client with the responsive top bar layout, typing in a text area no longer makes the top bar resize and the page scrollbar flicker on Windows. The page's outer wrapper no longer shows its own scrollbar; the content region still scrolls. Apps that applied the `overflow: hidden` workaround in their theme can remove it.
+
 ## [4.7.0] Atlas Core - 2026-11-13
 
 ### Fixed
 
--   In the Dojo client with the responsive top bar layout, typing in a text area no longer makes the top bar resize and the page scrollbar flicker on Windows. The page's outer wrapper no longer shows its own scrollbar; the content region still scrolls. Apps that applied the `overflow: hidden` workaround in their theme can remove it.
 -   The primary button hover color follows the app's brand color again (`--brand-primary-hover` is now derived from `--brand-primary`).
 -   The keyboard focus outline is visible in the sidebar and the top bar: it takes the bar's active text color (a theme's region or navigation color first).
 -   The app name is no longer invisible in themes built on the earlier navigation variables: it takes `--navbar-brand-name`, then the region's text color a theme sets (`--navsidebar-color`, `--navtopbar-color`, `--topbar-color`, `--navigation-color`), then the bar's title color.
