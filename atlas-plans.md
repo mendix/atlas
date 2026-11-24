@@ -10,56 +10,58 @@ All styling values in Atlas come from CSS variables. Sass variables remain only 
 
 Sass that stays:
 
-- `$exclude-*` (exclusion variables). `$exclude-bootstrap` and `$exclude-mxui` are temporary: they go away with their files
-- `$important-*` (helper class importance)
-- `$use-modern-client`, until phase 4 removes its last readers
-- `$screen-*` breakpoints, because media queries cannot read CSS variables
-- Feature switches: `$brand-logo`, `$font-family-import`, `$form-input-style`, `$btn-bordered`
-- Mixin and function parameters
+-   `$exclude-*` (exclusion variables), for the areas that stay in Atlas Core. `$exclude-bootstrap` and `$exclude-mxui` are temporary: they go away with their files in 5.0.0, when the legacy styling moves to Atlas Legacy ([atlas-plan-legacy.md](atlas-plan-legacy.md))
+-   `$important-*` (helper class importance)
+-   `$use-modern-client`, until phase 4 removes its last readers
+-   `$screen-*` breakpoints, because media queries cannot read CSS variables
+-   Feature switches: `$brand-logo`, `$font-family-import`, `$form-input-style`, `$btn-bordered`
+-   Mixin and function parameters
 
 Sass that goes: every variable that holds a color, size, font, spacing, border, or shadow value.
 
 ### Approach
 
-- **Atlas 4 is the migration mode.** `_css-variables-mappings.scss` maps the Sass variables of a theme to CSS variables, so a Sass theme keeps working while its owner migrates. That is what Atlas 4 offers until its last release. Nothing more is built on top of it.
-- **Atlas 5 has one mode.** `$use-css-variables` is removed, as if it were always `true`. The mappings are removed. A theme that still sets Sass values does not silently change its look: the theme fails to compile with a message that says what to change.
-- The breaking changes are listed in the changelog and the release notes of 5.0.0.
+-   **Atlas 4 is the migration mode.** `_css-variables-mappings.scss` maps the Sass variables of a theme to CSS variables, so a Sass theme keeps working while its owner migrates. That is what Atlas 4 offers until its last release. Nothing more is built on top of it.
+-   **Atlas 5 has one mode.** `$use-css-variables` is removed, as if it were always `true`. The mappings are removed. A theme that still sets Sass values does not silently change its look: the theme fails to compile with a message that says what to change.
+-   The breaking changes are listed in the changelog and the release notes of 5.0.0.
 
 ### Decisions made
 
-| Decision | Outcome |
-| --- | --- |
-| Remove `$use-css-variables` and `legacy-variables()` | Yes, in a major version (5.0.0) |
-| Silent or loud | Loud: compile errors with instructions, not a silent change of look |
-| Role of the mappings in Atlas 4 | Migration mode. Kept as is until 5.0.0, then deleted |
-| Sass compilation in CI | No. Studio Pro compiles the theme; CI in this repository is for development |
-| What Atlas Core is responsible for | Tokens, reset, layouts, navigation, helper classes, and the widgets built into Studio Pro (scroll container, text area, and so on). Styling of pluggable widgets moves out, in the last phase |
-| Themis | A prototype of the layout shell on a trimmed core, not a second product. It is input for phases 1, 3, and 4 |
+| Decision                                             | Outcome                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Remove `$use-css-variables` and `legacy-variables()` | Yes, in a major version (5.0.0)                                                                                                                                                                                                                                          |
+| Silent or loud                                       | Loud: compile errors with instructions, not a silent change of look                                                                                                                                                                                                      |
+| Role of the mappings in Atlas 4                      | Migration mode. Kept as is until 5.0.0, then deleted                                                                                                                                                                                                                     |
+| Sass compilation in CI                               | No. Studio Pro compiles the theme; CI in this repository is for development                                                                                                                                                                                              |
+| What Atlas Core is responsible for                   | Tokens, reset, layouts, navigation, helper classes, and the widgets built into Studio Pro (scroll container, text area, and so on). Styling of pluggable widgets moves out, in the last phase                                                                            |
+| Themis                                               | A prototype of the layout shell on a trimmed core, not a second product. It was input for phases 1, 3, and 4. Superseded as a direction by Atlas Legacy                                                                                                                  |
+| Atlas Legacy                                         | A new module, `Atlas_Legacy`, that holds everything Atlas Core 5 drops to keep the Atlas 4 look. Installed on top of Atlas Core 5 by apps that want to keep their look. Replaces the escape hatch of phases 3, 4 and 6. See [atlas-plan-legacy.md](atlas-plan-legacy.md) |
+| What is legacy                                       | The look rule: whatever only exists to keep the Atlas 4 look. Structure, semantic tokens, design properties, glyphicons, and structural Bootstrap class names stay in Atlas Core                                                                                         |
 
 ### Where Atlas stands now
 
 Measured on branch `atlas-core/neutral-theme` of `atlas`, on `web-widgets`, and on the modules installed in `Atlas-Design-System`.
 
-| Area | State |
-| --- | --- |
-| Core styles (`web/core/`, `web/layouts/`) | 99 SCSS files. 34 use Sass variables, almost all for logic: `$exclude-*`, `$important-*`, `$use-modern-client`, `$screen-*`, mixin parameters |
-| Value-type Sass left in core | `core/widgets/_modal.scss` (16 uses of `var(--x, $fallback)`), `layouts/_layout-atlas.scss` (`$brand-logo-width`, `$brand-logo-height`), and 62 hardcoded colors in 29 files |
-| `web/themes/_theme-default.scss` | 407 CSS variables. This is the source of truth |
-| `web/_variables.scss` | 398 Sass defaults: 99 literals, 171 derived from other Sass variables, 111 through `get-color-value()`. Values are still Atlas 4: `#264ae5`, Poppins |
-| `web/_css-variables-mappings.scss` | 391 mappings from Sass variables to CSS variables. Emitted when `$use-css-variables` is false, and false is the default |
-| `$use-css-variables` | Used in three places: `_variables.scss` lines 9 and 45, `main.scss` line 12. The app template sets it to `true` in `theme/web/custom-variables.scss` |
-| Color shades (`_color-variants.scss`) | Already generated with `color-mix()` on CSS variables |
-| `web/core/_legacy/_mxui.scss` | Base stylesheet of the old Dojo client, 3,375 lines, about 75 KB of the compiled CSS. 403 of its 607 rules style Dojo widgets. `$exclude-mxui` exists, default `false`; `true` emits the three rules of `mxui-core()` |
-| `web/core/_legacy/bootstrap/` | Complete Bootstrap 3.3.4 with normalize.css, 7,400 lines, about 166 KB of the 659 KB compiled CSS, hardcoded values. `$exclude-bootstrap` exists, default `false` |
-| Data Widgets module (`web-widgets/packages/modules/data-widgets`) | Its own `variables.scss` with 39 Sass variables, 18 hardcoded hex colors, 133 uses of `var(--x, $fallback)`, and 3 Sass color functions applied to Sass variables |
-| Other widgets in `web-widgets` | Atlas-named Sass variables in `carousel-web`, `timeline-web`, `rich-text-web`, `datagrid-web`, `calendar-web`, `accordion-web` |
-| Marketplace modules that use Atlas Sass names | WorkflowCommons (33 uses, imports `atlas_core/web/variables` by path), Feedback module (35 uses). Neither applies Sass color functions to them. Feedback does Sass arithmetic on them (`$spacing-small * 2`), which breaks once the names are CSS variable references. WorkflowCommons only uses them inside `calc()`, which keeps working |
+| Area                                                              | State                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Core styles (`web/core/`, `web/layouts/`)                         | 99 SCSS files. 34 use Sass variables, almost all for logic: `$exclude-*`, `$important-*`, `$use-modern-client`, `$screen-*`, mixin parameters                                                                                                                                                                                              |
+| Value-type Sass left in core                                      | `core/widgets/_modal.scss` (16 uses of `var(--x, $fallback)`), `layouts/_layout-atlas.scss` (`$brand-logo-width`, `$brand-logo-height`), and 62 hardcoded colors in 29 files                                                                                                                                                               |
+| `web/themes/_theme-default.scss`                                  | 407 CSS variables. This is the source of truth                                                                                                                                                                                                                                                                                             |
+| `web/_variables.scss`                                             | 398 Sass defaults: 99 literals, 171 derived from other Sass variables, 111 through `get-color-value()`. Values are still Atlas 4: `#264ae5`, Poppins                                                                                                                                                                                       |
+| `web/_css-variables-mappings.scss`                                | 391 mappings from Sass variables to CSS variables. Emitted when `$use-css-variables` is false, and false is the default                                                                                                                                                                                                                    |
+| `$use-css-variables`                                              | Used in three places: `_variables.scss` lines 9 and 45, `main.scss` line 12. The app template sets it to `true` in `theme/web/custom-variables.scss`                                                                                                                                                                                       |
+| Color shades (`_color-variants.scss`)                             | Already generated with `color-mix()` on CSS variables                                                                                                                                                                                                                                                                                      |
+| `web/core/_legacy/_mxui.scss`                                     | Base stylesheet of the old Dojo client, 3,375 lines, about 75 KB of the compiled CSS. 403 of its 607 rules style Dojo widgets. `$exclude-mxui` exists, default `false`; `true` emits the three rules of `mxui-core()`                                                                                                                      |
+| `web/core/_legacy/bootstrap/`                                     | Complete Bootstrap 3.3.4 with normalize.css, 7,400 lines, about 166 KB of the 659 KB compiled CSS, hardcoded values. `$exclude-bootstrap` exists, default `false`                                                                                                                                                                          |
+| Data Widgets module (`web-widgets/packages/modules/data-widgets`) | Its own `variables.scss` with 39 Sass variables, 18 hardcoded hex colors, 133 uses of `var(--x, $fallback)`, and 3 Sass color functions applied to Sass variables                                                                                                                                                                          |
+| Other widgets in `web-widgets`                                    | Atlas-named Sass variables in `carousel-web`, `timeline-web`, `rich-text-web`, `datagrid-web`, `calendar-web`, `accordion-web`                                                                                                                                                                                                             |
+| Marketplace modules that use Atlas Sass names                     | WorkflowCommons (33 uses, imports `atlas_core/web/variables` by path), Feedback module (35 uses). Neither applies Sass color functions to them. Feedback does Sass arithmetic on them (`$spacing-small * 2`), which breaks once the names are CSS variable references. WorkflowCommons only uses them inside `calc()`, which keeps working |
 
 Not measured:
 
-- Third-party and customer modules that use Atlas Sass variables.
-- How many apps on Mendix 11 still have a Sass theme.
-- Whether Studio Pro shows Sass `@warn` output to the user.
+-   Third-party and customer modules that use Atlas Sass variables.
+-   How many apps on Mendix 11 still have a Sass theme.
+-   Whether Studio Pro shows Sass `@warn` output to the user.
 
 ### Constraints found in the source
 
@@ -92,33 +94,32 @@ Detailed plan: [atlas-plan-2.md](atlas-plan-2.md).
 
 Nothing in this phase changes how a theme compiles or looks.
 
-#### Phase 3: replace the Bootstrap file with Atlas-owned styles (4.x, default flips in 5.0.0)
+#### Phase 3: replace the Bootstrap file with Atlas-owned styles (4.x, file leaves Atlas Core in 5.0.0)
 
-Detailed plan: [atlas-plan-3.md](atlas-plan-3.md).
+Detailed plan: [atlas-plan-3.md](atlas-plan-3.md). Changed on 2026-11-24 by [atlas-plan-legacy.md](atlas-plan-legacy.md): the look moves to Atlas Legacy, and the steps below are rewritten to match.
 
 `core/_legacy/bootstrap/` is the complete Bootstrap 3.3.4: 7,400 lines, 25% of the compiled CSS, all hardcoded values. It cannot simply be switched off: layouts depend on its box-sizing reset, element resets, glyphicon codes, and the base rules of buttons, forms, tables, tabs, and navigation. A crawl of the deployed reference app (126 pages) shows that only 161 of its 1,336 rules match anything.
 
 Work in slices by area, not file by file, and start with the slice the Themis prototype has already proven: (1) reset, layout shell, and navigation; (2) buttons, forms, tables; (3) the remaining built-in widgets; (4) interaction states such as pop-ups and dialogs. The first slice is a milestone of its own: the layouts look the same with the legacy files off.
 
-1. Write down the Bootstrap class names Atlas keeps supporting.
-2. Adopt those rules in Atlas-owned files, on CSS variables. Until 5.0.0 they are emitted behind a new temporary switch, not behind `$exclude-bootstrap` itself, so that projects that already exclude Bootstrap (constraint 6, Themis among them) see no change.
-3. Close the gaps in the evidence: interaction states, phone and tablet profiles, pages without a URL.
-4. Prove that the reference app looks the same with `$exclude-bootstrap` set to `true` and to `false`.
-5. Flip the default to `true` in 5.0.0 (phase 6). Setting it back to `false` is the escape hatch for one major version.
-6. Delete the files one major later.
+1. Copy the Bootstrap file into Atlas Legacy, on Atlas Legacy's own Sass. Atlas Core 4.x keeps the original behind `$exclude-bootstrap`.
+2. Write down the Bootstrap class names Atlas Core keeps supporting: the structural ones (grid, text alignment and colors, `hidden-*`, `visible-*`, `pull-*`, `clearfix`, `center-block`). Look classes stay with Atlas Legacy only.
+3. Adopt the structural rules and the reset in Atlas-owned files, on CSS variables, emitted only when `$exclude-bootstrap` is `true`, so projects with the default see no change.
+4. Close the gaps in the evidence: interaction states, phone and tablet profiles, pages without a URL.
+5. Prove two things in the e2e suite: Atlas Core with `$exclude-bootstrap` set to `true` plus Atlas Legacy looks the same as full Atlas Core, and Atlas Core alone is usable.
+6. Delete the file and `$exclude-bootstrap` from Atlas Core in 5.0.0 (phase 6). Atlas Legacy is the way back.
 
-#### Phase 4: replace the mxui file with Atlas-owned styles (4.x, default flips in 5.0.0)
+#### Phase 4: replace the mxui file with Atlas-owned styles (4.x, file leaves Atlas Core in 5.0.0)
 
-Detailed plan: [atlas-plan-4.md](atlas-plan-4.md).
+Detailed plan: [atlas-plan-4.md](atlas-plan-4.md). Changed on 2026-11-24 by [atlas-plan-legacy.md](atlas-plan-legacy.md), as phase 3.
 
 `core/_legacy/_mxui.scss` is the base stylesheet of the old Dojo client: 3,375 lines, 11% of the compiled CSS. `mxui-core()`, which is emitted when `$exclude-mxui` is `true`, is not enough to remove it: it keeps 3 of the 46 rules in use, and without the others 125 of 126 pages of the reference app change.
 
 1. Confirm that the React client is the only client from Mendix 11.0. Then delete the 403 Dojo rules, `_dijit-widget.scss`, and the `not $use-modern-client` branches. They match nothing.
 2. Sort the 204 `mx-*` rules: in use, in use but not seen at rest (pop-ups, dialogs, loading), and old widgets to drop.
-3. Adopt the rules in use in Atlas-owned files, on CSS variables, emitted only when `$exclude-mxui` is `true`. `mxui-core()` dissolves into the reset file.
-4. Prove that the reference app looks the same with `$exclude-mxui` set to `true` and to `false`.
-5. Flip the default to `true` in 5.0.0 (phase 6).
-6. Delete the file one major later.
+3. Copy the look of the rules in use into Atlas Legacy. Adopt their structure (scroll container, dialog positioning, client defaults) in Atlas-owned files, on CSS variables, emitted only when `$exclude-mxui` is `true`. `mxui-core()` dissolves into the reset file.
+4. Prove in the e2e suite that Atlas Core with `$exclude-mxui` set to `true` plus Atlas Legacy looks the same as full Atlas Core.
+5. Delete the file and `$exclude-mxui` from Atlas Core in 5.0.0 (phase 6). Atlas Legacy is the way back.
 
 Phases 3 and 4 share the crawl, the equivalence check, and the slices described under phase 3.
 
@@ -144,8 +145,9 @@ Tested on 2026-10-13: the Data Widgets theme compiles against a simulated Atlas 
     - `$use-css-variables: false` stops compilation with a link to the migration guide. `$use-css-variables: true` is ignored, so migrated themes need no edit.
     - A Sass color function or Sass arithmetic on a bridged name (`mix($brand-primary, ...)`, `$spacing-small * 2`) fails in Sass itself. The migration guide explains that error and the replacement: `color-mix()`, or `calc(var(--spacing-small) * 2)`.
     - Sass names that have no CSS variable (398 Sass defaults against 391 mappings) need a decision each: add the CSS variable, or keep a literal.
-5. **Bootstrap and mxui off by default.** `$exclude-bootstrap` and `$exclude-mxui` become `true` (phases 3 and 4, step 5). This item is independent of items 1 to 4. If phases 3 and 4 are not finished when 5.0.0 is due, it moves to the next major and 5.0.0 ships without it.
-6. **Release notes and changelog.** A `Breaking change` section: Sass theming removed, flag removed, mappings file removed, Sass names are now CSS variable references, Bootstrap file no longer included by default with the list of classes that are no longer styled, minimum versions of Data Widgets and other modules.
+5. **Bootstrap and mxui leave Atlas Core.** Delete `core/_legacy/`, `$exclude-bootstrap`, `$exclude-mxui`, and the switches whose content moved to Atlas Legacy. Release Atlas Legacy 1.0 at the same time. This item is independent of items 1 to 4. If phases 3 and 4 are not finished when 5.0.0 is due, it moves to the next major and 5.0.0 ships without it.
+    - Open: Atlas Legacy keeps Sass themes working ([atlas-plan-legacy.md](atlas-plan-legacy.md), decision 15), which conflicts with item 4. Atlas Core cannot see whether Atlas Legacy is installed when it decides to stop compilation.
+6. **Release notes and changelog.** A `Breaking change` section: Sass theming removed, flag removed, mappings file removed, Sass names are now CSS variable references, Bootstrap and mxui files removed, with the list of classes Atlas Core no longer styles and when an app needs Atlas Legacy, minimum versions of Data Widgets and other modules.
 7. **Docs.** Rewrite the parts of the Atlas 4 migration guide that describe the flag and the mappings file as current behavior.
 
 To verify before implementing: that `$name == var(--name)` compares as expected in the Sass compiler Studio Pro uses, and that the `@error` text is shown to the user in Studio Pro.
@@ -164,69 +166,77 @@ Open and to decide first: where the design properties of those widgets live, bec
 
 #### Later: remove the bridge and the legacy files
 
-- When the modules no longer use the Sass names, `_variables.scss` can shrink to an empty file that only keeps the import path alive. No version planned.
-- One major after 5.0.0: delete `core/_legacy/bootstrap/`, `core/_legacy/_mxui.scss`, and their switches (phases 3 and 4, step 6).
+-   When the modules no longer use the Sass names, `_variables.scss` can shrink to an empty file that only keeps the import path alive. No version planned.
 
 #### Verification, in every phase
 
-- Compilation is done by Studio Pro, not by a CI step. Check each change by building the theme into a Mendix project (`npm run build` in `packages/atlas-core` with `MX_PROJECT_PATH` set) and running it; an undefined Sass variable shows up there as a theme compile error.
-- Fixtures to keep for phase 6: a migrated CSS theme (must compile unchanged), a Sass theme with the flag unset, a Sass theme with the flag set to `false`, and an app with WorkflowCommons, Feedback, and Data Widgets installed.
-- Playwright screenshots in `packages/atlas/e2e`.
+-   Compilation is done by Studio Pro, not by a CI step. Check each change by building the theme into a Mendix project (`npm run build` in `packages/atlas-core` with `MX_PROJECT_PATH` set) and running it; an undefined Sass variable shows up there as a theme compile error.
+-   Fixtures to keep for phase 6: a migrated CSS theme (must compile unchanged), a Sass theme with the flag unset, a Sass theme with the flag set to `false`, and an app with WorkflowCommons, Feedback, and Data Widgets installed.
+-   Playwright screenshots in `packages/atlas/e2e`.
 
 ### Decisions needed
 
-| # | Question | Recommendation |
-| --- | --- | --- |
-| 1 | Migration mode look: add the 10 missing Atlas 4 values to the mappings, or leave the mix until 5.0.0? | Add them. It is small, and a Sass theme then looks like Atlas 4 for the whole migration period |
-| 2 | Which release carries the deprecation notice? | 4.6.0, together with the neutral theme, so there is one announcement |
-| 3 | `$brand-logo`: keep as a Sass switch, or replace with `--brand-logo-url` now that the `AppInfo` snippet supplies the logo? | Open |
-| 4 | Data Widgets tokens: an own `--dg-*` layer, or the Atlas tokens directly? | Open |
-| 5 | Converter: a script in `atlas`, an `mxcli theme` command, or the Maia theming skill only? | Open |
-| 6 | Bootstrap: which utility classes stay supported (`hidden-*`, `visible-*`, `pull-*`)? | Keep `hidden-*` and `pull-*`; decide `visible-*` with usage data |
-| 7 | Is the React client the only client for every Mendix version Atlas 5 supports? | To confirm. If yes, the Dojo rules in `_mxui.scss`, `_dijit-widget.scss`, and `$use-modern-client` can be removed outright |
-| 8 | Where do the design properties of pluggable widgets live once their styling leaves Atlas Core? | Open. See phase 7 |
-| 9 | Exclusion switches and `design-properties.json` are not aligned: a design property still offers classes from a part that is excluded, and then does nothing | Open, outside the current phases |
+| #   | Question                                                                                                                                                    | Recommendation                                                                                                                                           |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Migration mode look: add the 10 missing Atlas 4 values to the mappings, or leave the mix until 5.0.0?                                                       | Add them. It is small, and a Sass theme then looks like Atlas 4 for the whole migration period                                                           |
+| 2   | Which release carries the deprecation notice?                                                                                                               | 4.6.0, together with the neutral theme, so there is one announcement                                                                                     |
+| 3   | `$brand-logo`: keep as a Sass switch, or replace with `--brand-logo-url` now that the `AppInfo` snippet supplies the logo?                                  | Open                                                                                                                                                     |
+| 4   | Data Widgets tokens: an own `--dg-*` layer, or the Atlas tokens directly?                                                                                   | Open                                                                                                                                                     |
+| 5   | Converter: a script in `atlas`, an `mxcli theme` command, or the Maia theming skill only?                                                                   | Open                                                                                                                                                     |
+| 6   | Bootstrap: which utility classes stay supported (`hidden-*`, `visible-*`, `pull-*`)?                                                                        | Decided 2026-11-24: all structural names stay in Atlas Core, look classes go to Atlas Legacy ([atlas-plan-legacy.md](atlas-plan-legacy.md), decision 14) |
+| 7   | Is the React client the only client for every Mendix version Atlas 5 supports?                                                                              | To confirm. If yes, the Dojo rules in `_mxui.scss`, `_dijit-widget.scss`, and `$use-modern-client` can be removed outright                               |
+| 8   | Where do the design properties of pluggable widgets live once their styling leaves Atlas Core?                                                              | Open. See phase 7                                                                                                                                        |
+| 9   | Exclusion switches and `design-properties.json` are not aligned: a design property still offers classes from a part that is excluded, and then does nothing | Open, outside the current phases                                                                                                                         |
 
 ### Next step
 
-Phase 1, items 1 and 2, and the deprecation notice of phase 2.
+Phase 1, items 1 and 2, and the deprecation notice of phase 2. In parallel: the Atlas Legacy skeleton and the copy of the Bootstrap and mxui files ([atlas-plan-legacy.md](atlas-plan-legacy.md), work step 1).
 
 ### Out of scope
 
-- The native theme (`native/`, TypeScript variables).
-- `atlas_web_content` and `atlas_nativemobile_content`, except where their building blocks set Bootstrap classes (phase 3).
-- Runtime theme switching (`:root.theme-dark`) as a feature, as prototyped in Themis. A dark variant is used as a test fixture in phase 1, but shipping theme switching is not planned here.
+-   The native theme (`native/`, TypeScript variables).
+-   `atlas_nativemobile_content`.
+-   `atlas_web_content`, except that it moves onto the semantic tokens and takes over the Bootstrap rules its building blocks set ([atlas-plan-legacy.md](atlas-plan-legacy.md), decision 12).
+-   Runtime theme switching (`:root.theme-dark`) as a feature, as prototyped in Themis. A dark variant is used as a test fixture in phase 1, but shipping theme switching is not planned here.
 
 ### Review log
 
 2026-10-13, review of all phase files against the source:
 
-- Corrected: migration mode is not gradual (constraint 2). The mappings override CSS variables set by a Sass theme.
-- Corrected: the Feedback module does Sass arithmetic on Atlas names and will not compile against the bridge of phase 6 as it is.
-- Added: projects that already exclude Bootstrap or mxui are affected by the adoption in 4.x (constraint 6).
-- Added: the Bootstrap and mxui default flip is decoupled from the Sass removal in 5.0.0.
-- Changed: phase 1 is no longer called "no behavior change" and no longer targets a patch release, because it adds tokens and changes hardcoded colors.
-- Open: phase 5 has no detailed plan yet. The decision lists of the phase files are not merged into one.
+-   Corrected: migration mode is not gradual (constraint 2). The mappings override CSS variables set by a Sass theme.
+-   Corrected: the Feedback module does Sass arithmetic on Atlas names and will not compile against the bridge of phase 6 as it is.
+-   Added: projects that already exclude Bootstrap or mxui are affected by the adoption in 4.x (constraint 6).
+-   Added: the Bootstrap and mxui default flip is decoupled from the Sass removal in 5.0.0.
+-   Changed: phase 1 is no longer called "no behavior change" and no longer targets a patch release, because it adds tokens and changes hardcoded colors.
+-   Open: phase 5 has no detailed plan yet. The decision lists of the phase files are not merged into one.
 
 2026-10-13, after looking at the Themis prototype (`ThemisWindows2.mpk`):
 
-- Decided: Atlas Core stops styling pluggable widgets. Added as phase 7.
-- Changed: phases 3 and 4 are done in slices, layout shell first, with Themis as the reference for that slice.
-- Changed: adopted rules sit behind a new temporary switch until 5.0.0, so projects that already exclude Bootstrap or mxui are not affected.
-- Added: a size target for phases 3 and 4, and a dark theme variant as the test for phase 1.
-- Not taken from Themis: its own `--themis-*` token set, literal fallbacks on every value, layout copies under `.layout-themis`, and duplicated snippets.
+-   Decided: Atlas Core stops styling pluggable widgets. Added as phase 7.
+-   Changed: phases 3 and 4 are done in slices, layout shell first, with Themis as the reference for that slice.
+-   Changed: adopted rules sit behind a new temporary switch until 5.0.0, so projects that already exclude Bootstrap or mxui are not affected.
+-   Added: a size target for phases 3 and 4, and a dark theme variant as the test for phase 1.
+-   Not taken from Themis: its own `--themis-*` token set, literal fallbacks on every value, layout copies under `.layout-themis`, and duplicated snippets.
 
 2026-10-13, after writing the OpenSpec change for Data Widgets:
 
-- Corrected: Data Widgets compiles against the Atlas 5 bridge. Phase 5 is no longer a compile-time gate for it; the Feedback module still is.
-- Added: Data Widgets supports Mendix 10.24 and Atlas 3, which limits how early its Sass fallbacks can be removed.
+-   Corrected: Data Widgets compiles against the Atlas 5 bridge. Phase 5 is no longer a compile-time gate for it; the Feedback module still is.
+-   Added: Data Widgets supports Mendix 10.24 and Atlas 3, which limits how early its Sass fallbacks can be removed.
 
 2026-10-13, while implementing the Data Widgets change:
 
-- Corrected: Atlas Core styles no Data Widgets. `core/widgets/_pagination.scss` targets the Pagination widget of List View Controls, and the dropdown filter rule in `_input.scss` is a Dojo client leftover. Nothing moves from Atlas to Data Widgets in phase 7.
-- Found and fixed in Data Widgets: Sass variables inside custom properties were emitted as text, so their fallbacks were invalid on hosts without CSS variables. Worth checking in Atlas Core and the other widget packages for the same pattern.
+-   Corrected: Atlas Core styles no Data Widgets. `core/widgets/_pagination.scss` targets the Pagination widget of List View Controls, and the dropdown filter rule in `_input.scss` is a Dojo client leftover. Nothing moves from Atlas to Data Widgets in phase 7.
+-   Found and fixed in Data Widgets: Sass variables inside custom properties were emitted as text, so their fallbacks were invalid on hosts without CSS variables. Worth checking in Atlas Core and the other widget packages for the same pattern.
+
+2026-11-24, after the WC-3573 spike and its review:
+
+-   Decided: a new module, Atlas Legacy, holds everything Atlas Core 5 drops to keep the Atlas 4 look. Decisions and reasons in [atlas-plan-legacy.md](atlas-plan-legacy.md).
+-   Changed: Bootstrap and mxui leave Atlas Core in 5.0.0 instead of being switched off by default. No escape hatch inside Atlas Core and no deletion one major later; Atlas Legacy is the way back.
+-   Changed: the 4.x work copies the look into Atlas Legacy and adopts only structure into Atlas Core. No new temporary switch.
+-   Not taken from the spike: Themis as a standalone module that works without Atlas Core. The spike PR (#366) is closed; its findings are kept in the Atlas Legacy plan.
+-   Open: Sass themes with Atlas Legacy against the loud errors of phase 6.
 
 ### Related open points from the 4.6.0 work
 
-- The prototype package (`Atlas_Core_v5.mpk`) removed `_css-variables-mappings.scss`. The 4.6.0 pull request kept it. It is removed in phase 6.
-- Model changes for 4.6.0 (`AppInfo` entity, snippet, nanoflow, JavaScript actions, layout changes) live in `Atlas-Design-System`, not in this repository. See the release description in the root `AGENTS.md` of the work folder.
+-   The prototype package (`Atlas_Core_v5.mpk`) removed `_css-variables-mappings.scss`. The 4.6.0 pull request kept it. It is removed in phase 6.
+-   Model changes for 4.6.0 (`AppInfo` entity, snippet, nanoflow, JavaScript actions, layout changes) live in `Atlas-Design-System`, not in this repository. See the release description in the root `AGENTS.md` of the work folder.
