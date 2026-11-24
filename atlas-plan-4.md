@@ -1,5 +1,11 @@
 # Atlas plan, phase 4: replace the mxui file with Atlas-owned styles
 
+> **Changed on 2026-11-24.** The look of this file moves to a new module, Atlas Legacy, instead of being switched off by
+> default in 5.0.0. No new temporary switch (step 3), no escape hatch inside Atlas Core (step 5), and the file leaves
+> Atlas Core in 5.0.0 rather than one major later (step 6). Atlas Core keeps the structural rules only. See
+> [atlas-plan-legacy.md](atlas-plan-legacy.md) and phase 4 in [atlas-plans.md](atlas-plans.md). The evidence below
+> still holds.
+
 Part of [Moving Atlas Core fully to CSS variables](atlas-plans.md). Status: plan only, nothing implemented. Written 2026-10-13.
 
 Target: the adoption work ships in Atlas Core 4.x without changing anything for users. The default flips in 5.0.0 (phase 6 of the main plan). The file is deleted one major later.
