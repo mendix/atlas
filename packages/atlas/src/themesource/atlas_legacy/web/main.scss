@@ -1,0 +1,25 @@
+//
+// Atlas Legacy
+//
+// Restores the Atlas 4 look on top of Atlas Core. Install this module next to Atlas Core when Atlas Core
+// excludes its legacy styling ($exclude-bootstrap and $exclude-mxui set to true).
+//
+// Atlas Legacy owns all the Sass it needs. It does not read Atlas Core's Sass variables, mixins or switches.
+//
+
+//=============================== Bootstrap ================================\\
+
+@import "bootstrap/bootstrap";
+@import "bootstrap/bootstrap-rtl";
+@include atlas-legacy-bootstrap();
+@include atlas-legacy-bootstrap-rtl();
+
+//================================== MxUI ==================================\\
+
+@import "mxui";
+@include atlas-legacy-mxui();
+
+//============================ Atlas Core extends ============================\\
+
+@import "extends";
+@include atlas-legacy-extends();

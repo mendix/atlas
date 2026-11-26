@@ -1,0 +1,49 @@
+//
+// Atlas Core 4 gives some of its widget classes the look of Bootstrap classes with `@extend`. Studio Pro compiles
+// every module on its own, so an `@extend` in Atlas Core cannot reach the Bootstrap rules in Atlas Legacy. These
+// extends restore that look inside Atlas Legacy.
+//
+@mixin atlas-legacy-extends() {
+    // Timeline (core/widgets/_timeline.scss)
+    .widget-timeline-title {
+        @extend h5;
+    }
+
+    .widget-eventTime {
+        @extend h5;
+    }
+
+    // Input widgets (core/widgets/_input.scss)
+    .form-group {
+        div[class*="textBox"] > .control-label,
+        div[class*="textArea"] > .control-label,
+        div[class*="datePicker"] > .control-label {
+            @extend .form-control-static;
+        }
+    }
+
+    .page-form-vertical {
+        @extend .form-vertical !optional;
+    }
+
+    .page-form-horizontal {
+        @extend .form-horizontal;
+
+        $label-breakpoints: sm, md, lg;
+        @each $bp in $label-breakpoints {
+            &:not([class*="form-label-width-"]) {
+                // default label width 3 if none specified
+                .form-group > label {
+                    @extend .col-#{$bp}-3;
+                }
+            }
+            @for $i from 1 through 11 {
+                &.form-label-width-#{$i} {
+                    .form-group > label {
+                        @extend .col-#{$bp}-#{$i};
+                    }
+                }
+            }
+        }
+    }
+}
