@@ -113,6 +113,7 @@ function validateSass(watchMode) {
     try {
         sass.renderSync({ file: join(__dirname, "../src/themesource/atlas_core/web/main.scss") });
         sass.renderSync({ file: join(__dirname, "../src/themesource/atlas_web_content/web/main.scss") });
+        sass.renderSync({ file: join(__dirname, "../src/themesource/atlas_legacy/web/main.scss") });
     } catch (e) {
         if (watchMode) {
             console.error(`Sass validation failed: ${e.message}`);
