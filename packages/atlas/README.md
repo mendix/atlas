@@ -139,3 +139,22 @@ Run `npm install` in the atlas package of this repository (`packages/atlas`) to 
 ### Updating screenshots
 
 -   Run `npm run update-screenshots` to run the test project and update the screenshots for visual testing.
+
+### Legacy mode
+
+The legacy mode checks the Atlas Legacy module (`src/themesource/atlas_legacy`). It runs the same suite against the same
+screenshots as the full run, but the test project uses Atlas Core with its legacy styling excluded plus Atlas Legacy:
+
+-   `theme/web/exclusion-variables.scss` sets `$exclude-bootstrap` and `$exclude-mxui` to `true`.
+-   The `Atlas_Legacy` module is imported with `mx module-import` from `scripts/legacy/Atlas_Legacy.mpk` and gets the styles
+    from this repository. The package holds only an empty module marked as a Marketplace module, so Studio Pro compiles it
+    before Atlas Core, as it does in an app that installs Atlas Legacy from the Marketplace. The run fails if Atlas Legacy
+    compiles after Atlas Core.
+
+Run `npm run e2e:legacy` (or `npm run e2e` with `ATLAS_E2E_MODE=legacy`) to start the test project in legacy mode, then run
+Playwright as usual. Switching between the modes downloads the test project again.
+
+Atlas Legacy is correct when the legacy mode cannot be told apart from the full run. A screenshot difference in legacy mode
+is a bug in Atlas Legacy: never update the screenshots from a legacy run.
+
+The nightly workflow (`AtlasE2ENightly.yml`) runs both modes as separate jobs.

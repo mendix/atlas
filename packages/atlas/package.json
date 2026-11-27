@@ -11,6 +11,7 @@
     "build": "node ./scripts/build.js",
     "start": "node ./scripts/build.js start",
     "e2e": "node ./scripts/e2e.playwright.js -- --no-widget-update",
+    "e2e:legacy": "node ./scripts/e2e.playwright.js -- --no-widget-update --legacy",
     "e2edev": "npx playwright test --ui",
     "release": "node ./scripts/build.js release",
     "release-ts": "tsc",
